@@ -2,26 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'nothingYouCanDo';
+  src: local('nothingYouCanDo'), url(./fonts/NothingYouCouldDo-Regular.woff) format('woff');
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'geistSans';
+  src: local('geistSans'), url(./fonts/GeistVF.woff) format('woff');
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: 'dynapuff';
+  src: local('dynapuff'), url(./fonts/DynaPuff-VariableFont.woff) format('woff');
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+nav {
+  scrollbar-width: thin;
+  scrollbar-color: #eaeaea transparent;
+  scrollbar-gutter: stable;
 }

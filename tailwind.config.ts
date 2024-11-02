@@ -8,9 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        nothing: ['nothingYouCanDo'],
+        dynapuff: ['dynapuff'],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'tahiti': '#3ab7bf',
+        'midnight': '#121063',
+        'primary': '#7367F0',
+        'link': "#52a8ff",
       },
     },
   },

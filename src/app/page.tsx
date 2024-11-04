@@ -3,7 +3,7 @@ import Github from "./svg/Github"
 
 export default function Home() {
   return (
-    <Box flex={1} className="w-1/2">
+    <Box flex={1}>
       <Box >
         <div className="flex justify-center items-center">
           <Github width={40} height={40} className='text-tahiti' />

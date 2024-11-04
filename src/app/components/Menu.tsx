@@ -7,12 +7,57 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Collapse, useTheme } from '@mui/material';
 import { useState } from 'react';
-import { KeyboardArrowDown, KeyboardArrowRight} from '@mui/icons-material';
+import { KeyboardArrowDown, KeyboardArrowRight, Opacity} from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 
 
-const menuListTop = [
+const scratchListTitle = { text:"Create from scratch", route: '/scratch'};
+const scratchList = [
+  {
+    text: 'NextJS + Tailwind + MUI',
+    route: '/scratch/next'
+  },
+  {
+    text: 'Laravel',
+    route: '/scratch/laravel'
+  },
+  {
+    text: 'Symfony',
+    route: '/scratch/symfony'
+  },
+];
+const muiListTitle = { text:"MUI Material", route: '/mui'};
+const muiList = [
+  {
+    text: 'Theme',
+    route: '/mui/theme'
+  },
+  {
+    text: 'Custom colors',
+    route: '/mui/color'
+  },
+  {
+    text: 'Custom fonts',
+    route: '/mui/fonts'
+  },
+];
+const tailwindListTitle = { text:"Tailwind", route: '/tailwind'};
+const tailwindList = [
+  {
+    text: 'Theme',
+    route: '/tailwind/theme'
+  },
+  {
+    text: 'Custom colors',
+    route: '/tailwind/color'
+  },
+  {
+    text: 'Custom fonts',
+    route: '/tailwind/fonts'
+  },
+];
+const mainList = [
   {
     text: 'NextJS',
     route: '/nextjs'
@@ -28,6 +73,14 @@ const menuListTop = [
   {
     text: 'MUI',
     route: '/mui'
+  },
+  {
+    text: 'Code Block',
+    route: '/codeblock'
+  },
+  {
+    text: 'Scrollbar thiny',
+    route: '/scrollbar'
   },
   {
     text: 'Prisma',
@@ -50,26 +103,14 @@ const menuListTop = [
     route: '/symfony'
   },
   {
+    text: 'Cmder',
+    route: '/cmder'
+  },
+  {
     text: 'Mysql',
     route: '/mysql'
   },
 ];
-const scratchListTitle = "Create from scratch";
-const scratchList = [
-  {
-    text: 'NextJS + Tailwind + MUI',
-    route: '/scratch/next'
-  },
-  {
-    text: 'Laravel',
-    route: '/scratch/laravel'
-  },
-  {
-    text: 'Symfony',
-    route: '/scratch/symfony'
-  },
-];
-
 const openedMixin = (theme) => ({
   width: 240,
   transition: theme.transitions.create('width', {
@@ -78,7 +119,6 @@ const openedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
 });
-
 const closedMixin = (theme) => ({
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
@@ -90,7 +130,6 @@ const closedMixin = (theme) => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
-
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
@@ -99,7 +138,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme }) => ({
     width: 240,
@@ -124,35 +162,116 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     ],
   }),
 );
-
 const ListButton = styled(ListItemButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   backgroundColor: 'transparent',
   "&:hover": {color: theme.palette.text.primary, backgroundColor: 'transparent'},
-  "&.Mui-selected": {color: theme.palette.link, backgroundColor: 'transparent', "&:hover": {color: theme.palette.text.primary, backgroundColor: 'transparent'}}
+  "&.Mui-selected": {
+      color: theme.palette.link, backgroundColor: 'transparent', 
+      "&:hover": {backgroundColor: 'transparent'},
+  }
 }));
 
 export default function Menu() {
   const router = useRouter();
   const theme = useTheme();
+  console.log(theme);
   const [open, setOpen] = useState(true); // Drawer is shown
   const [selectedIndex, setSelectedIndex] = useState('');
-  const [selectedSubmenuIndex, setSelectedSubmenuIndex] = useState('');
-  const [scratchlistOpen, setScratchListOpen] = useState(false);
-
-  const handleClic = () => {
-    setScratchListOpen(!(scratchlistOpen && selectedIndex !== scratchListTitle) ? !scratchlistOpen : scratchlistOpen)
-  }
-  
+  const [scratchlistOpen, setScratchListOpen] = useState(false);  
+  const [muilistOpen, setMuiListOpen] = useState(false);  
+  const [tailwindlistOpen, setTailwindListOpen] = useState(false);  
 
   return (
-    <div className='w-1/4 h-[85vh] sticky'>
+    <div className='w-1/4 h-[84vh] sticky top-32 hidden lg:flex'>
       <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
         <List sx={{width: 310, paddingLeft: 5}}>
 
-          {menuListTop.map((item) => (
-          <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListButton	selected={selectedIndex === item.text} onClick={() => setSelectedIndex(item.text)}
+          <ListItemButton onClick={()=>{ setScratchListOpen(!scratchlistOpen) }} disableRipple dense>
+            <ListItemText primary={`${scratchListTitle.text}`} /> {scratchlistOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={scratchlistOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {scratchList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton onClick={()=>{ setMuiListOpen(!muilistOpen) }} disableRipple dense>
+            <ListItemText primary={`${muiListTitle.text}`} /> {muilistOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={muilistOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {muiList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton onClick={()=>{ setTailwindListOpen(!tailwindlistOpen) }} disableRipple dense>
+            <ListItemText primary={`${tailwindListTitle.text}`} /> {tailwindlistOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={tailwindlistOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {tailwindList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+
+
+
+
+          {mainList.map((item, index) => (
+          <ListItem key={item.text + index} disablePadding sx={{ display: 'block' }}>
+              <ListButton
+                disableRipple
+                selected={selectedIndex === (item.route)} 
+                onClick={() => {
+                  setSelectedIndex(item.route)
+                  router.push(item.route)
+                }}
                 sx={open ? { justifyContent: 'initial' } : { justifyContent: 'center' }} dense
               >
                 <ListItemText primary={item.text} sx={[ {fontSize: 10} , open ? {opacity: 1} : {opacity: 0}]}
@@ -161,36 +280,6 @@ export default function Menu() {
           </ListItem>
           ))}
 
-          <ListButton selected={selectedIndex === scratchListTitle} onClick={()=>{ handleClic(); setSelectedIndex(scratchListTitle) }} dense>
-            <ListItemText primary={`${scratchListTitle}`} /> {scratchlistOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
-          </ListButton>
-
-          <Collapse in={scratchlistOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {scratchList.map((item) => (
-                <ListItemButton
-                  component="a"
-                  key={item.text}
-                  dense
-                  selected={selectedIndex === item.text}
-                  onClick={() => {
-                    setSelectedIndex(item.text);
-                    router.push(item.route)
-                  }}
-                  sx={[{
-                    pl: 4,
-                    color: 'text.secondary',
-                    "&:hover": {color: 'text.primary', backgroundColor: 'transparent'},
-                    "&.Mui-selected": {color: 'primary.dark', backgroundColor: 'transparent', "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}}
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' }
-                  ]}
-                >
-                    <ListItemText primary={item.text} />
-                </ListItemButton>
-              ))}
-            </List>
-          </Collapse>
 
         </List>
       </nav>

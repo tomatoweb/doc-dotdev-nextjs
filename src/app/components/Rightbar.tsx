@@ -127,11 +127,10 @@ export default function Menu() {
   const theme = useTheme();
   const [open, setOpen] = useState(true); // Drawer is shown
   const [selectedIndex, setSelectedIndex] = useState('');
-  const [listOpen, setListOpen] = useState(false); // list item
   
   return (
-    <div className='w-1/4 h-[85vh] sticky top-32'>   
-      <nav className='overflow-y-auto h-[calc(100vh-260px)]'>
+    <div className='w-1/4 h-[84vh] sticky top-32 hidden md:flex'>   
+      <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
         <List sx={{width: 260 }}>
           {menuList.map((item) => (
           <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
@@ -148,143 +147,8 @@ export default function Menu() {
               />
               </ListItemButton>
           </ListItem>
-          ))}
-          <ListItemButton dense selected={selectedIndex === scratch} onClick={() => {setListOpen(!listOpen)}}
-            sx={{
-              color: 'text.secondary',
-              backgroundColor: 'transparent',
-              "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}
-            }}>
-            <ListItemText primary={`${scratch}`} />
-            {listOpen ? <KeyboardArrowDown /> : <KeyboardArrowRight />}
-          </ListItemButton>
-          <Collapse in={listOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {scratchList.map((item) => (
-                <ListItemButton  
-                  component="a"
-                  to={`${item.route}`}             
-                  key={item.text} 
-                  dense 
-                  selected={selectedIndex === item.text} 
-                  onClick={() => setSelectedIndex(item.text)}
-                  sx={[{
-                    pl: 4,
-                    color: 'text.secondary',
-                    "&:hover": {color: 'text.primary', backgroundColor: 'transparent'},
-                    "&.Mui-selected": {color: 'primary.dark', backgroundColor: 'transparent', "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}}
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' }
-                  ]}
-                >
-                    <ListItemText primary={item.text} />
-                </ListItemButton>
-              ))}
-            </List>
-          </Collapse>
-        </List>
-        <List sx={{width: 260 }}>
-          {menuList.map((item) => (
-          <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton	dense selected={selectedIndex === item.text} onClick={() => setSelectedIndex(item.text)}
-                sx={[{
-                    color: 'text.secondary',
-                    "&:hover": {color: 'text.primary', backgroundColor: 'transparent'},
-                    "&.Mui-selected": {color: 'primary.dark', backgroundColor: 'transparent', "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}}
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' }
-                ]}
-              >
-                  <ListItemText primary={item.text} sx={[ {fontSize: 10} , open ? {opacity: 1} : {opacity: 0}]}
-              />
-              </ListItemButton>
-          </ListItem>
-          ))}
-          <ListItemButton dense selected={selectedIndex === scratch} onClick={() => {setListOpen(!listOpen)}}
-            sx={{
-              color: 'text.secondary',
-              backgroundColor: 'transparent',
-              "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}
-            }}>
-            <ListItemText primary={`${scratch}`} />
-            {listOpen ? <KeyboardArrowDown /> : <KeyboardArrowRight />}
-          </ListItemButton>
-          <Collapse in={listOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {scratchList.map((item) => (
-                <ListItemButton  
-                  component="a"
-                  to={`${item.route}`}             
-                  key={item.text} 
-                  dense 
-                  selected={selectedIndex === item.text} 
-                  onClick={() => setSelectedIndex(item.text)}
-                  sx={[{
-                    pl: 4,
-                    color: 'text.secondary',
-                    "&:hover": {color: 'text.primary', backgroundColor: 'transparent'},
-                    "&.Mui-selected": {color: 'primary.dark', backgroundColor: 'transparent', "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}}
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' }
-                  ]}
-                >
-                    <ListItemText primary={item.text} />
-                </ListItemButton>
-              ))}
-            </List>
-          </Collapse>
-        </List>
-        <List sx={{width: 260 }}>
-          {menuList.map((item) => (
-          <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton	dense selected={selectedIndex === item.text} onClick={() => setSelectedIndex(item.text)}
-                sx={[{
-                    color: 'text.secondary',
-                    "&:hover": {color: 'text.primary', backgroundColor: 'transparent'},
-                    "&.Mui-selected": {color: 'primary.dark', backgroundColor: 'transparent', "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}}
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' }
-                ]}
-              >
-                  <ListItemText primary={item.text} sx={[ {fontSize: 10} , open ? {opacity: 1} : {opacity: 0}]}
-              />
-              </ListItemButton>
-          </ListItem>
-          ))}
-          <ListItemButton dense selected={selectedIndex === scratch} onClick={() => {setListOpen(!listOpen)}}
-            sx={{
-              color: 'text.secondary',
-              backgroundColor: 'transparent',
-              "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}
-            }}>
-            <ListItemText primary={`${scratch}`} />
-            {listOpen ? <KeyboardArrowDown /> : <KeyboardArrowRight />}
-          </ListItemButton>
-          <Collapse in={listOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {scratchList.map((item) => (
-                <ListItemButton  
-                  component="a"
-                  to={`${item.route}`}             
-                  key={item.text} 
-                  dense 
-                  selected={selectedIndex === item.text} 
-                  onClick={() => setSelectedIndex(item.text)}
-                  sx={[{
-                    pl: 4,
-                    color: 'text.secondary',
-                    "&:hover": {color: 'text.primary', backgroundColor: 'transparent'},
-                    "&.Mui-selected": {color: 'primary.dark', backgroundColor: 'transparent', "&:hover": {color: 'text.primary', backgroundColor: 'transparent'}}
-                    },
-                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' }
-                  ]}
-                >
-                    <ListItemText primary={item.text} />
-                </ListItemButton>
-              ))}
-            </List>
-          </Collapse>
-        </List>
+          ))}          
+        </List>        
       </nav>
     </div>         
     

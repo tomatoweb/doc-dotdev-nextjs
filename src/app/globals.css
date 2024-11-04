@@ -19,3 +19,9 @@ nav {
   scrollbar-color: #eaeaea transparent;
   scrollbar-gutter: stable;
 }
+code {
+  white-space: pre !important;
+}
+pre {
+  border: 1px solid #2e2e2e !important;
+}

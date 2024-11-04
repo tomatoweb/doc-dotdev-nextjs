@@ -9,10 +9,10 @@ import { grey, yellow } from '@mui/material/colors';
         contrastText: "#e33279"
       },
       grey: {
-        main: grey[300],
+        main: grey[800],
         light: grey[100],
         dark: grey[500],
-        contrastText: "#000"
+        contrastText: "#fff"
       },
       link: "#52a8ff",      
 	    background: {
@@ -21,6 +21,7 @@ import { grey, yellow } from '@mui/material/colors';
 	  },
 	  typography: {
 	    fontFamily: "geistSans",
+      fontWeightRegular: 500,
 	    h1: {
 	      fontFamily: 'Papyrus',
 	      fontWeight: 500,

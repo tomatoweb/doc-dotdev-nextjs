@@ -18,9 +18,11 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline/>
             <Navbar/>
-            <div className="flex max-w-7xl mx-auto justify-between mt-14">
-              <Menu/>         
-              {children}
+            <div className="flex flex-row max-w-7xl mx-auto justify-between mt-14">
+              <Menu/>
+              <main className="w-full px-8 min-h-screen">
+                {children}
+              </main>       
               <Rightbar/>
             </div>
           </ThemeProvider>

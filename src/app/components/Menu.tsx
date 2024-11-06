@@ -27,11 +27,15 @@ const scratchList = [
     route: '/scratch/symfony'
   },
 ];
-const muiListTitle = { text:"MUI Material", route: '/mui'};
+const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [
   {
     text: 'Theme',
     route: '/mui/theme'
+  },
+  {
+    text: 'sx versus styled',
+    route: '/mui/versus'
   },
   {
     text: 'Custom colors',
@@ -41,13 +45,13 @@ const muiList = [
     text: 'Custom fonts',
     route: '/mui/fonts'
   },
+  {
+    text: 'MUI X Tree View',
+    route: '/mui/xtreeview'
+  },
 ];
 const tailwindListTitle = { text:"Tailwind", route: '/tailwind'};
 const tailwindList = [
-  {
-    text: 'Theme',
-    route: '/tailwind/theme'
-  },
   {
     text: 'Custom colors',
     route: '/tailwind/color'
@@ -57,7 +61,44 @@ const tailwindList = [
     route: '/tailwind/fonts'
   },
 ];
+const nextjsListTitle = { text:"NextJS", route: '/nextjs'};
+const nextjsList = [
+  {
+    text: 'Deploy a NextJS app on Linux',
+    route: '/nextjs/deploy'
+  },
+  {
+    text: 'SyntaxHighlighter CodeBlock',
+    route: '/nextjs/syntax'
+  },
+  {
+    text: 'Thiny Scrollbar',
+    route: '/nextjs/scrollbar'
+  },
+];
+const debianListTitle = { text:"Debian 11", route: '/debian'};
+const debianList = [
+  {
+    text: 'Reinstall from scratch',
+    route: '/debian/reinstall'
+  },
+  {
+    text: 'Add a subdomain',
+    route: '/debian/subdomain'
+  },
+];
+const sqliteListTitle = { text:"SQLite", route: '/sqlite'};
+const sqliteList = [
+  {
+    text: 'Install and use',
+    route: '/sqlite/install'
+  },
+];
 const mainList = [
+  {
+    text: 'Versioning',
+    route: '/versioning'
+  },
   {
     text: 'NextJS',
     route: '/nextjs'
@@ -89,6 +130,26 @@ const mainList = [
   {
     text: 'Javascript',
     route: '/javascript'
+  },
+  {
+    text: 'PHP',
+    route: '/php'
+  },
+  {
+    text: 'Laravel',
+    route: '/laravel'
+  },
+  {
+    text: 'Symfony',
+    route: '/symfony'
+  },
+  {
+    text: 'Cmder',
+    route: '/cmder'
+  },
+  {
+    text: 'Mysql',
+    route: '/mysql'
   },
   {
     text: 'PHP',
@@ -175,22 +236,24 @@ const ListButton = styled(ListItemButton)(({ theme }) => ({
 export default function Menu() {
   const router = useRouter();
   const theme = useTheme();
-  console.log(theme);
   const [open, setOpen] = useState(true); // Drawer is shown
   const [selectedIndex, setSelectedIndex] = useState('');
-  const [scratchlistOpen, setScratchListOpen] = useState(false);  
-  const [muilistOpen, setMuiListOpen] = useState(false);  
-  const [tailwindlistOpen, setTailwindListOpen] = useState(false);  
+  const [scratchListOpen, setScratchListOpen] = useState(false);  
+  const [muiListOpen, setMuiListOpen] = useState(false);  
+  const [tailwindListOpen, setTailwindListOpen] = useState(false);  
+  const [nextjsListOpen, setNextjsListOpen] = useState(false);  
+  const [debianListOpen, setDebianListOpen] = useState(false);  
+  const [sqliteListOpen, setSqliteListOpen] = useState(false);  
 
   return (
     <div className='w-1/4 h-[84vh] sticky top-32 hidden lg:flex'>
       <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
         <List sx={{width: 310, paddingLeft: 5}}>
 
-          <ListItemButton onClick={()=>{ setScratchListOpen(!scratchlistOpen) }} disableRipple dense>
-            <ListItemText primary={`${scratchListTitle.text}`} /> {scratchlistOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          <ListItemButton onClick={()=>{ setScratchListOpen(!scratchListOpen) }} disableRipple dense>
+            <ListItemText primary={`${scratchListTitle.text}`} /> {scratchListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
-          <Collapse in={scratchlistOpen} timeout="auto" unmountOnExit>
+          <Collapse in={scratchListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {scratchList.map((item) => (
                 <ListButton
@@ -211,10 +274,10 @@ export default function Menu() {
             </List>
           </Collapse>
 
-          <ListItemButton onClick={()=>{ setMuiListOpen(!muilistOpen) }} disableRipple dense>
-            <ListItemText primary={`${muiListTitle.text}`} /> {muilistOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          <ListItemButton onClick={()=>{ setMuiListOpen(!muiListOpen) }} disableRipple dense>
+            <ListItemText primary={`${muiListTitle.text}`} /> {muiListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
-          <Collapse in={muilistOpen} timeout="auto" unmountOnExit>
+          <Collapse in={muiListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {muiList.map((item) => (
                 <ListButton
@@ -235,12 +298,84 @@ export default function Menu() {
             </List>
           </Collapse>
 
-          <ListItemButton onClick={()=>{ setTailwindListOpen(!tailwindlistOpen) }} disableRipple dense>
-            <ListItemText primary={`${tailwindListTitle.text}`} /> {tailwindlistOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          <ListItemButton onClick={()=>{ setTailwindListOpen(!tailwindListOpen) }} disableRipple dense>
+            <ListItemText primary={`${tailwindListTitle.text}`} /> {tailwindListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
-          <Collapse in={tailwindlistOpen} timeout="auto" unmountOnExit>
+          <Collapse in={tailwindListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {tailwindList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton onClick={()=>{ setNextjsListOpen(!nextjsListOpen) }} disableRipple dense>
+            <ListItemText primary={`${nextjsListTitle.text}`} /> {nextjsListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={nextjsListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {nextjsList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton onClick={()=>{ setDebianListOpen(!debianListOpen) }} disableRipple dense>
+            <ListItemText primary={`${debianListTitle.text}`} /> {debianListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={debianListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {debianList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton onClick={()=>{ setSqliteListOpen(!sqliteListOpen) }} disableRipple dense>
+            <ListItemText primary={`${sqliteListTitle.text}`} /> {sqliteListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={sqliteListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {sqliteList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"

@@ -8,15 +8,15 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 const CodeBlock = props => {
   const [copied, setCopied] = useState(false);
   return (
-    <div className="relative">
-      <br/>
+    <div className="relative my-8">
       <div className="flex justify-end cursor-pointer mr-4">
         <Box sx={[{fontSize: '0.8rem'}, copied ? { visibility: 'visible' } : { visibility: 'hidden'}]}>
           copied
         </Box>
         <Copy size={17} color='lightgray' onClick={() => {navigator.clipboard.writeText(props.text); setCopied(true)}} className=""/>
       </div>
-      <SyntaxHighlighter        
+      <SyntaxHighlighter
+        className="codeblock"        
         language="jsx"
         style={atomDark}
         wrapLongLines
@@ -24,6 +24,7 @@ const CodeBlock = props => {
             backgroundColor: "transparent",
             opacity: "1",
             marginTop: "-2rem",
+            paddingTop: "2rem"
         }}
         codeTagProps={{
             style: {
@@ -32,7 +33,6 @@ const CodeBlock = props => {
         }}>                
         {props.text}
       </SyntaxHighlighter>
-      <br/>
     </div>
   )
 }

@@ -22,6 +22,12 @@ nav {
 code {
   white-space: pre !important;
 }
-pre {
+.codeblock {
   border: 1px solid #2e2e2e !important;
+  scrollbar-width: thin;
+  scrollbar-color: #eaeaea transparent;
+  scrollbar-gutter: stable;
+}
+.token {
+  text-decoration: none !important;
 }

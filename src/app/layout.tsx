@@ -20,7 +20,7 @@ export default function RootLayout({
             <Navbar/>
             <div className="flex flex-row max-w-7xl mx-auto justify-between mt-14">
               <Menu/>
-              <main className="w-full px-8 min-h-screen">
+              <main className="w-full px-8 min-h-screen max-w-[60%]">
                 {children}
               </main>       
               <Rightbar/>

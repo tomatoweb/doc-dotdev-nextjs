@@ -5,44 +5,42 @@ import React from 'react'
 const page = () => {
   const text = 
 `'use client';
-import { grey, yellow } from '@mui/material/colors';
-  import { createTheme } from '@mui/material/styles';
-  const theme = createTheme({
-    palette: {
-      mode: 'dark',
-      myColor: {
-        main: "#95bd31",
-        contrastText: "#e33279"
-      },
-      grey: {
-        main: grey[300],
-        light: grey[100],
-        dark: grey[500],
-        contrastText: "#000"
-      },
-      link: "#52a8ff",      
-      background: {
-        default: '#000'
-      }
+import { createTheme, PaletteColor, SimplePaletteColorOptions } from '@mui/material/styles';
+declare module "@mui/material/styles" {
+  interface Palette {
+    link: PaletteColor;
+  }
+
+  interface PaletteOptions {
+    link: SimplePaletteColorOptions;
+  }
+}
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    link: { main: "#52a8ff" },  
+    background: {
+      default: '#000'
+    }
+  },
+  typography: {
+    fontFamily: "geistSans",
+    fontWeightRegular: 400,
+    h1: {
+      fontFamily: 'Papyrus',
+      fontWeight: 500,
+      fontSize: '5rem',
+      lineHeight: 1.2,
     },
-    typography: {
-      fontFamily: "geistSans",
-      fontWeightRegular: 400,
-      h1: {
-        fontFamily: 'Papyrus',
-        fontWeight: 500,
-        fontSize: '5rem',
-        lineHeight: 1.2,
-      },
-      h2: {
-        fontFamily: "Brush Script MT",
-        fontWeight: 300,
-        fontSize: '5rem',
-        lineHeight: 1.2,
-      },
+    h2: {
+      fontFamily: "Brush Script MT",
+      fontWeight: 300,
+      fontSize: '5rem',
+      lineHeight: 1.2,
     },
-  });
-  export default theme;`;
+  },
+});
+export default theme;`;
   const debug = 
 `breakpoints: {
     keys: [ 'xs', 'sm', 'md', 'lg', 'xl' ],
@@ -825,6 +823,7 @@ import { grey, yellow } from '@mui/material/colors';
   return (
     <div className='text-center'>
       <Typography variant='h5'>MUI Theme and debug theme (below)</Typography>
+      <Typography variant='h5'>Typescript version</Typography>
       <CodeBlock text={text} />  
       <Typography variant='h5'>Debug MUI theme</Typography>
       <CodeBlock text={debug} />  

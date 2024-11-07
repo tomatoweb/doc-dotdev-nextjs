@@ -1,5 +1,5 @@
 import CodeBlock from '@/app/components/CodeBlock';
-import { Link, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import React from 'react'
 
 const page = () => {

@@ -1,13 +1,11 @@
 'use client'
 import { styled  } from '@mui/material/styles';
-import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Collapse, useTheme } from '@mui/material';
+import { Collapse } from '@mui/material';
 import { useState } from 'react';
-import { KeyboardArrowDown, KeyboardArrowRight, Opacity} from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 
@@ -176,57 +174,6 @@ const mainList = [
     route: '/mysql'
   },
 ];
-const openedMixin = (theme) => ({
-  width: 240,
-  transition: theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
-  }),
-  overflowX: 'hidden',
-});
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
-});
-const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-}));
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme }) => ({
-    width: 240,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
-    variants: [
-      {
-        props: ({ open }) => open,
-        style: {
-          ...openedMixin(theme),
-          '& .MuiDrawer-paper': openedMixin(theme),
-        },
-      },
-      {
-        props: ({ open }) => !open,
-        style: {
-          ...closedMixin(theme),
-          '& .MuiDrawer-paper': closedMixin(theme),
-        },
-      },
-    ],
-  }),
-);
 const ListButton = styled(ListItemButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
   backgroundColor: 'transparent',
@@ -239,8 +186,6 @@ const ListButton = styled(ListItemButton)(({ theme }) => ({
 
 export default function Menu() {
   const router = useRouter();
-  const theme = useTheme();
-  const [open, setOpen] = useState(true); // Drawer is shown
   const [selectedIndex, setSelectedIndex] = useState('');
   const [scratchListOpen, setScratchListOpen] = useState(false);  
   const [muiListOpen, setMuiListOpen] = useState(false);  
@@ -254,7 +199,7 @@ export default function Menu() {
       <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
         <List sx={{width: 310, paddingLeft: 5}}>
 
-          <ListItemButton onClick={()=>{ setScratchListOpen(!scratchListOpen) }} disableRipple dense>
+          <ListItemButton component="a" onClick={()=>{ setScratchListOpen(!scratchListOpen) }} disableRipple dense>
             <ListItemText primary={`${scratchListTitle.text}`} /> {scratchListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
           <Collapse in={scratchListOpen} timeout="auto" unmountOnExit>
@@ -270,7 +215,7 @@ export default function Menu() {
                     setSelectedIndex(item.route);
                     router.push(item.route)
                   }}
-                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
                 >
                   <ListItemText primary={item.text} />
                 </ListButton>
@@ -294,7 +239,7 @@ export default function Menu() {
                     setSelectedIndex(item.route);
                     router.push(item.route)
                   }}
-                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
                 >
                   <ListItemText primary={item.text} />
                 </ListButton>
@@ -318,7 +263,7 @@ export default function Menu() {
                     setSelectedIndex(item.route);
                     router.push(item.route)
                   }}
-                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
                 >
                   <ListItemText primary={item.text} />
                 </ListButton>
@@ -342,7 +287,7 @@ export default function Menu() {
                     setSelectedIndex(item.route);
                     router.push(item.route)
                   }}
-                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
                 >
                   <ListItemText primary={item.text} />
                 </ListButton>
@@ -366,7 +311,7 @@ export default function Menu() {
                     setSelectedIndex(item.route);
                     router.push(item.route)
                   }}
-                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
                 >
                   <ListItemText primary={item.text} />
                 </ListButton>
@@ -390,7 +335,7 @@ export default function Menu() {
                     setSelectedIndex(item.route);
                     router.push(item.route)
                   }}
-                  sx={[{pl: 4,}, open ? { justifyContent: 'initial' } : { justifyContent: 'center' }]}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
                 >
                   <ListItemText primary={item.text} />
                 </ListButton>
@@ -411,9 +356,9 @@ export default function Menu() {
                   setSelectedIndex(item.route)
                   router.push(item.route)
                 }}
-                sx={open ? { justifyContent: 'initial' } : { justifyContent: 'center' }} dense
+                sx={{ justifyContent: 'initial' }} dense
               >
-                <ListItemText primary={item.text} sx={[ {fontSize: 10} , open ? {opacity: 1} : {opacity: 0}]}
+                <ListItemText primary={item.text} sx={[ {fontSize: 10} , {opacity: 1}]}
               />
               </ListButton>
           </ListItem>

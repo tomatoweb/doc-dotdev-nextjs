@@ -1,6 +1,3 @@
-import { Card } from '@mui/material'
-import React from 'react'
-
 const page = () => {
   const text = 
   `Pour ajouter un sous-domaine à dotdev.be sur vps683375.ovh.net :

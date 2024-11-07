@@ -1,20 +1,18 @@
 'use client';
-import { grey, yellow } from '@mui/material/colors';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, PaletteColor, SimplePaletteColorOptions } from '@mui/material/styles';
+declare module "@mui/material/styles" {
+  interface Palette {
+    link: PaletteColor;
+  }
+
+  interface PaletteOptions {
+    link: SimplePaletteColorOptions;
+  }
+}
 const theme = createTheme({
   palette: {
     mode: 'dark',
-    myColor: {
-      main: "#95bd31",
-      contrastText: "#e33279"
-    },
-    grey: {
-      main: grey[800],
-      light: grey[100],
-      dark: grey[500],
-      contrastText: "#fff"
-    },
-    link: "#52a8ff",      
+    link: { main: "#52a8ff" },  
     background: {
       default: '#000'
     }

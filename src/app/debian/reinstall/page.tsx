@@ -1,6 +1,3 @@
-import { Card } from '@mui/material'
-import React from 'react'
-
 const page = () => {
   const text = 
   `Reinstall from scratch VPS 5*.***.**.**6 with Debian 11

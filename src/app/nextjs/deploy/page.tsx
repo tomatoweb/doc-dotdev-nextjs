@@ -42,7 +42,7 @@ git clone git@github.com:tomatoweb/dotdev-next-tw.git .
 
 npm i
 
-npm run build
+npm run build          (d'abord en local pour corriger les erreurs webpack)
 
 Créer un fichier /var/www/srv_dev/app/myapp/.nginx 
 avec en premières lignes :

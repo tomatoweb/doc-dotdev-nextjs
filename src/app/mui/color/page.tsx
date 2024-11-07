@@ -1,5 +1,5 @@
 import CodeBlock from '@/app/components/CodeBlock';
-import { Card, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import React from 'react'
 
 const page = () => {

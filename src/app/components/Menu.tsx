@@ -46,6 +46,10 @@ const muiList = [
     route: '/mui/fonts'
   },
   {
+    text: 'Draggable Scroll',
+    route: '/mui/draggable'
+  },
+  {
     text: 'MUI X Tree View',
     route: '/mui/xtreeview'
   },

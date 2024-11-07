@@ -179,7 +179,7 @@ const ListButton = styled(ListItemButton)(({ theme }) => ({
   backgroundColor: 'transparent',
   "&:hover": {color: theme.palette.text.primary, backgroundColor: 'transparent'},
   "&.Mui-selected": {
-      color: theme.palette.link, backgroundColor: 'transparent', 
+      color: theme.palette.link.main, backgroundColor: 'transparent', 
       "&:hover": {backgroundColor: 'transparent'},
   }
 }));

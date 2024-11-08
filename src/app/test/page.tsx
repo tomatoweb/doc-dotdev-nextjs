@@ -5,13 +5,13 @@ import { Box, Container, Typography } from "@mui/material";
 	    <Container>
 	      <Box my={4}>
 	        <Typography variant="h1" gutterBottom>
-	          Welcome to My Next.js App
+	          Welcome to Dotdev documentation!
 	        </Typography>
 	        <Typography variant="h2" gutterBottom>
-	          Enjoy this moment!
+	          Find here the how-to doc you need for all technos used by Dotdev development!
 	        </Typography>
 	        <Typography variant="h3" className="text-tahiti" >
-	          This is the default mui font geistSans and a customized h3 configured in theme.ts 
+	          Those are customized font-family demos: the default mui font geistSans and a customized h3 configured in theme.ts 
             and a tailwind custom color className text-tahiti configured in tailwind.config.ts
 	        </Typography>
 	        <Typography variant="h5" sx={{fontFamily: 'dynapuff'}}>

@@ -1,6 +1,4 @@
 import { Box, Container, Typography } from "@mui/material";
-import Github from "./svg/Github";
-
 	export default function Test() {
 	  return (
 	    <Container>

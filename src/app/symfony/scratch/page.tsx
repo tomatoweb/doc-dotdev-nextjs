@@ -68,9 +68,8 @@ const page = () => {
       <CodeBlock text={"symfony new symfony7-tailwind --webapp"} />
       with composer
       <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" symfony7-tailwind\ncd symfony7-tailwind\ncomposer require webapp"} />     
-      Tailwind Installation:
-      Install the bundle, dependencies and compile assets to public/build.
-      Install and init Tailwind
+      Install Tailwind bundle, dependencies and compile assets to public/build.
+      Install and initialize Tailwind
       <CodeBlock text={"composer require symfonycasts/tailwind-bundle\nnpm install\nnpm run dev\nnpm install -D tailwindcss postcss-loader purgecss-webpack-plugin path\nnpx tailwindcss init -p"} />     
       Modify postcss.config.js like this :
       <CodeBlock text={text3} />

@@ -21,10 +21,10 @@ const CodeBlock = (props: { text: string; }) => {
         style={atomDark}
         wrapLongLines
         customStyle={{
-            backgroundColor: "transparent",
+            backgroundColor: "#0a0a0a",
             opacity: "1",
             marginTop: "-2rem",
-            paddingTop: "2rem"
+            paddingTop: "1.7rem"
         }}
         codeTagProps={{
             style: {

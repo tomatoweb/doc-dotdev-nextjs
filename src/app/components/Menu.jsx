@@ -9,20 +9,30 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 
-
-const scratchListTitle = { text:"Create from scratch", route: '/scratch'};
-const scratchList = [
+const nextjsListTitle = { text:"NextJS", route: '/nextjs'};
+const nextjsList = [
   {
-    text: 'NextJS + Tailwind + MUI',
-    route: '/scratch/next'
+    text: 'Next-Tailwind-MUI from scratch',
+    route: '/nextjs/scratch'
   },
   {
-    text: 'Laravel',
-    route: '/scratch/laravel'
+    text: 'Deploy on Linux',
+    route: '/nextjs/deploy'
   },
   {
-    text: 'Symfony',
-    route: '/scratch/symfony'
+    text: 'SyntaxHighlighter CodeBlock',
+    route: '/nextjs/syntax'
+  },
+  {
+    text: 'Thiny Scrollbar',
+    route: '/nextjs/scrollbar'
+  },
+];
+const symfonyListTitle = { text:"Symfony", route: '/symfony'};
+const symfonyList = [
+  {
+    text: 'Symfony-Tailwind',
+    route: '/symfony/scratch'
   },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};
@@ -61,21 +71,6 @@ const tailwindList = [
   {
     text: 'Custom fonts',
     route: '/tailwind/fonts'
-  },
-];
-const nextjsListTitle = { text:"NextJS", route: '/nextjs'};
-const nextjsList = [
-  {
-    text: 'Deploy a NextJS app on Linux',
-    route: '/nextjs/deploy'
-  },
-  {
-    text: 'SyntaxHighlighter CodeBlock',
-    route: '/nextjs/syntax'
-  },
-  {
-    text: 'Thiny Scrollbar',
-    route: '/nextjs/scrollbar'
   },
 ];
 const debianListTitle = { text:"Debian 11", route: '/debian'};
@@ -142,10 +137,6 @@ const mainList = [
     route: '/laravel'
   },
   {
-    text: 'Symfony',
-    route: '/symfony'
-  },
-  {
     text: 'Cmder',
     route: '/cmder'
   },
@@ -187,7 +178,7 @@ const ListButton = styled(ListItemButton)(({ theme }) => ({
 export default function Menu() {
   const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState('');
-  const [scratchListOpen, setScratchListOpen] = useState(false);  
+  const [symfonyListOpen, setSymfonyListOpen] = useState(false);  
   const [muiListOpen, setMuiListOpen] = useState(false);  
   const [tailwindListOpen, setTailwindListOpen] = useState(false);  
   const [nextjsListOpen, setNextjsListOpen] = useState(false);  
@@ -199,12 +190,36 @@ export default function Menu() {
       <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
         <List sx={{width: 310, paddingLeft: 5}}>
 
-          <ListItemButton component="a" onClick={()=>{ setScratchListOpen(!scratchListOpen) }} disableRipple dense>
-            <ListItemText primary={`${scratchListTitle.text}`} /> {scratchListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          <ListItemButton onClick={()=>{ setNextjsListOpen(!nextjsListOpen) }} disableRipple dense>
+            <ListItemText primary={`${nextjsListTitle.text}`} /> {nextjsListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
-          <Collapse in={scratchListOpen} timeout="auto" unmountOnExit>
+          <Collapse in={nextjsListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {scratchList.map((item) => (
+              {nextjsList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton component="a" onClick={()=>{ setSymfonyListOpen(!symfonyListOpen) }} disableRipple dense>
+            <ListItemText primary={`${symfonyListTitle.text}`} /> {symfonyListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={symfonyListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {symfonyList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"
@@ -253,30 +268,6 @@ export default function Menu() {
           <Collapse in={tailwindListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {tailwindList.map((item) => (
-                <ListButton
-                  disableRipple
-                  component="a"
-                  key={item.text}
-                  dense
-                  selected={selectedIndex === item.route}
-                  onClick={() => {
-                    setSelectedIndex(item.route);
-                    router.push(item.route)
-                  }}
-                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
-                >
-                  <ListItemText primary={item.text} />
-                </ListButton>
-              ))}
-            </List>
-          </Collapse>
-
-          <ListItemButton onClick={()=>{ setNextjsListOpen(!nextjsListOpen) }} disableRipple dense>
-            <ListItemText primary={`${nextjsListTitle.text}`} /> {nextjsListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
-          </ListItemButton>
-          <Collapse in={nextjsListOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {nextjsList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"
@@ -363,6 +354,8 @@ export default function Menu() {
               </ListButton>
           </ListItem>
           ))}
+
+
 
 
         </List>

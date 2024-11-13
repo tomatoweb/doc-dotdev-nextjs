@@ -11,7 +11,7 @@ MAJOR lorsque on a apporté des modifications d'API INcompatibles.
 
 MINOR lorsque on a ajouté des fonctionnalités rétro-compatibles.
 
-PATCH lorsque  pn a effectué des bugs/corrections rétrocompatibles.
+PATCH lorsque  on a effectué des bugs/corrections rétrocompatibles.
 
 
 

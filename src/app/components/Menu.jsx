@@ -27,6 +27,10 @@ const nextjsList = [
     text: 'Thiny Scrollbar',
     route: '/nextjs/scrollbar'
   },
+  {
+    text: 'svg color',
+    route: '/nextjs/svgcolor'
+  },
 ];
 const symfonyListTitle = { text:"Symfony", route: '/symfony'};
 const symfonyList = [

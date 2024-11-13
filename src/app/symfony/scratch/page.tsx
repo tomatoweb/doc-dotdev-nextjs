@@ -26,8 +26,7 @@ const text5 =
 module.exports = {
   content: [
     "./assets/**/*.{vue,js,ts,jsx,tsx}",
-    "./templates/**/*.{html,twig}",
-    "./node_modules/flowbite/**/*.js" // set up the path to the flowbite package 
+    "./templates/**/*.{html,twig}"
   ],
   theme: {
     extend: {},
@@ -64,10 +63,10 @@ const text7 =
 const page = () => {
   return (
     <div>
-      <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Symfony 7 with Tailwind from scratch</Typography>
+      <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Symfony7-Tailwind from scratch</Typography>
       with symfony.exe
       <CodeBlock text={"symfony new symfony7-tailwind --webapp"} />
-      without symfony.exe
+      with composer
       <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" symfony7-tailwind\ncd symfony7-tailwind\ncomposer require webapp"} />     
       Tailwind Installation:
       Install the bundle, dependencies and compile assets to public/build.
@@ -83,7 +82,7 @@ const page = () => {
       <CodeBlock text={text5} />
       In CLI 
       <CodeBlock text={"npx tailwindcss -i ./assets/styles/app.css -o ./public/build/app.css --watch"} />  
-      In a second CLI Create a Controller :
+      In another CLI create a controller/route :
       <CodeBlock text={"php bin/console make:controller Home"} />  
       Serve :
       <CodeBlock text={"php -S localhost:8000 -t public"} />  

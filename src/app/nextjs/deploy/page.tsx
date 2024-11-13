@@ -1,8 +1,8 @@
 
 const page = () => {
   const text = 
-  `Déployer une app NextJS sur ovh 51.255.35.196
----------------------------------------------
+  `Déployer une app NextJS sur un Debian 11 VPS
+----------------------------------------------
 
 Créer un repo sur Github
 

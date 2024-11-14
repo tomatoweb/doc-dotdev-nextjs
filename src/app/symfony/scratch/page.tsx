@@ -92,12 +92,12 @@ const page = () => {
       <CodeBlock text={"npx tailwindcss -i ./assets/styles/app.css -o ./public/build/app.css --watch"} />  
       In another CLI create a controller/route and in controller change /home route to / :
       <CodeBlock text={"php bin/console make:controller Home"} />
-      Built Tailwind 
-      <CodeBlock text={"php bin/console tailwind:build"} />
       Serve :
       <CodeBlock text={"php -S localhost:8000 -t public"} />  
       In templates/home/index.html.twig use Tailwind
       <CodeBlock text={text6} />
+      Built Tailwind 
+      <CodeBlock text={"php bin/console tailwind:build"} />
       Check that the 4 new used TW classes have been added in public/build/app.css and refresh browser
       <CodeBlock text={text7} />
     </div>

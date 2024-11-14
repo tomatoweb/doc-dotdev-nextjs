@@ -84,7 +84,7 @@ const page = () => {
       <CodeBlock text={text3} />
       In webpack.config.js add :  
       <CodeBlock text={text4} />
-      Modify assets/styles/app.css this :
+      Modify assets/styles/app.css like this :
       <CodeBlock text={text1} />     
       Modify tailwind.config.js like this :
       <CodeBlock text={text5} />
@@ -96,10 +96,11 @@ const page = () => {
       <CodeBlock text={"php -S localhost:8000 -t public"} />  
       In templates/home/index.html.twig use Tailwind
       <CodeBlock text={text6} />
-      Built Tailwind 
+      Cut PHP server ctrl+C and Built Tailwind : 
       <CodeBlock text={"php bin/console tailwind:build"} />
-      Check that the 4 new used TW classes have been added in public/build/app.css and refresh browser
+      Relaunch PHP server and check that the 4 new used TW classes have been added in public/build/app.css and refresh browser
       <CodeBlock text={text7} />
+      Enjoy !
     </div>
   )
 }

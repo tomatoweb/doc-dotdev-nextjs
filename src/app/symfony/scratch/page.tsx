@@ -1,5 +1,6 @@
-import { Typography } from "@mui/material";
+import { Alert, Typography } from "@mui/material";
 import CodeBlock from "@/app/components/CodeBlock";
+import { CheckCircleOutline } from "@mui/icons-material";
 
 const text1 = 
 `@tailwind base;
@@ -32,7 +33,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-})`;
+}`;
 const text6 = 
 `{% extends 'base.html.twig' %}
 
@@ -65,9 +66,17 @@ const page = () => {
     <div>
       <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Symfony7-Tailwind from scratch</Typography>
       with symfony.exe
-      <CodeBlock text={"symfony new symfony7-tailwind --webapp"} />
+      <CodeBlock text={"symfony new symfony7-tailwind --webapp\ncd symfony7-tailwind"} />
       with composer
       <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" symfony7-tailwind\ncd symfony7-tailwind\ncomposer require webapp"} />     
+      Install bundle webpack-encore
+      <CodeBlock text={"composer require symfony/webpack-encore-bundle\nnpm install"} />
+      <Alert icon={<CheckCircleOutline fontSize="inherit" />} severity="error" sx={{marginBottom: '2rem'}}>      
+        <Typography sx={{fontWeight: 600}}>
+          Delete import ./bootstrap.js from /assets/app.js<br/>
+          and delete bootstrap.js file from /assets`
+        </Typography>
+      </Alert>
       Install Tailwind bundle, dependencies and compile assets to public/build.
       Install and initialize Tailwind
       <CodeBlock text={"composer require symfonycasts/tailwind-bundle\nnpm install\nnpm run dev\nnpm install -D tailwindcss postcss-loader purgecss-webpack-plugin path\nnpx tailwindcss init -p"} />     
@@ -79,10 +88,12 @@ const page = () => {
       <CodeBlock text={text1} />     
       Modify tailwind.config.js like this :
       <CodeBlock text={text5} />
-      In CLI 
+      In CLI ( -i for input, -o for output )
       <CodeBlock text={"npx tailwindcss -i ./assets/styles/app.css -o ./public/build/app.css --watch"} />  
-      In another CLI create a controller/route :
-      <CodeBlock text={"php bin/console make:controller Home"} />  
+      In another CLI create a controller/route and in controller change /home route to / :
+      <CodeBlock text={"php bin/console make:controller Home"} />
+      Built Tailwind 
+      <CodeBlock text={"php bin/console tailwind:build"} />
       Serve :
       <CodeBlock text={"php -S localhost:8000 -t public"} />  
       In templates/home/index.html.twig use Tailwind

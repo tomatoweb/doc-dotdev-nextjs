@@ -1,6 +1,5 @@
-import { Alert, Typography } from "@mui/material";
 import CodeBlock from "@/app/components/CodeBlock";
-import { CheckCircleOutline } from "@mui/icons-material";
+import { Typography } from "@mui/material";
 
 const text1 = 
 `'use client';

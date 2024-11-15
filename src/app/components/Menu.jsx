@@ -32,7 +32,7 @@ const nextjsList = [
     route: '/nextjs/svgcolor'
   },
   {
-    text: 'tsx optonal params',
+    text: 'tsx optional params',
     route: '/nextjs/optionaltsx'
   },
 ];

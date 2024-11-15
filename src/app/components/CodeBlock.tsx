@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const CodeBlock = (props: { text: string; }) => {
+const CodeBlock = (props: { text: string; color?: string }) => {
   const [copied, setCopied] = useState(false);
   return (
     <div className="relative my-8">
@@ -28,7 +28,7 @@ const CodeBlock = (props: { text: string; }) => {
         }}
         codeTagProps={{
             style: {
-                color: "white",
+                color: props.color || 'white',
             },
         }}>                
         {props.text}

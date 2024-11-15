@@ -6,6 +6,8 @@ const text1 =
 `@tailwind base;
 @tailwind components;
 @tailwind utilities;`;
+const text2 = 
+`remove the line "import ./bootstrap.js;" from /assets/app.js`;
 const text3 = 
 `let tailwindcss = require("tailwindcss")
 
@@ -60,6 +62,26 @@ const text7 =
 .font-bold {
   font-weight: 700;
 }`;
+const text8 = 
+`{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    }
+  }
+}`;
+const text9 = 
+`{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/runtime.js": "/build/runtime.js"
+}`;
 
 const page = () => {
   return (
@@ -73,8 +95,7 @@ const page = () => {
       <CodeBlock text={"composer require symfony/webpack-encore-bundle\nnpm install"} />
       <Alert icon={<CheckCircleOutline fontSize="inherit" />} severity="error" sx={{marginBottom: '2rem'}}>      
         <Typography sx={{fontWeight: 600}}>
-          Delete import ./bootstrap.js from /assets/app.js<br/>
-          and delete bootstrap.js file from /assets`
+          {text2}
         </Typography>
       </Alert>
       Install Tailwind bundle, dependencies and compile assets to public/build.
@@ -85,21 +106,24 @@ const page = () => {
       In webpack.config.js add :  
       <CodeBlock text={text4} />
       Modify assets/styles/app.css like this :
-      <CodeBlock text={text1} />     
+      <CodeBlock text={text1} color='#84cc16' />     
       Modify tailwind.config.js like this :
       <CodeBlock text={text5} />
-      In CLI ( -i for input, -o for output )
+      Build input -i output -o and watch for changes
       <CodeBlock text={"npx tailwindcss -i ./assets/styles/app.css -o ./public/build/app.css --watch"} />  
-      In another CLI create a controller/route and in controller change /home route to / :
+      In another CLI create a controller/route and change its route from /home  to / 
       <CodeBlock text={"php bin/console make:controller Home"} />
-      Serve :
-      <CodeBlock text={"php -S localhost:8000 -t public"} />  
       In templates/home/index.html.twig use Tailwind
       <CodeBlock text={text6} />
-      Cut PHP server ctrl+C and Built Tailwind : 
+      Built Tailwind : 
       <CodeBlock text={"php bin/console tailwind:build"} />
-      Relaunch PHP server and check that the 4 new used TW classes have been added in public/build/app.css and refresh browser
+      Serve :
+      <CodeBlock text={"php -S localhost:8000 -t public"} />  
+      Check that the 4 new used TW classes have been added in public/build/app.css
       <CodeBlock text={text7} />
+      In case of problem: check public/build/entrypoints.json and public/build/manifest.json, should look like this :
+      <CodeBlock text={text8} />
+      <CodeBlock text={text9} />
       Enjoy !
     </div>
   )

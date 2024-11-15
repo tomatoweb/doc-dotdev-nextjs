@@ -31,6 +31,10 @@ const nextjsList = [
     text: 'svg color',
     route: '/nextjs/svgcolor'
   },
+  {
+    text: 'tsx optonal params',
+    route: '/nextjs/optionaltsx'
+  },
 ];
 const symfonyListTitle = { text:"Symfony", route: '/symfony'};
 const symfonyList = [

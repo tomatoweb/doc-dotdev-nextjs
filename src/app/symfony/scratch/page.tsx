@@ -80,7 +80,7 @@ const page = () => {
       <CodeBlock text={"import './styles/app.scss';"} />
       Change extension from assets/styles/app.css with .scss
       <CodeBlock text={"assets/styles/app.scss"} />      
-      Install postcss and auprefixer
+      Install postcss and autoprefixer
       <CodeBlock text={"npm install postcss-loader autoprefixer --dev"} />
       Create postcss.config.js like this :
       <CodeBlock text={text3} />

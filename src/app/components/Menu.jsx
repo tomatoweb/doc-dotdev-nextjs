@@ -42,6 +42,10 @@ const symfonyList = [
     text: 'Symfony-Tailwind',
     route: '/symfony/scratch'
   },
+  {
+    text: 'Constructor Promotion',
+    route: '/symfony/promotion'
+  },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [
@@ -105,8 +109,8 @@ const mainList = [
     route: '/versioning'
   },
   {
-    text: 'NextJS',
-    route: '/nextjs'
+    text: 'Emoji',
+    route: 'emoji'
   },
   {
     text: 'React',

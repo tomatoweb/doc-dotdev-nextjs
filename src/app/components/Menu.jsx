@@ -110,7 +110,7 @@ const mainList = [
   },
   {
     text: 'Emoji',
-    route: 'emoji'
+    route: '/emoji'
   },
   {
     text: 'React',

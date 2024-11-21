@@ -13,10 +13,23 @@ const CodeBlock = (props: { text: string; color?: string }) => {
         <Box sx={[{fontSize: '0.8rem'}, copied ? { visibility: 'visible' } : { visibility: 'hidden'}]}>
           copied
         </Box>
-        <Copy size={17} color='lightgray' onClick={() => {navigator.clipboard.writeText(props.text); setCopied(true)}} className=""/>
+        <Copy
+          size={17}
+          color='lightgray'
+          onClick={() => {
+            navigator.clipboard.writeText(props.text).then(
+              () => {
+                setCopied(true);
+              },
+              () => {
+                console.log("clipboard write failed");
+              },
+            );
+          }}
+          />
       </div>
       <SyntaxHighlighter
-        className="codeblock"        
+        className="codeblock"
         language="jsx"
         style={atomDark}
         wrapLongLines
@@ -30,7 +43,7 @@ const CodeBlock = (props: { text: string; color?: string }) => {
             style: {
                 color: props.color || 'white',
             },
-        }}>                
+        }}>
         {props.text}
       </SyntaxHighlighter>
     </div>

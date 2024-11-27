@@ -35,6 +35,10 @@ const nextjsList = [
     text: 'tsx optional params',
     route: '/nextjs/optionaltsx'
   },
+  {
+    text: 'JWT',
+    route: '/nextjs/jwt'
+  },
 ];
 const symfonyListTitle = { text:"Symfony", route: '/symfony'};
 const symfonyList = [
@@ -92,7 +96,7 @@ const debianList = [
     route: '/debian/reinstall'
   },
   {
-    text: 'Add a subdomain',
+    text: 'Subdomain',
     route: '/debian/subdomain'
   },
 ];

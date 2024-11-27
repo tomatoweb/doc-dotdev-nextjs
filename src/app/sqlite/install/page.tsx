@@ -1,16 +1,27 @@
 
 const page = () => {
   const text = 
-  `SQLITE in Windows and export in Symfony :
------------------------------------------
-(pour ouvrir une db qui existe déjà: aller dans le dossier contenant le agence.db, ouvrir un powershell, taper sqlite3 agence.db)
+  `SQLITE in Symfony :
+-----------------------------
 
-Il faut PHP 7 installé, et l'extension=pdo_sqlite activée dans le php.ini.
+Activate extension=pdo_sqlite in php.ini
+
 Download sqlite3 for Windows files on https://www.sqlite.org/download.html
 1. Dézipper les 3 fichiers .exe dans c:\sqlite
 2. ajouter c:\sqlite dans le path de windows
 
-open CLI.
+close and reopen CLI, and type sqlite3
+
+$ sqlite3
+SQLite version 3.47.1 2024-11-25 12:07:48
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+
+type .help 
+sqlite> .help
+
+create database :
 
 > sqlite3 agence.db
  output
@@ -21,64 +32,26 @@ sqlite> .databases
 output
 main: C:\Users\\601575610\local\agence.db
 
-sqlite> CREATE TABLE property(
-   ...>   id INTEGER PRIMARY KEY NOT NULL,
-   ...>   name char(255) NOT NULL,
-   ...>   description text NOT NULL,
-   ...>   rooms int NOT NULL,
-   ...>   bedrooms int NOT NULL,
-   ...>   surface int NOT NULL,
-   ...>   price char(255) NOT NULL,
-   ...>   created text NOT NULL
-   ...> );
+sqlite> CREATE TABLE product(id INTEGER PRIMARY KEY NOT NULL, name char(255) NOT NULL, description text, image char(255), price real, createdAt datetime default current_timestamp, updatedAt datetime default current_timestamp);
 
 sqlite> .tables
-property
+product
 
-sqlite> .schema property
+sqlite> .schema product
 
-DROP TABLE property;
+sqlite> INSERT INTO 'product' ('id', 'name', 'description', 'image', 'price') VALUES
+(1, 'Apple iMac 27", 1TB HDD, Retina 5K Display, M3 Max', 'Apple iMac 27", 1TB HDD, Retina 5K Display, M3 Max', 'AppleiMac27p.png', 1999),
+(2, 'Apple iPhone 15 Pro Max, 256GB, Blue Titanium', 'Apple iPhone 15 Pro Max, 256GB, Blue Titanium', 'AppleiPhone15Pro.png', 1479),
+(3, 'iPad Pro 13-Inch (M4): XDR Display, 512GB', 'iPad Pro 13-Inch (M4): XDR Display, 512GB', 'iPadPro13.png', 1097),
+(4, 'PlayStation®5 Console – 1TB, PRO Controller', 'PlayStation®5 Console – 1TB, PRO Controller', 'PlayStation5.png', 749),
+(5, 'Microsoft Xbox Series X 1TB Gaming Console', 'Microsoft Xbox Series X 1TB Gaming Console', 'MicrosoftXboxSeriesX.png', 499),
+(6, 'Apple MacBook PRO Laptop with M2 chip', 'Apple MacBook PRO Laptop with M2 chip', 'AppleMacBookPRO.png', 1079),
+(7, 'Apple Watch SE [GPS 40mm], Smartwatch', 'Apple Watch SE [GPS 40mm], Smartwatch', 'AppleWatchSE.png', 699),
+(8, 'Microsoft Surface Pro, Copilot+ PC, 13 Inch', 'Microsoft Surface Pro, Copilot+ PC, 13 Inch', 'MicrosoftSurfacePro.png', 899);
 
-CREATE TABLE property(
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name char(255) NOT NULL,
-  description text NOT NULL,
-  rooms int NOT NULL,
-  bedrooms int NOT NULL,
-  surface int NOT NULL,
-  price char(255) NOT NULL,
-  created text NOT NULL
-);
+modifier le database_url dans le .env : DATABASE_URL=sqlite:///%kernel.project_dir%/var/agence.db
 
-sqlite> INSERT INTO \`property\` (\`id\`, \`name\`, \`description\`, \`rooms\`, \`bedrooms\`, \`surface\`, \`price\`, \`created\`) VALUES
-(1, 'maison-plein-pied', 'une maison très sympa à la mer', 6, 4, 55, '200000', '2019-12-02 14:45:19'),
-(2, 'appart', 'une maison', 6, 4, 60, '100000', '2019-12-02 14:45:19'),
-(3, 'duplex', 'un duplex', 4, 2, 55, '100000', '2019-12-02 14:45:19'),
-(4, 'duplex-mansarde', 'un duplex', 4, 2, 55, '100000', '2019-12-02 14:45:19'),
-(5, 'appart', 'un duplex', 4, 2, 55, '100000', '2019-12-02 14:45:19'),
-(6, 'appart', 'un duplex', 4, 2, 55, '100000', '2019-12-02 14:45:19'),
-(7, 'bel-etage-un', 'un duplex', 4, 2, 55, '100000', '2019-12-02 14:45:19'),
-(9, 'bel-etage-belgique', 'un duplex', 4, 2, 55, 15000, '2019-12-02 14:45:19'),
-(11, 'bel-etage-a-la-mer', 'un duplex', 4, 2, 55, 15000, '2019-12-02 14:45:19'),
-(16, 'garage', 'un petit garage', 1, 0, 5, '50000', '2019-12-03 08:35:55'),
-(17, 'garage_devant', 'un  petit garage devant', 1, 0, 5, '50000', '2019-12-03 08:37:06'),
-(18, 'bel-etage', 'un duplex', 4, 2, 55, 15000, '2019-12-03 11:06:46');
-sqlite>
-
-- copier le fichier agence.db dans le dossier var du projet symfony 4
-- modifier le database_url dans le .env : DATABASE_URL=sqlite:///%kernel.project_dir%/var/agence.db
-- modifier le doctrine.php dans config/package :
-doctrine:
-    dbal:
-        driver: 'pdo_sqlite'
-        url: '%env(resolve:DATABASE_URL)%'
-
-        # IMPORTANT: You MUST configure your server version,
-        # either here or in the DATABASE_URL env var (see .env file)
-        server_version: '5.7'
-
-
-Dans VS code, installer l'extension sqlite (celui avec une plume comme icone).
+Dans VS code, installer l'extension SQLite3 Editor (publisher yy0931).
 
 CTRL + P
 --> SQLite Open Database

@@ -1,22 +1,18 @@
 
 const page = () => {
   const text = 
-  `Déployer une app NextJS sur un Debian 11 VPS
-----------------------------------------------
+  `Deploy a Nextjs app on Debian 11 (VPS)
+-----------------------------------------
 
-Créer un repo sur Github
+Create a repo on Github
 
 Dans le projet nextjs local
 	changer l'origin si on a déjà un .git
-		git branch -M main
 		git remote set-url git@github.com:tomatoweb/dotdev-next-tw.git
-		git branch -M master
 		git push origin master
+
 	si on a pas encore de .git
 		git init
-		git add README.md
-		git commit -m "first commit"
-		git branch -M main
 		git remote add origin git@github.com:tomatoweb/dotdev-next-tw.git
 		git push -u origin main
 
@@ -38,7 +34,7 @@ git clone git@github.com:tomatoweb/dotdev-next-tw.git .
 !! avec filezilla, transférer le fichier .env s'il existe (il est non-versionné, donc pas dans le git)
 !! et le modifier si nécessaire (port ?)
 
-(il faut avoir installé node, npm et pm2: https://www.youtube.com/watch?v=HIb4Ucs_foQ&ab_channel=SonnySangha)
+(Need node installed, also npm and pm2: https://www.youtube.com/watch?v=HIb4Ucs_foQ&ab_channel=SonnySangha)
 
 npm i
 

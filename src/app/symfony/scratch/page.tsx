@@ -104,6 +104,8 @@ const page = () => {
       <CodeBlock text={"php -S localhost:8000 -t public"} /> 
       Check that the 4 new used TW classes have been added in public/build/app.css
       <CodeBlock text={text7} />
+      Install JQuery
+      <CodeBlock text={"npm in jquery"} />
       for Tailwind components go to :
       <CodeBlock text={"https://tailwindui.com/"} />
       Enjoy !

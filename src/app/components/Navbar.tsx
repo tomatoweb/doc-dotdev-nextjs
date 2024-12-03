@@ -15,8 +15,10 @@ export default function Navbar() {
             <li><a href="#" className="bg-transparent text-white>">Services</a></li>
             <li><a href="#" className="bg-transparent text-white>">Contact</a></li>
           </ul>
-        </div>        
-        <Button variant="contained" size='small' sx={{bgcolor: 'grey.300' ,textTransform: 'none'}}>Learn</Button>
+        </div>
+        <a href="https://github.com/tomatoweb/doc-dotdev-nextjs" target="_blank">
+            <img className="h-9 pr-4 cursor-pointer" src="/github.png" alt="github" />
+          </a>
 
     </div>
   );

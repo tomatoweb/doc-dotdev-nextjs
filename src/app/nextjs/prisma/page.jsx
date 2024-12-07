@@ -120,6 +120,8 @@ export async function createPost(formData: FormData) {
     <CodeBlock text={'npx prisma db push'}/>  
     View prisma/dev.db
     <CodeBlock text={'npx prisma studio'}/>  
+    Help
+    <CodeBlock text={'npx prisma -h'}/>  
     Create Prisma Client lib/db.ts like recommanded in the Prisma best practices:
     https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices
     <CodeBlock text={text2}/>

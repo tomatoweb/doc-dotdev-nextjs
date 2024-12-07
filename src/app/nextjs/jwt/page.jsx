@@ -74,7 +74,7 @@ Doc : https://jwt.io/introduction
     
       <nav className='overflow-x-auto text-sm'>
         <Typography variant="h5" mb={4}>Json Web Token</Typography>
-        <pre>
+        <pre className="text-wrap">
           {text}
         </pre>
       </nav>

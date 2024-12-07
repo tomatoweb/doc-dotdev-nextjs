@@ -9,15 +9,43 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 
-const nextjsListTitle = { text:"NextJS", route: '/nextjs'};
+const nextjsListTitle = { text:"Next.js", route: '/nextjs'};
 const nextjsList = [
   {
     text: 'Server-side rendering',
     route: '/nextjs/server-side'
   },
   {
-    text: 'Next-Tailwind-MUI from scratch',
+    text: 'Children Pattern',
+    route: '/nextjs/children-pattern'
+  },
+  {
+    text: '<Image props />',
+    route: '/nextjs/next-image'
+  },
+  {
+    text: 'Server Actions',
+    route: '/nextjs/action'
+  },
+  {
+    text: 'Form with Fetch',
+    route: '/nextjs/form-old-way'
+  },
+  {
+    text: 'Form with Server-Action',
+    route: '/nextjs/form-new-way'
+  },
+  {
+    text: 'Prisma ORM',
+    route: '/nextjs/prisma'
+  },
+  {
+    text: 'Tailwind+MUI from scratch',
     route: '/nextjs/scratch'
+  },
+  {
+    text: 'SWC Compiler',
+    route: '/nextjs/swc'
   },
   {
     text: 'Deploy on Linux',
@@ -32,11 +60,11 @@ const nextjsList = [
     route: '/nextjs/scrollbar'
   },
   {
-    text: 'svg color',
+    text: 'SVG config',
     route: '/nextjs/svgcolor'
   },
   {
-    text: 'tsx optional params',
+    text: 'TSX props typing',
     route: '/nextjs/optionaltsx'
   },
   {
@@ -44,7 +72,7 @@ const nextjsList = [
     route: '/nextjs/jwt'
   },
 ];
-const symfonyListTitle = { text:"Symfony", route: '/symfony'};
+const symfonyListTitle = { text:"Symfony7", route: '/symfony'};
 const symfonyList = [
   {
     text: 'Symfony-Tailwind',
@@ -55,7 +83,7 @@ const symfonyList = [
     route: '/symfony/promotion'
   },
 ];
-const muiListTitle = { text:"MUI", route: '/mui'};
+const muiListTitle = { text:"MUI Components", route: '/mui'};
 const muiList = [
   {
     text: 'Theme',
@@ -82,7 +110,7 @@ const muiList = [
     route: '/mui/xtreeview'
   },
 ];
-const tailwindListTitle = { text:"Tailwind", route: '/tailwind'};
+const tailwindListTitle = { text:"Tailwind css", route: '/tailwind'};
 const tailwindList = [
   {
     text: 'Custom colors',
@@ -121,68 +149,52 @@ const mainList = [
     route: '/emoji'
   },
   {
-    text: 'React',
-    route: '/react'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Tailwind',
-    route: '/tailwind'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'MUI',
-    route: '/mui'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Code Block',
-    route: '/codeblock'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Scrollbar thiny',
-    route: '/scrollbar'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Prisma',
-    route: '/prisma'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Javascript',
-    route: '/javascript'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'PHP',
-    route: '/php'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Laravel',
-    route: '/laravel'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Cmder',
-    route: '/cmder'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'Mysql',
-    route: '/mysql'
+    text: 'link',
+    route: '/link'
   },
   {
-    text: 'PHP',
-    route: '/php'
-  },
-  {
-    text: 'Laravel',
-    route: '/laravel'
-  },
-  {
-    text: 'Symfony',
-    route: '/symfony'
-  },
-  {
-    text: 'Cmder',
-    route: '/cmder'
-  },
-  {
-    text: 'Mysql',
-    route: '/mysql'
+    text: 'link',
+    route: '/link'
   },
 ];
 const ListButton = styled(ListItemButton)(({ theme }) => ({

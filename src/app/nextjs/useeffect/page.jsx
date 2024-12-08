@@ -118,7 +118,7 @@ export default MyUseEffect`;
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }} alt=""
       />
-      <pre>{text1}</pre>
+      <pre className='text-wrap'>{text1}</pre>
       <CodeBlock text={text3}/>
       <pre>{"c'est un exemple de side effect: directly updating the DOM,"}</pre>
       <pre>{"Some other examples are fetching data, and timers.\n\n"}</pre>

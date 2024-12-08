@@ -2,7 +2,6 @@ import { createPost } from "@/actions/actions";
 import prisma from "@/lib/db";
 import Link from "next/link";
 
-
 export default async function PostsPage() {
 
   const posts = await prisma.post.findMany();
@@ -22,11 +21,33 @@ export default async function PostsPage() {
         ) )}
       </ul>
       { postsCount < 30 && // avoid DDoS attacks
+
+
         <form action={createPost} className="flex flex-col gap-y-2 w-[300px]">
+
+        {/* Server Actions in POST are not working 
+        in production (npm run build, pm2) but well in dev.
+        error msg : 
+        Application error: a server-side exception has occurred 
+        (see the server logs for more information).
+        Digest: 760205265 
+        <form 
+          onSubmit={(e) => {
+            fetch('/api/posts', {
+              method: 'POST',
+              body: JSON.stringify({
+                title: e.target.title.value,
+                content: e.target.content.value,
+              }),
+            })
+          }} 
+         className="flex flex-col gap-y-2 w-[300px]"
+        >  */}  
           <input type="text" name="title" placeholder="title" className="p-2 rounded-sm bg-gray-900" />
           <textarea rows={5} name="content" placeholder="content" className="p-2 rounded-sm bg-gray-900" />
           <button className="bg-blue-500 py-2 text-white rounded-sm">Create post</button>
         </form>
+
       }
     </main>
   );

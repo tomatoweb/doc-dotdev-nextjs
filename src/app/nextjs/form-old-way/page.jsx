@@ -12,29 +12,39 @@ import React, { useState } from 'react'
 const FormOldWay = () => {
 
   const [inputText, setInputText] = useState("");
+  const [inputTitle, setInputTitle] = useState("");
 
   const handleSubmit = async () => {
     await fetch("/api/todos", {
       method: "POST",
-      body: JSON.stringify({content: inputText}),
-      headers: {"Content-Type": "application/json",
+      body: JSON.stringify({
+        title: 
+        content: inputText,
+        }),
+      headers: {
+        "Content-Type": "application/json",
       },
-      })
+    })
   }
   
   return (
     <main>
-    <form onSubmit={handleSubmit}>
-    <input
-    type='text'
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text"
+          name="title"
+          value={inputTitle}
+          onchange={(e) => setInputTitle(e.target.value)}
+        <input
+          type='text'
           name='content'
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          />
+        />
         <button>
-          submit
+          add
         </button>
-        </form>
+      </form>
     </main>
     )
 }

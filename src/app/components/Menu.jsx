@@ -12,6 +12,10 @@ import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 const nextjsListTitle = { text:"Next.js", route: '/nextjs'};
 const nextjsList = [
   {
+    text: 'useEffect - side effects',
+    route: '/nextjs/useeffect'
+  },
+  {
     text: 'Server-side rendering',
     route: '/nextjs/server-side'
   },

@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 
 export async function createPost(formData: FormData) {
 
-  await prisma.post.create({
+  const result = await prisma.post.create({
     data: {
       title: formData.get('title') as string,
       slug: (formData.get('content') as string)
@@ -15,5 +15,7 @@ export async function createPost(formData: FormData) {
     }
   });
 
+  
   revalidatePath('/posts');
+  return result;
 }

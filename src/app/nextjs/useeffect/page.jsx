@@ -21,7 +21,8 @@ et c'est très bien puique c'est ce qu'on veut :
 on veut que le titre du document html (DOM) change quand le user tape dans l'input title.
 Par contre, si le user modifie l'input firstName, 
 il y a aussi un rendering, dans ce cas-ci le rendering ne sert à rien,
-car ce component le firstName ne fait pas partie de la vue,
+car pour ce component le firstName ne fait pas partie de la vue,
+(je l'ai mis dans un div en fin de page pour éviter la lint error variable never used)
 il peut être envoyé quelque part, mais pas dans la vue :
 c'est donc un effet de bord.
 On ne veut que le code "document.title = title" ne s'exécute 

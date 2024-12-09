@@ -50,7 +50,8 @@ const page = () => {
 }`;
 
   const text = 
-  `Avec styled() et sx={{}} on peut utiliser le MUI theme sans devoir l'importer  (e.g. const theme = useTheme())
+  `Avec styled() et sx={{}} on peut utiliser le MUI theme sans devoir l'importer  
+  (e.g. const theme = useTheme())
 
 Par exemple ici, primary.dark vient du default theme, qu'on peut consulter ici:
 
@@ -72,7 +73,7 @@ const theme = createTheme({
   ATTENTION: 
   pour rajouter des properties au theme (e.g. link et tahiti)
   il faut les déclarer au dessus:
-  sinon on a une erreur du type checker
+  sinon on a une erreur du "type checker"
   `;
 
   const text4 = `import { createTheme, PaletteColor, SimplePaletteColorOptions } from '@mui/material/styles';

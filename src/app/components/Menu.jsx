@@ -90,10 +90,6 @@ const symfonyList = [
 const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [
   {
-    text: 'Theme',
-    route: '/mui/theme'
-  },
-  {
     text: 'sx versus styled',
     route: '/mui/versus'
   },
@@ -112,6 +108,10 @@ const muiList = [
   {
     text: 'MUI X Tree View',
     route: '/mui/xtreeview'
+  },
+  {
+    text: 'Theme',
+    route: '/mui/theme'
   },
 ];
 const tailwindListTitle = { text:"Tailwind css", route: '/tailwind'};

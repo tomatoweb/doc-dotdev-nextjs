@@ -76,7 +76,7 @@ const nextjsList = [
     route: '/nextjs/jwt'
   },
 ];
-const symfonyListTitle = { text:"Symfony7", route: '/symfony'};
+const symfonyListTitle = { text:"Symfony", route: '/symfony'};
 const symfonyList = [
   {
     text: 'Symfony-Tailwind',
@@ -87,7 +87,7 @@ const symfonyList = [
     route: '/symfony/promotion'
   },
 ];
-const muiListTitle = { text:"MUI Components", route: '/mui'};
+const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [
   {
     text: 'Theme',
@@ -125,7 +125,7 @@ const tailwindList = [
     route: '/tailwind/fonts'
   },
 ];
-const debianListTitle = { text:"Debian 11", route: '/debian'};
+const debianListTitle = { text:"Debian", route: '/debian'};
 const debianList = [
   {
     text: 'Reinstall from scratch',

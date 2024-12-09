@@ -7,12 +7,14 @@ declare module "@mui/material/styles" {
 
   interface PaletteOptions {
     link: SimplePaletteColorOptions;
+    tahiti: SimplePaletteColorOptions;
   }
 }
 const theme = createTheme({
   palette: {
     mode: 'dark',
-    link: { main: "#52a8ff" },  
+    tahiti: {main: "#42f5b3"},
+    link: { main: "#00ff00" },  
     background: {
       default: '#000'
     }

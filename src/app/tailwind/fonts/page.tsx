@@ -6,7 +6,7 @@ const page = () => {
     <div className='text-center'>
       <Typography variant='h5'>Customize Tailwind Fonts</Typography>
       see here : 
-      <Link href={"/scratch/next"} sx={{color: 'link'}}> /scratch/next</Link>      
+      <Link href={"/nextjs/scratch"} sx={{color: 'link.main'}}> /nextjs/scratch</Link>      
     </div>
   )
 }

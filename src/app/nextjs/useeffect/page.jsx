@@ -1,7 +1,20 @@
+'use client'
 import React from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
 import { Typography } from '@mui/material';
-import Image from 'next/image';
+import { styled  } from '@mui/material/styles';
+
+const StyledImage = styled('img')(() => ({
+  width: '100%',
+  maxWidth: 'none',
+  height: 'auto',
+  '&:hover': {
+    width: '150%',
+    zIndex: '2',
+    position: 'relative'
+  },
+  transition: 'width 0.5s'
+}))
 
 const page = () => {
 
@@ -110,13 +123,13 @@ export default MyUseEffect`;
       </Typography>
       <pre>{text0}</pre>
       <CodeBlock text={text2}/>
-      <Image 
+      <StyledImage 
         className="rounded-lg" 
         src="/useEffect.png" 
         width={0}
         height={0}
         sizes="100vw"
-        style={{ width: '100%', height: 'auto' }} alt=""
+        alt=""
       />
       <pre className='text-wrap'>{text1}</pre>
       <CodeBlock text={text3}/>

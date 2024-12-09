@@ -65,8 +65,8 @@ const ListButton = styled(ListItemButton)(({ theme }) => ({
     <div>
       <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Customize colors MUI Theme</Typography>
       <Typography variant="h6" sx={{fontWeight: 600, marginBottom:4}}>
-        Pour ajouter une custom color (e.g tahiti, link ) il faut l'ajouter dans interface PaletteOptions
-        comme ci-dessous :
+        {`Pour ajouter une custom color (e.g tahiti, link ) il faut l'ajouter dans interface PaletteOptions
+        comme ci-dessous :`}
       </Typography>
       src/theme.ts
       <CodeBlock text={text} />

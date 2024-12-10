@@ -88,27 +88,41 @@ declare module "@mui/material/styles" {
   }
 }`;
 
-  return (
-    
-      <nav className='overflow-x-auto text-sm'>
-        <Typography variant="h4" sx={{fontWeight: 600, marginBottom:4}}>MUI Material Components library</Typography>
-        <Typography variant="h5" sx={{color: 'link.main', fontWeight: 600, marginBottom:4}}>styled and sx</Typography>
-        <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4, color: 'error.light'}}>
-          Important: styled needs use client
+  return (    
+    <nav className='overflow-x-auto text-sm'>
+      <div className="flex">
+        <Typography variant="h5" sx={{color: 'link.main', marginBottom:4}}>
+          {`styled()`} &nbsp;&nbsp;
         </Typography>
-        <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4, color: 'primary.dark'}}>
-          rem : How to install MUI click here:
+        <Typography variant="h5" sx={{ marginBottom:4}}>
+          vs &nbsp;&nbsp;
         </Typography>
-          <Link href="/nextjs/scratch" className="text-tahiti">
-            🚀 Tailwind+MUI Nextjs from scratch
-          </Link>
-        <CodeBlock text={text0}/>
-        <pre className="text-wrap">
-          {text}
-        </pre>
-        <CodeBlock text={text4}/>
-      </nav>
-   
+        <Typography variant="h5" sx={{color: 'link.main', marginBottom:4}}>
+          {`sx={{}}`} &nbsp;&nbsp;
+        </Typography>
+        <Typography variant="h5" sx={{ marginBottom:4}}>
+          vs &nbsp;
+        </Typography>
+        <Typography variant="h5" sx={{color: 'link.main', marginBottom:4}}>
+          {`style={{}}`}
+        </Typography>
+      </div>
+
+      <Typography variant="h6" sx={{fontWeight: 600, marginBottom:4, color: 'error.light'}}>
+        Important: styled needs use client
+      </Typography>
+      <Typography variant="h6" sx={{fontWeight: 600, marginBottom:4, color: 'primary.dark'}}>
+        
+      </Typography>
+      <Link href="/nextjs/scratch" className="text-tahiti">
+      ( click me to learn how to install Next.js + Tailwind + MUI from scratch )
+      </Link>
+      <CodeBlock text={text0}/>
+      <pre className="text-wrap">
+        {text}
+      </pre>
+      <CodeBlock text={text4}/>
+    </nav>   
   )
 }
 

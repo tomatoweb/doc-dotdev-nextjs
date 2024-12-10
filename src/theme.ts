@@ -14,7 +14,7 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     tahiti: {main: "#42f5b3"},
-    link: { main: "#00ff00" },  
+    link: { main: "#52a8ff" },  
     background: {
       default: '#000'
     }

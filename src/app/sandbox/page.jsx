@@ -5,30 +5,38 @@ import { useEffect, useState } from "react"
 
 const MyUseEffect = () => {
 
-    const [title, setTitle] = useState("")
-    const [firstName, setFirstName] = useState("")
+    const [duration, setDuration] = useState(5)
+    const [countdown, setCountdown] = useState(duration)
+
+    console.log("render")
+
+    const handleChange = (v) => {
+      setDuration(v)
+      setCountdown(v)
+    }
 
     useEffect(() => {
-      document.title = title
-      console.log('rendering...')
-    }, [title]);
 
+
+      const timer = setInterval(() => {
+        setCountdown(c => c - 1)
+      }, 1000)
+
+      return () => {
+        clearInterval(timer)
+      } 
+
+    }, [duration])
 
     return (
       <main className="flex flex-col p-4 bg-gray-900">    
+       {countdown}
         <input 
-          type="text" 
-          onChange={e => setTitle(e.target.value)} 
-          className="m-4 bg-gray-800" 
-          placeholder="title" 
+          type="number"
+          value={duration}
+          onChange={e => handleChange(e.target.value)} 
+          className="m-4 bg-gray-800"
         />
-        <input 
-          type="text" 
-          onChange={e => setFirstName(e.target.value)} 
-          className="m-4 bg-gray-800" 
-          placeholder="first name"
-        />
-        <div>{firstName}</div>
       </main>
     )
 }

@@ -40,6 +40,10 @@ const nextjsList = [
     route: '/nextjs/form-new-way'
   },
   {
+    text: 'setInterval',
+    route: '/nextjs/setinterval'
+  },
+  {
     text: 'Prisma ORM',
     route: '/nextjs/prisma'
   },
@@ -79,7 +83,7 @@ const nextjsList = [
 const symfonyListTitle = { text:"Symfony", route: '/symfony'};
 const symfonyList = [
   {
-    text: 'Symfony-Tailwind',
+    text: 'Symfony + Tailwind',
     route: '/symfony/scratch'
   },
   {
@@ -152,54 +156,6 @@ const mainList = [
     text: 'Emoji',
     route: '/emoji'
   },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
-  {
-    text: 'link',
-    route: '/link'
-  },
 ];
 const ListButton = styled(ListItemButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
@@ -210,6 +166,10 @@ const ListButton = styled(ListItemButton)(({ theme }) => ({
       "&:hover": {backgroundColor: 'transparent'},
   }
 }));
+
+const StyledList = styled(List)({
+  "&.MuiList-root": { maxWidth: '100%' }
+})
 
 export default function Menu() {
   const router = useRouter();
@@ -224,14 +184,14 @@ export default function Menu() {
   return (
     <div className='w-1/4 h-[84vh] sticky top-32 hidden lg:flex'>
       <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
-        <List sx={{width: 310, paddingLeft: 5}}>
+        <StyledList sx={{width: 310, paddingLeft: 5}}>
 
-          <ListItemButton onClick={()=>{ setNextjsListOpen(!nextjsListOpen) }} disableRipple dense>
-            <ListItemText primary={`${nextjsListTitle.text}`} /> {nextjsListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          <ListItemButton component="a" onClick={()=>{ setSymfonyListOpen(!symfonyListOpen) }} disableRipple dense>
+            <ListItemText primary={`${symfonyListTitle.text}`} /> {symfonyListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
-          <Collapse in={nextjsListOpen} timeout="auto" unmountOnExit>
+          <Collapse in={symfonyListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {nextjsList.map((item) => (
+              {symfonyList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"
@@ -250,12 +210,12 @@ export default function Menu() {
             </List>
           </Collapse>
 
-          <ListItemButton component="a" onClick={()=>{ setSymfonyListOpen(!symfonyListOpen) }} disableRipple dense>
-            <ListItemText primary={`${symfonyListTitle.text}`} /> {symfonyListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          <ListItemButton onClick={()=>{ setNextjsListOpen(!nextjsListOpen) }} disableRipple dense>
+            <ListItemText primary={`${nextjsListTitle.text}`} /> {nextjsListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
-          <Collapse in={symfonyListOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {symfonyList.map((item) => (
+          <Collapse in={nextjsListOpen} timeout="auto" unmountOnExit>
+            <List component="div" className='max-w-full'>
+              {nextjsList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"
@@ -370,10 +330,6 @@ export default function Menu() {
             </List>
           </Collapse>
 
-
-
-
-
           {mainList.map((item, index) => (
           <ListItem key={item.text + index} disablePadding sx={{ display: 'block' }}>
               <ListButton
@@ -391,10 +347,7 @@ export default function Menu() {
           </ListItem>
           ))}
 
-
-
-
-        </List>
+        </StyledList>
       </nav>
     </div>
   );

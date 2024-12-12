@@ -12,6 +12,10 @@ import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 const nextjsListTitle = { text:"Next.js", route: '/nextjs'};
 const nextjsList = [
   {
+    text: 'useState',
+    route: '/nextjs/usestate'
+  },
+  {
     text: 'useEffect - side effects',
     route: '/nextjs/useeffect'
   },
@@ -78,6 +82,10 @@ const nextjsList = [
   {
     text: 'JWT',
     route: '/nextjs/jwt'
+  },
+  {
+    text: 'map - find',
+    route: '/nextjs/map-find'
   },
 ];
 const symfonyListTitle = { text:"Symfony", route: '/symfony'};

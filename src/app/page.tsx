@@ -1,10 +1,10 @@
 import { Box, Container, Typography } from "@mui/material";
-	export default function Test() {
+	export default function Home
+  () {
 	  return (
 	    <Container>
 	      <Box my={4}>
         <Box className="flex flex-col justify-center items-center mb-10">
-
             <Typography variant="h4" sx={{fontFamily: 'papyrus'}} className="text-xl " gutterBottom>
               Welcome to Dotdev documentation!
             </Typography>

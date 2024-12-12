@@ -1,5 +1,7 @@
 import React from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
+import { Box, Typography } from '@mui/material';
+import Link from 'next/link';
 
 const page = () => {
 
@@ -110,25 +112,43 @@ export async function createPost(formData: FormData) {
 
   return (
     <main>
-    <CodeBlock text={'npm i prisma --save-dev'}/>  
-    <CodeBlock text={'npx prisma init --datasource-provider sqlite'}/>  
-    .env
-    <CodeBlock text={'DATABASE_URL="file:./dev.db"'}/>  
-    prisma/schema.prisma
-    <CodeBlock text={text1}/> 
-    create prisma/dev.db  -also after updating the schema.prisma Model-
-    <CodeBlock text={'npx prisma db push'}/>  
-    View prisma/dev.db
-    <CodeBlock text={'npx prisma studio'}/>  
-    Help
-    <CodeBlock text={'npx prisma -h'}/>  
-    Create Prisma Client lib/db.ts like recommanded in the Prisma best practices:
-    https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices
-    <CodeBlock text={text2}/>
-    Create app/posts/page.jsx 
-    <CodeBlock text={text3}/>
-    Create server action
-    <CodeBlock text={text4}/>
+
+      <Box className="pb-4">
+        <Link href="https://www.prisma.io/docs/getting-started/quickstart-sqlite" className='underline text-link'>
+          🚀 Prisma Installation Doc
+        </Link>
+      </Box>
+      <Box className="pb-8">
+        <Typography variant='p' className='text-orange-400'>
+          ! Prisma doc recommand to install typescript
+        </Typography>
+      </Box>
+      Install Prisma CLI as dev dependency
+      <CodeBlock text={'npm i prisma --save-dev'}/>
+      Initialize Prisma
+      <CodeBlock text={'npx prisma init --datasource-provider sqlite'}/>  
+      Check .env file configuration
+      <CodeBlock text={'DATABASE_URL="file:./dev.db"'}/>  
+      prisma/schema.prisma : Create your Model
+      <CodeBlock text={text1}/> 
+      create (or update) prisma/dev.db, this also install the Prisma-client
+      <CodeBlock text={'npx prisma db push'}/>  
+      View prisma/dev.db
+      <CodeBlock text={'npx prisma studio'}/>  
+      List of the Prisma CLI commands
+      <CodeBlock text={'npx prisma -h'}/>  
+      Create lib/db.ts for the Prisma Client Singleton pattern
+      <Box className="pb-4 text-link">
+        <Link href="https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices" className='underline'>
+          🚀 Prisma best practices
+        </Link>
+      </Box>
+      
+      <CodeBlock text={text2}/>
+      Create app/posts/page.jsx 
+      <CodeBlock text={text3}/>
+      Create server action
+      <CodeBlock text={text4}/>
       
     </main>
   )

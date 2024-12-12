@@ -10,7 +10,7 @@ export default async function PostsPage() {
 
   const postsCount = await prisma.post.count();
 
-  revalidatePath('/posts');
+  //revalidatePath('/posts');
   
   return (
     <main className="flex flex-col items-center justify-center py-8 gap-y-24 text-center bg-gray-800">

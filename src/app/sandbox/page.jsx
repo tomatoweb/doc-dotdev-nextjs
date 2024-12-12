@@ -1,44 +1,30 @@
-'use client'
 
-import { useEffect, useState } from "react"
+const getData = async () => {
 
+  const res = await fetch("http://localhost:3000/api/users")
 
-const MyUseEffect = () => {
-
-    const [duration, setDuration] = useState(5)
-    const [countdown, setCountdown] = useState(duration)
-
-    console.log("render")
-
-    const handleChange = (v) => {
-      setDuration(v)
-      setCountdown(v)
-    }
-
-    useEffect(() => {
-
-
-      const timer = setInterval(() => {
-        setCountdown(c => c - 1)
-      }, 1000)
-
-      return () => {
-        clearInterval(timer)
-      } 
-
-    }, [duration])
-
-    return (
-      <main className="flex flex-col p-4 bg-gray-900">    
-       {countdown}
-        <input 
-          type="number"
-          value={duration}
-          onChange={e => handleChange(e.target.value)} 
-          className="m-4 bg-gray-800"
-        />
-      </main>
-    )
+  if (!res.ok) {
+    throw new Error('Failed to fetch permissions data')
+  }
+   
+  return res.json()
 }
 
-export default MyUseEffect
+const SandboxApi = async () => {
+
+  const data = await getData()
+
+  return (
+    <main className="flex flex-col p-4 bg-gray-800">
+      <ul>
+        {
+          data.map(d => (
+            <li key={d.id}>{d.title}</li>
+          ))
+        }
+      </ul>
+    </main>
+  )
+}
+
+export default SandboxApi

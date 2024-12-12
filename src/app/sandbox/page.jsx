@@ -1,30 +1,9 @@
+import React from 'react'
 
-const getData = async () => {
-
-  const res = await fetch("http://localhost:3000/api/users")
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch permissions data')
-  }
-   
-  return res.json()
-}
-
-const SandboxApi = async () => {
-
-  const data = await getData()
-
+const page = () => {
   return (
-    <main className="flex flex-col p-4 bg-gray-800">
-      <ul>
-        {
-          data.map(d => (
-            <li key={d.id}>{d.title}</li>
-          ))
-        }
-      </ul>
-    </main>
+    <div>page</div>
   )
 }
 
-export default SandboxApi
+export default page

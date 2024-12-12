@@ -47,7 +47,7 @@ export default async function PostsPage() {
           >  
         */}  
 
-        { postsCount < 30 && // avoid DDoS attacks
+        
         
         <form action={createPost} className="flex flex-col gap-y-2 w-[300px]">
           <input type="text" name="title" placeholder="title" className="p-2 rounded-sm bg-gray-900" />
@@ -55,7 +55,7 @@ export default async function PostsPage() {
           <button className="bg-blue-500 py-2 text-white rounded-sm">Create post</button>
         </form>        
 
-      }
+     
     </main>
   );
 }

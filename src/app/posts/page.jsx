@@ -1,7 +1,7 @@
 "use server"
 import { createPost } from "@/actions/actions";
 import prisma from "@/lib/db";
-import { revalidatePath } from "next/cache";
+//import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
 export default async function PostsPage() {

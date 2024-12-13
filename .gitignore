@@ -21,7 +21,7 @@
 *.pem
 
 # sqlite Prisma DB
-prisma/dev.db
+/prisma/dev.db
 
 # debug
 npm-debug.log*

@@ -1,5 +1,5 @@
 
-import { createPost } from "@/actions/actions";
+//import { createPost } from "@/actions/actions";
 import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
@@ -10,7 +10,8 @@ export default async function PostsPage() {
 
   const postsCount = await prisma.post.count();
 
-  const createNewPost = async () => {
+  const createPost = async () => {
+    "use server"
     
     // test : generate random title and slug
     let r = (Math.random() + 1).toString(36).substring(7);
@@ -21,8 +22,7 @@ export default async function PostsPage() {
   }
 
   // test
-  createNewPost()
-
+  //createPost()
 
   revalidatePath('/posts');
   

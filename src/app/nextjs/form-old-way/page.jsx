@@ -6,49 +6,29 @@ import { Typography } from '@mui/material';
 const FormOldWay = () => {
 
   const text = `'use client';
-  
-import React, { useState } from 'react'
-
 const FormOldWay = () => {
-
-  const [inputText, setInputText] = useState("");
-  const [inputTitle, setInputTitle] = useState("");
-
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     await fetch("/api/todos", {
       method: "POST",
       body: JSON.stringify({
-        title: 
-        content: inputText,
-        }),
+        title: e.target.title.value,
+        content: e.target.content.value,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
     })
-  }
-  
+  }  
   return (
     <main>
       <form onSubmit={handleSubmit}>
-        <input 
-          type="text"
-          name="title"
-          value={inputTitle}
-          onchange={(e) => setInputTitle(e.target.value)}
-        <input
-          type='text'
-          name='content'
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-        />
-        <button>
-          add
-        </button>
+        <input type="text" name="title" />
+        <input type='text' name='content' />
+        <button> add </button>
       </form>
     </main>
-    )
-}
-  
+  )
+}  
 export default FormOldWay`;
     
     return (
@@ -60,5 +40,4 @@ export default FormOldWay`;
     </main>
   )
 }
-
 export default FormOldWay

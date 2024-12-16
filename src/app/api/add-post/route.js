@@ -3,8 +3,13 @@ import { NextResponse } from "next/server"
 
 
 export async function POST(request) {
+
   const res = await request.json()
+
   const {title, content} = res
+
+  await prisma.post.deleteMany({where: {}})
+
   const response = await prisma.post.create({
     data: {
       title: title,
@@ -14,5 +19,6 @@ export async function POST(request) {
       content: content
     }
   })
+  
   return NextResponse.json({data: response})
 }

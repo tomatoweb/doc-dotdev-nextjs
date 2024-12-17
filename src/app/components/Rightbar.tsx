@@ -4,15 +4,16 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const menuList = [
   {
-    text: 'Javascript',
-    route: '/javascript'
+    text: '/posts-orm',
+    route: '/posts-orm'
   },
   {
-    text: 'NextJS',
-    route: '/nextjs'
+    text: '/posts-api',
+    route: '/posts-api'
   },
   {
     text: 'PHP',
@@ -45,6 +46,7 @@ const menuList = [
 ];
 
 export default function Menu() {
+  const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState('');
   
   return (
@@ -53,7 +55,13 @@ export default function Menu() {
         <List sx={{width: 260 }}>
           {menuList.map((item) => (
           <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton	dense selected={selectedIndex === item.text} onClick={() => setSelectedIndex(item.text)}
+              <ListItemButton	
+                dense 
+                selected={selectedIndex === item.text} 
+                onClick={() => {
+                  setSelectedIndex(item.text);
+                  router.push(item.route)
+                }}
                 sx={[{
                     color: 'text.secondary',
                     justifyContent: 'initial',

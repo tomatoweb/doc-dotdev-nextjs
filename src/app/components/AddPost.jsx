@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { NextResponse } from "next/server";
 import { useState } from "react";
 
-export default function ArticleForm() {
+export default function AddPost() {
   
   const router = useRouter();
 

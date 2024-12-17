@@ -1,50 +1,32 @@
-
-//import { ArticleForm } from "@/actions/actions";
-import prisma from "@/lib/db";
-//import { revalidatePath } from "next/cache";
 import Link from "next/link";
-import ArticleForm from "@/app/components/ArticleForm";
+import AddPost from "@/app/components/AddPost";
 
-export const dynamic = "force-dynamic"; // If you want no caching from posts at all
+export default async function PostsPage() {  
 
-export default async function PostsPage() {
-
-  /* Here we can see that Prisma client provides the feature like 
-  direct query from your react component 
-  without creating REST API but it will be only available for server side component 
-  because client side browser does not have support for nodejs. 
-  This will be a static route at build
-  */
-  const posts = await prisma.post.findMany();
-  const postsCount = await prisma.post.count();
-
-  /* const response = await fetch(process.env.URL + '/api/posts/', {
-    method: 'GET'
-  })
+  // This is the classic data fetch with call to API
+  const response = await fetch(process.env.URL + '/api/posts/', { cache: "no-store" })
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
 	}
 	const res = await response.json();
   
   const posts = res.data
-
-  console.log(posts) */
   
   return (
     <main className="flex flex-col items-center justify-center py-8 gap-y-24 text-center bg-gray-800">
 
-      <h1 className="text-3xl font-semibold">All Posts ({postsCount})</h1>
+      <h1 className="text-3xl font-semibold">All Posts ({posts.length})</h1>
       <ul className="border-t border-b border-primary py-5 leading-8 ">
         {posts.map( (post) => (
             <li key={post.id} className="flex items-center justify-center px-5">
-              <Link href={`/posts/${post.slug}`}>
+              <Link href={`/posts-api/${post.slug}`}>
                 {post.title}
               </Link>
             </li>
         ) )}
       </ul>
 
-      <ArticleForm/>
+      <AddPost/>
 
       {/*
         Server Actions to create posts are not working

@@ -18,7 +18,7 @@ export default async function PostPage({params}) {
         {post.content}              
       </Box>
       <Box>
-        <Link href="/posts">
+        <Link href="/posts-orm">
           All Posts
         </Link>
       </Box>

@@ -19,8 +19,6 @@ export async function POST(req: Request) {
 
   const {title, content} = body
 
-  console.log(title + ' ' + content)
-
   await prisma.post.deleteMany({where: {}})
 
   const result = await prisma.post.create({
@@ -41,5 +39,6 @@ export async function POST(req: Request) {
   return NextResponse.json({ 
     message: 'ok', 
     status: 200,
-    data: result})
+    data: result
+  })
 }

@@ -12,6 +12,14 @@ import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 const nextjsListTitle = { text:"Next.js", route: '/nextjs'};
 const nextjsList = [
   {
+    text: 'Get data by ORM',
+    route: '/nextjs/getbyorm'
+  },
+  {
+    text: 'Get data by API',
+    route: '/nextjs/getbyapi'
+  },
+  {
     text: 'useState',
     route: '/nextjs/usestate'
   },

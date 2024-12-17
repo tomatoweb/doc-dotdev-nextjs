@@ -2,16 +2,10 @@
 import prisma from "@/lib/db";
 import Link from "next/link";
 import AddPost from "@/app/components/AddPost";
-import { cookies, headers } from 'next/headers';
 
 export const dynamic = "force-dynamic"; // If you want no caching from posts at all
 
 export default async function PostsPage() {
-
-  const forwardedFor = headers().get('x-forwarded-for');
-  console.log(forwardedFor)
-  console.log(cookies)
-  const clientIP = forwardedFor?.split(',')[0] ?? '';
 
   /* Here we can see that Prisma client provides
      direct query from your react component
@@ -27,7 +21,7 @@ export default async function PostsPage() {
   return (
     <main className="flex flex-col items-center justify-center py-8 gap-y-24 text-center bg-gray-800">
 
-      <h1 className="text-3xl font-semibold">All Posts ({postsCount}) {clientIP}</h1>
+      <h1 className="text-3xl font-semibold">All Posts ({postsCount})</h1>
       <ul className="border-t border-b border-primary py-5 leading-8 ">
         {posts.map( (post) => (
             <li key={post.id} className="flex items-center justify-center px-5">

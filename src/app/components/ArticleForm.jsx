@@ -19,7 +19,7 @@ export default function ArticleForm() {
 
     try {
 
-      await fetch('/api/add-post',  {
+      await fetch('/api/posts',  {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ export default function ArticleForm() {
         title: '',
         content: '',
       })
-      
+     
       router.refresh()      
       
     } catch (error) {

@@ -2,6 +2,8 @@ import Link from "next/link";
 import prisma from "@/lib/db";
 import Form from "@/app/components/Form"
 
+export const dynamic = "force-dynamic"; // If you want no caching from posts at all
+
 export default async function PostsPage() {
 
   const posts = await prisma.post.findMany()

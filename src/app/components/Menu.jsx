@@ -32,7 +32,7 @@ const nextjsList = [
     route: '/nextjs/server-side'
   },
   {
-    text: 'Children Pattern',
+    text: 'Children-Ancestor Pattern',
     route: '/nextjs/children-pattern'
   },
   {

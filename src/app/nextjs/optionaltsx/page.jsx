@@ -4,7 +4,8 @@ import { Typography } from "@mui/material";
 const text1 = 
 `const CodeBlock = (props: { text: string; color: string }) => {`;
 const text2 = 
-`const CodeBlock = (props: { text: string; color?: string }) => {`;
+`// color can be omitted, but if passed, should be a string
+const CodeBlock = (props: { text: string; color?: string }) => {`;
 
 const page = () => {
   return (

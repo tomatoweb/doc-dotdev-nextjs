@@ -16,6 +16,10 @@ const menuList = [
     route: '/posts-api'
   },
   {
+    text: '/posts-action',
+    route: '/posts-action'
+  },
+  {
     text: 'PHP',
     route: '/php'
   },

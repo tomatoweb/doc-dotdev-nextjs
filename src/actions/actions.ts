@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { logger } from "@/logger"
 
 export async function createPost(formData: FormData) {
 
@@ -16,6 +17,7 @@ export async function createPost(formData: FormData) {
       }
     });    
   } catch (e) {
+    logger.info(e.message)
     console.log(e.message)
     return e.message
     

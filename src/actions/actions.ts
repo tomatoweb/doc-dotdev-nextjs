@@ -2,8 +2,13 @@
 
 import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { headers } from 'next/headers';
 
 export async function createPost(formData: FormData) {
+
+  const headersList = headers();
+
+  console.log(headersList)
 
   try {
     await prisma.post.create({

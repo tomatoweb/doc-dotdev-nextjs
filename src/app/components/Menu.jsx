@@ -110,6 +110,10 @@ const symfonyList = [
     text: 'Constructor Promotion',
     route: '/symfony/promotion'
   },
+  {
+    text: 'Push Data Mercure',
+    route: '/symfony/mercure'
+  },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [

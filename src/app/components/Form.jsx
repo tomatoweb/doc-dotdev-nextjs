@@ -10,15 +10,26 @@ const Form = () => {
   return (
     <>
       <Toaster />
+      {/* IMPORTANT !
+        Server Actions need next.config.mjs experimental allowedOrigins:
+              
+              const nextConfig = {
+                experimental: {
+                  serverActions: {
+                    allowedOrigins: ['doc.dotdev.be'],
+                  },
+                },
+              };
+      */}
       <form
         ref={ref}
         action={ async (formData) => {
           ref.current?.reset()
           const error = await createPost(formData)
           if(error) {
-            toast.error('Server action error:' + error, {className: "bg-red-200", duration: 20000});
+            toast.error('Server action error:' + error, {className: "bg-red-200", duration: 10000});
           } else {
-            toast.success('Post created!', {className: "bg-blue-500", duration: 20000})
+            toast.success('Post created!', {className: "bg-blue-500", duration: 10000})
           }
         }} 
         className="flex flex-col gap-y-2 w-[300px]"

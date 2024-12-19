@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { createPost } from "@/actions/actions"
 import prisma from "@/lib/db";
+import Form from "../components/Form";
 
 export default async function PostsPage() {
 
@@ -10,7 +10,6 @@ export default async function PostsPage() {
 
   return (
     <main className="flex flex-col items-center justify-center py-8 gap-y-24 text-center bg-gray-800">
-
       <h1 className="text-3xl font-semibold">All Posts ({postsCount})</h1>
       <ul className="border-t border-b border-primary py-5 leading-8 ">
         {posts.map( (post) => (
@@ -20,22 +19,9 @@ export default async function PostsPage() {
               </Link>
             </li>
         ) )}
-      </ul>
+      </ul>      
 
-      {/*
-        Server Actions to create posts are not working
-        in production (npm run build, pm2) but well in dev.
-        error msg :
-        Application error: a server-side exception has occurred
-        (see the server logs for more information).
-        Digest: 760205265
-      */}
-
-      <form action={createPost} className="flex flex-col gap-y-2 w-[300px]">
-        <input type="text" name="title" placeholder="title" className="p-2 rounded-sm bg-gray-900" />
-        <textarea rows={5} name="content" placeholder="content" className="p-2 rounded-sm bg-gray-900" />
-        <button className="bg-blue-500 py-2 text-white rounded-sm">Create post</button>
-      </form>
+      <Form />
 
     </main>
   );

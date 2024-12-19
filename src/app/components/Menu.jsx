@@ -12,11 +12,15 @@ import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 const nextjsListTitle = { text:"Next.js", route: '/nextjs'};
 const nextjsList = [
   {
-    text: 'Get data by ORM',
+    text: 'Server Actions',
+    route: '/nextjs/action'
+  },
+  {
+    text: 'ORM',
     route: '/nextjs/getbyorm'
   },
   {
-    text: 'Get data by API',
+    text: 'API',
     route: '/nextjs/getbyapi'
   },
   {
@@ -24,8 +28,16 @@ const nextjsList = [
     route: '/nextjs/usestate'
   },
   {
-    text: 'useEffect - side effects',
+    text: 'useEffect',
     route: '/nextjs/useeffect'
+  },
+  {
+    text: 'useRef',
+    route: '/nextjs/useref'
+  },
+  {
+    text: 'useMemo',
+    route: '/nextjs/usememo'
   },
   {
     text: 'Server-side rendering',
@@ -40,16 +52,8 @@ const nextjsList = [
     route: '/nextjs/next-image'
   },
   {
-    text: 'Server Actions',
-    route: '/nextjs/action'
-  },
-  {
     text: 'Form with Fetch',
     route: '/nextjs/form-old-way'
-  },
-  {
-    text: 'Form with Server-Action',
-    route: '/nextjs/form-new-way'
   },
   {
     text: 'setInterval',

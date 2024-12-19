@@ -2,7 +2,7 @@
 const nextConfig = {
   experimental: {
     serverActions: {
-      allowedOrigins: ['localhost:3004'],
+      allowedOrigins: ['doc.dotdev.be'],
     },
   },
 };

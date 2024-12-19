@@ -9,7 +9,7 @@ export default async function PostsPage() {
   const postsCount = await prisma.post.count();
 
   return (
-    <main className="flex flex-col items-center justify-center py-8 gap-y-24 text-center bg-gray-800">
+    <main className="flex flex-col items-center justify-center py-8 gap-y-6 text-center bg-gray-800">
       <h1 className="text-3xl font-semibold">All Posts ({postsCount})</h1>
       <ul className="border-t border-b border-primary py-5 leading-8 ">
         {posts.map( (post) => (
@@ -19,9 +19,9 @@ export default async function PostsPage() {
               </Link>
             </li>
         ) )}
-      </ul>      
+      </ul>
 
-      <Form />
+      { postsCount < 50 && <Form /> }      
 
     </main>
   );

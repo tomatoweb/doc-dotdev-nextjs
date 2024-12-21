@@ -34,7 +34,7 @@ const text2 =
 `;
   return (    
     <div>
-      <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Customize colors Tailwind</Typography>
+      <Typography className='text-tahiti' variant="h5" sx={{fontWeight: 600, marginBottom:4}} >Customize colors Tailwind</Typography>
       src/tailwind.config.ts
       <CodeBlock text={text} />
       usage :

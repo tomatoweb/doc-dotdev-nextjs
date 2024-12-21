@@ -111,8 +111,16 @@ const symfonyList = [
     route: '/symfony/promotion'
   },
   {
+    text: 'Doctrine n+1 fix',
+    route: '/symfony/doctrinefix'
+  },
+  {
     text: 'Push Data Mercure',
     route: '/symfony/mercure'
+  },
+  {
+    text: '__DIR__',
+    route: '/symfony/dir'
   },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};

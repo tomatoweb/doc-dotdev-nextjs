@@ -4,7 +4,8 @@ import React from 'react'
 
 const page = () => {
   const text = 
-`'use client';
+`// src/theme.ts
+'use client';
 import { createTheme, PaletteColor, SimplePaletteColorOptions } from '@mui/material/styles';
 declare module "@mui/material/styles" {
   interface Palette {

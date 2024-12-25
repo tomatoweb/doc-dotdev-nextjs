@@ -72,8 +72,12 @@ const nextjsList = [
     route: '/nextjs/swc'
   },
   {
-    text: 'Deploy on Linux',
+    text: 'Deploy Next on Linux',
     route: '/nextjs/deploy'
+  },
+  {
+    text: 'Deploy React on Linux',
+    route: '/nextjs/deploy-react'
   },
   {
     text: 'SyntaxHighlighter CodeBlock',

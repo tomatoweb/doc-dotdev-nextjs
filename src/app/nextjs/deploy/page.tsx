@@ -60,6 +60,18 @@ cd /var/www/srv_dev/app/myapp
 
 pm2 start npm --name "nextjs-dotdev" -- start -- --port=3000   (adapter le port !!)
 
+// en cas de reboot du VPS, pour relancer les apps dans pm2 (il faudra aussi stop apache2 at start nginx)
+cd /var/www/srv_dev/app/doc
+pm2 start npm --name "doc.dotdev.be" -- start -- --port=3004
+cd ../app
+pm2 start npm --name "app.dotdev.be" -- start -- --port=3005
+cd ../dashboard/
+pm2 start npm --name "dashboard.dotdev.be" -- start -- --port=3003
+cd ../eshop/
+pm2 start npm --name "e-shop.dotdev.be" -- start -- --port=3001
+cd ../social/
+pm2 start npm --name "social.dotdev.be" -- start -- --port=3006
+
 pm2 save
 
 pm2 list     (pour checker)

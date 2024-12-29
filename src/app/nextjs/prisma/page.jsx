@@ -8,13 +8,17 @@ const page = () => {
   const text1 = `// This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "debian-openssl-3.0.x", "linux-arm64-openssl-1.1.x", "rhel-openssl-3.0.x"]
 }
 
 model Post {
@@ -25,7 +29,53 @@ model Post {
   published Boolean? @default(false)
   updatedAt DateTime @updatedAt
   creatdAt DateTime @default(now())
-}`;
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+`;
 
 const text2 = `// lib/db.ts
 import { PrismaClient } from '@prisma/client'
@@ -112,10 +162,13 @@ export async function createPost(formData: FormData) {
 
   return (
     <main>
+      <Typography variant='h6' className='text-orange-400'>
+        🚀 Prisma ORM
+      </Typography>
 
-      <Box className="pb-4">
+      <Box className="pb-4 pt-2">
         <Link href="https://www.prisma.io/docs/getting-started/quickstart-sqlite" className='underline text-link'>
-          🚀 Prisma Installation Doc
+          Prisma Installation Doc
         </Link>
       </Box>
       <Box className="pb-8">
@@ -131,7 +184,9 @@ export async function createPost(formData: FormData) {
       <CodeBlock text={'DATABASE_URL="file:./dev.db"'}/>  
       prisma/schema.prisma : Create your Model
       <CodeBlock text={text1}/> 
-      create (or update) prisma/dev.db, this also install the Prisma-client
+      create or update prisma/dev.db, this also install the Prisma-client
+      <CodeBlock text={'npx prisma migrate dev --name init'}/>
+      Or 
       <CodeBlock text={'npx prisma db push'}/>  
       View prisma/dev.db
       <CodeBlock text={'npx prisma studio'}/>  

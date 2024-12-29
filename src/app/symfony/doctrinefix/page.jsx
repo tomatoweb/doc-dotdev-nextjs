@@ -24,7 +24,7 @@ const page = () => {
         Par défaut, Doctrine fetch la table de la clé étrangère à la demande.
         Ici on voit un select (n+1) pour chaque pool, car on demande le pool name dans la vue.
         Ceci est prévu par Doctrine pour éviter de fetcher la table de la clé étrangère Pool pour rien
-         dans le cas où on affiche pas les infos du pool. 
+         dans le cas où on affiche pas les infos du pool (cas du proxy). 
       </Typography>
       <Image
         width={0}

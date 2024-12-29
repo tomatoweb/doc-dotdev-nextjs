@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import CodeBlock from "@/app/components/CodeBlock";
+import Image from "next/image";
 
 const text1 = 
 `@tailwind base;
@@ -64,10 +65,27 @@ const page = () => {
       <CodeBlock text={"symfony new symfony7-tailwind --webapp\ncd symfony7-tailwind"} />
       Or with composer
       <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" symfony7-tailwind\ncd symfony7-tailwind\ncomposer require webapp"} />     
-      Install bundle webpack-encore
-      <CodeBlock text={"composer require symfony/webpack-encore-bundle\nnpm install"} />
+      Install the Bundler Webpack-Encore
+      <CodeBlock text={"composer require symfony/webpack-encore-bundle"} />
+      This will update the project like this
+      <Image 
+        className="rounded-lg" 
+        src="/webpack-encore.png" 
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: '100%', height: 'auto', marginTop:12, marginBottom:24 }} alt=""
+      />
+      <Image 
+        className="rounded-lg" 
+        src="/webpack-encore1.png" 
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: '100%', height: 'auto', marginTop:12, marginBottom:24 }} alt=""
+      />
       Install npm packages
-      <CodeBlock text={"npm install --force"} />
+      <CodeBlock text={"npm install"} />
       In webpack.config.js uncomment .enableSassLoader()
       <CodeBlock text={".enableSassLoader()"} />
       Try to build

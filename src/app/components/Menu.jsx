@@ -40,19 +40,19 @@ const nextjsList = [
     route: '/nextjs/usememo'
   },
   {
-    text: 'Server-side rendering',
+    text: 'SSR',
     route: '/nextjs/server-side'
   },
   {
-    text: 'Children-Ancestor Pattern',
+    text: 'Children Pattern',
     route: '/nextjs/children-pattern'
   },
   {
-    text: '<Image props />',
+    text: 'Image',
     route: '/nextjs/next-image'
   },
   {
-    text: 'Form with Fetch',
+    text: 'Form',
     route: '/nextjs/form-old-way'
   },
   {
@@ -60,7 +60,7 @@ const nextjsList = [
     route: '/nextjs/setinterval'
   },
   {
-    text: 'Prisma ORM',
+    text: 'Prisma',
     route: '/nextjs/prisma'
   },
   {
@@ -68,12 +68,16 @@ const nextjsList = [
     route: '/nextjs/scratch'
   },
   {
-    text: 'SWC Compiler',
+    text: 'SWC/Webpack Compile Bundle',
     route: '/nextjs/swc'
   },
   {
-    text: 'Deploy on Linux',
+    text: 'Deploy Next on Linux',
     route: '/nextjs/deploy'
+  },
+  {
+    text: 'Deploy React on Linux',
+    route: '/nextjs/deploy-react'
   },
   {
     text: 'SyntaxHighlighter CodeBlock',
@@ -121,6 +125,18 @@ const symfonyList = [
   {
     text: '__DIR__',
     route: '/symfony/dir'
+  },
+  {
+    text: 'Webpack Encore',
+    route: '/symfony/encore'
+  },
+  {
+    text: 'Asset Mapper',
+    route: '/symfony/asset-mapper'
+  },
+  {
+    text: 'Twig',
+    route: '/symfony/twig'
   },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};
@@ -187,6 +203,10 @@ const mainList = [
   {
     text: 'Emoji',
     route: '/emoji'
+  },
+  {
+    text: 'Scss - Sass',
+    route: '/sass'
   },
 ];
 const ListButton = styled(ListItemButton)(({ theme }) => ({

@@ -162,10 +162,13 @@ export async function createPost(formData: FormData) {
 
   return (
     <main>
+      <Typography variant='h6' className='text-orange-400'>
+        🚀 Prisma ORM
+      </Typography>
 
-      <Box className="pb-4">
+      <Box className="pb-4 pt-2">
         <Link href="https://www.prisma.io/docs/getting-started/quickstart-sqlite" className='underline text-link'>
-          🚀 Prisma Installation Doc
+          Prisma Installation Doc
         </Link>
       </Box>
       <Box className="pb-8">

@@ -22,7 +22,10 @@ Community: The Rust community and ecosystem are amazing and still growing.
   return (
     
       <div className='overflow-x-auto text-sm'>
-        <Typography variant="h5" mb={4}>SWC Next.js Compiler</Typography>
+        <Typography variant="body1" mb={4}>Turbopack can replace Webpack in development fast refresh mode by adding it in package.json scripts next dev --turbopack</Typography>
+        <Typography variant="body1" mb={4}>Webpack is used by Next.js to bundle JavaScript files</Typography>
+        <Typography variant="body1" mb={4}>Nextjs uses SWC compiler for Transpiling modern JavaScript and JSX into browser-compatible JavaScript</Typography>
+        <Typography variant="body1" mb={4}>SWC compile/transpile JavaScript and Typescript written in modern JavaScript features and outputs it in valid code that is supported by all major browsers</Typography>
         <pre className="text-wrap">
           {text}
         </pre>

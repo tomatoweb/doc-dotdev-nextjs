@@ -1,5 +1,5 @@
 import CodeBlock from "@/app/components/CodeBlock";
-import { Typography, Link } from "@mui/material";
+import { Typography} from "@mui/material";
 import Image from "next/image";
 
 const page = () => { 

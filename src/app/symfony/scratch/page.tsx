@@ -56,6 +56,24 @@ const text7 =
 .font-bold {
   font-weight: 700;
 }`;
+const text8 = 
+`// On local
+git add .
+git commit -am 'commit message
+git push
+
+// On remote server
+git pull
+
+// if composer.json or composer.lock changed locally
+composer install // this will check composer.lock changes if composer.lock exists
+or 
+composer update // this will install dependencies following composer.json
+
+// if frontend (Tailwind classes, app.js) have changed
+npm i
+npm run build
+`;
 
 const page = () => {
   return (
@@ -123,9 +141,11 @@ const page = () => {
       Check that the 4 new used TW classes have been added in public/build/app.css
       <CodeBlock text={text7} />
       Install JQuery
-      <CodeBlock text={"npm in jquery"} />
+      <CodeBlock text={"npm i jquery"} />
       for Tailwind components go to :
       <CodeBlock text={"https://tailwindui.com/"} />
+      How to deploy on server :
+      <CodeBlock text={text8} />
       Enjoy !
     </div>
   )

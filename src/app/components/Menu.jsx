@@ -115,6 +115,10 @@ const symfonyList = [
     route: '/symfony/promotion'
   },
   {
+    text: 'Service API',
+    route: '/symfony/api'
+  },
+  {
     text: 'Doctrine n+1 fix',
     route: '/symfony/doctrinefix'
   },
@@ -137,6 +141,10 @@ const symfonyList = [
   {
     text: 'Twig',
     route: '/symfony/twig'
+  },
+  {
+    text: 'Composer',
+    route: '/symfony/composer'
   },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};

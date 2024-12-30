@@ -13,13 +13,13 @@ MERCURE_JWT_SECRET="demoSecretKey"`;
 
 const text2 = 
 `<?php
-        namespace App\Controller;
+        namespace App\\Controller;
 
-        use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-        use Symfony\Component\HttpFoundation\Response;
-        use Symfony\Component\Mercure\HubInterface;
-        use Symfony\Component\Mercure\Update;
-        use Symfony\Component\Routing\Attribute\Route;
+        use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;
+        use Symfony\\Component\\HttpFoundation\\Response;
+        use Symfony\\Component\\Mercure\\HubInterface;
+        use Symfony\\Component\\Mercure\\Update;
+        use Symfony\\Component\\Routing\\Attribute\\Route;
 
         class PublishController extends AbstractController
         {
@@ -81,7 +81,7 @@ const page = () => {
       <CodeBlock text={text2} />
       <CodeBlock text={text3} />
       <p>Open a Powershell CLI in mercure directory  (mercure.exe only works in Powershell CLI)</p> 
-      <p>(options:  .\mercure.exe --help)</p>
+      <p>( List Mercure options:  .\mercure.exe --help)</p>
       <CodeBlock text={".\\mercure.exe run --jwt-key 'demoSecretKey' --cors-allowed-origins 'http://localhost:8000' --allow-anonymous"} />
       Serve:
       <CodeBlock text={"php -S localhost:8000 -t public"} />

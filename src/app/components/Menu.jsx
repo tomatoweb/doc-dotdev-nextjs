@@ -119,6 +119,10 @@ const symfonyList = [
     route: '/symfony/api'
   },
   {
+    text: 'Doctrine',
+    route: '/symfony/doctrine'
+  },
+  {
     text: 'Doctrine n+1 fix',
     route: '/symfony/doctrinefix'
   },
@@ -143,8 +147,16 @@ const symfonyList = [
     route: '/symfony/twig'
   },
   {
+    text: 'Bootstrap css',
+    route: '/symfony/bootstrap'
+  },
+  {
     text: 'Composer',
     route: '/symfony/composer'
+  },
+  {
+    text: 'KPN Paginator',
+    route: '/symfony/kpnpaginator'
   },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};
@@ -196,11 +208,15 @@ const debianList = [
     route: '/debian/subdomain'
   },
 ];
-const sqliteListTitle = { text:"SQLite", route: '/sqlite'};
-const sqliteList = [
+const sqlListTitle = { text:"SQL", route: '/sql'};
+const sqlList = [
   {
-    text: 'Install and use',
-    route: '/sqlite/install'
+    text: 'SQLite',
+    route: '/sql/sqlite'
+  },
+  {
+    text: 'MySQL',
+    route: '/sql/mysql'
   },
 ];
 const mainList = [
@@ -239,7 +255,7 @@ export default function Menu() {
   const [tailwindListOpen, setTailwindListOpen] = useState(false);  
   const [nextjsListOpen, setNextjsListOpen] = useState(false);  
   const [debianListOpen, setDebianListOpen] = useState(false);  
-  const [sqliteListOpen, setSqliteListOpen] = useState(false);  
+  const [sqlListOpen, setSqlListOpen] = useState(false);  
 
   return (
     <div className='w-1/4 h-[84vh] sticky top-32 hidden lg:flex'>
@@ -366,12 +382,12 @@ export default function Menu() {
             </List>
           </Collapse>
 
-          <ListItemButton onClick={()=>{ setSqliteListOpen(!sqliteListOpen) }} disableRipple dense>
-            <ListItemText primary={`${sqliteListTitle.text}`} /> {sqliteListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          <ListItemButton onClick={()=>{ setSqlListOpen(!sqlListOpen) }} disableRipple dense>
+            <ListItemText primary={`${sqlListTitle.text}`} /> {sqlListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
-          <Collapse in={sqliteListOpen} timeout="auto" unmountOnExit>
+          <Collapse in={sqlListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              {sqliteList.map((item) => (
+              {sqlList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"

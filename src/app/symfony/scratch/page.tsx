@@ -80,9 +80,9 @@ const page = () => {
     <div>
       <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Symfony7-Tailwind from scratch</Typography>
       Install Symfony with symfony.exe
-      <CodeBlock text={"symfony new symfony7-tailwind --webapp\ncd symfony7-tailwind"} />
+      <CodeBlock text={"symfony new myapp --webapp\ncd myapp"} />
       Or with composer
-      <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" symfony7-tailwind\ncd symfony7-tailwind\ncomposer require webapp"} />     
+      <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" myapp\ncd myapp\ncomposer require webapp"} />     
       Install the Bundler Webpack-Encore
       <CodeBlock text={"composer require symfony/webpack-encore-bundle"} />
       This will update the project like this

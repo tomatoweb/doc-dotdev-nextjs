@@ -74,7 +74,14 @@ pm2 restart [id du process]
 help: https://www.youtube.com/watch?v=HIb4Ucs_foQ&ab_channel=SonnySangha
 
 
-(pour déployer un projet PHP voir l'exemple Symfony de agency.dotdev.be)
+Pour déployer un projet PHP:
+- en local npm run build (si on utilise Tailwind ou un framework frontend)
+- en local: git commit et push
+- sur le server remote: composer require pour les nouveaux bundles installés
+- sur le server remote: npm i pour les nouvelles dépendances frontend
+- npm run build, pour builder les updates Tailwind, etc..
+
+
 (pour installer composer: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer-on-debian-11)
 `;
   return (

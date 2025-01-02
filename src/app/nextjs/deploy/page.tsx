@@ -69,8 +69,6 @@ cd ../dashboard/
 pm2 start npm --name "dashboard.dotdev.be" -- start -- --port=3003
 cd ../eshop/
 pm2 start npm --name "e-shop.dotdev.be" -- start -- --port=3001
-cd ../social/
-pm2 start npm --name "social.dotdev.be" -- start -- --port=3006
 
 pm2 save
 

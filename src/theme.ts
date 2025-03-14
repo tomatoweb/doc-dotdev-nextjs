@@ -21,7 +21,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "geistSans",
-    fontWeightRegular: 400,
+    fontWeightRegular: 400, 
     h1: {
       fontFamily: 'Papyrus',
       fontWeight: 500,
@@ -34,6 +34,9 @@ const theme = createTheme({
       fontSize: '5rem',
       lineHeight: 1.2,
     },
+    caption12r: {
+      color: "red"
+    }
   },
 });
 export default theme;

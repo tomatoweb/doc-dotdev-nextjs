@@ -180,13 +180,17 @@ export async function createPost(formData: FormData) {
       <CodeBlock text={'npm i prisma --save-dev'}/>
       Initialize Prisma
       <CodeBlock text={'npx prisma init --datasource-provider sqlite'}/>  
-      Check .env file configuration
+      Check .env file configuration sqlite
       <CodeBlock text={'DATABASE_URL="file:./dev.db"'}/>  
+      Or mysql
+      <CodeBlock text={'DATABASE_URL="mysql://user:password@127.0.0.1:3306/db_name""'}/>  
       prisma/schema.prisma : Create your Model
       <CodeBlock text={text1}/> 
-      create or update prisma/dev.db, this also install the Prisma-client
+      create prisma/dev.db, this also install the Prisma-client
       <CodeBlock text={'npx prisma migrate dev --name init'}/>
-      Or 
+      if you make an update, e.g. add a property:
+      <CodeBlock text={'npx prisma generate'}/>
+      Or (prisma db push is not to be used in production)
       <CodeBlock text={'npx prisma db push'}/>  
       View prisma/dev.db
       <CodeBlock text={'npx prisma studio'}/>  

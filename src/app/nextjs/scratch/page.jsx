@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CodeBlock from "@/app/components/CodeBlock";
 
 const text1 = 
@@ -67,11 +67,13 @@ declare module "@mui/material/styles" {
 
   interface PaletteOptions {
     link: SimplePaletteColorOptions;
+    tahiti: SimplePaletteColorOptions;
   }
 }
 const theme = createTheme({
   palette: {
     mode: 'dark',
+    tahiti: {main: "#42f5b3"},
     link: { main: "#52a8ff" },  
     background: {
       default: '#000'
@@ -648,14 +650,18 @@ const page = () => {
       3.<CodeBlock text={"code ."} />
       4.<CodeBlock text={"npm install @mui/material @emotion/react @emotion/styled\nnpm install @mui/material-nextjs @emotion/cache"} />
       <Typography sx={{mb:6}}><i>note: for nextjs 15 add option --force</i></Typography>
-      5.<Typography sx={{mb:4}}>Import favorite .woff fonts files from H:/DEV/FONTS to /src/app/fonts,
+      5.<Typography sx={{mb:4}}>Import favorite .woff fonts files to /src/app/fonts,
       or download .ttf from Google fonts and convert it in .woff</Typography>
-      6.<Typography>Rewrite globals.css importing those fonts and add some {"<nav>"} scrollbar thiny css:</Typography>
+      6.<Typography>Add it to globals.css importing those fonts and add some {"<nav>"} scrollbar thiny css:</Typography>
       <CodeBlock text={text1} />
-      7.<Typography>Rewrite tailwind.config.ts by adding custom fonts and colors:</Typography>
-      <CodeBlock text={text2} />
-      8.<Typography>Create a src/theme.ts with a default fontfamily geistSans, (Papyrus and Brush are browser integrated fonts), a default mode dark, also include some theme customization for {"<h1> <h2>"} etc.. if needed :</Typography>
+      7. MUI theme:<Typography variant="h5">You can change the default font family with the MUI theme.typography.fontFamily property.</Typography>
+      <Typography> Set the default font-family for the global app by setting the typography:fontFamily key in src/theme.ts, set also a default mode dark, you can also include some theme customization for {"colors, body2, <h2>"}, etc :</Typography>
+      <Box sx={{color:'tahiti.main'}}>this is a MUI Box with MUI prop {`sx={{color:'tahiti.main'}}`}</Box>
+      <Typography>To change the font-family use tailwind, see point .8 Tailwind below</Typography>
       <CodeBlock text={text3} />
+      8. Tailwind theme:<Typography className="font-nothing">Rewrite tailwind.config.ts by adding custom fonts and colors, that you can use like this: {`className="font-nothing text-tahiti" (does not work with some MUI components (Typography, etc), but well with <Box className="font-nothing text-tahiti"></Box> )`}</Typography>
+      <Box className="font-dynapuff text-tahiti">this is a MUI Box with Tailwind {`className="font-dynapuff text-tahiti"`}</Box>
+      <CodeBlock text={text2} />
       9.<Typography>Rewrite app/layout.tsx: import the AppRouterCacheProvider and wrap all elements under the {"<body>"} with it and
       pass the theme to the ThemeProvider:</Typography>
       <CodeBlock text={text4} />

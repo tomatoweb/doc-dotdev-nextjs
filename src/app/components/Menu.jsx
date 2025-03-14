@@ -104,7 +104,7 @@ const nextjsList = [
     route: '/nextjs/map-find'
   },
 ];
-const symfonyListTitle = { text:"Symfony", route: '/symfony'};
+const symfonyListTitle = { text:"PHP Symfony Laravel", route: '/symfony'};
 const symfonyList = [
   {
     text: 'Symfony + Tailwind',
@@ -127,7 +127,11 @@ const symfonyList = [
     route: '/symfony/doctrinefix'
   },
   {
-    text: 'Push Data Mercure',
+    text: 'Mercure Push Hub',
+    route: '/symfony/mercure'
+  },
+  {
+    text: 'Messenger Async Queued msgs',
     route: '/symfony/mercure'
   },
   {
@@ -155,7 +159,7 @@ const symfonyList = [
     route: '/symfony/composer'
   },
   {
-    text: 'KPN Paginator',
+    text: 'KNP Paginator',
     route: '/symfony/kpnpaginator'
   },
 ];

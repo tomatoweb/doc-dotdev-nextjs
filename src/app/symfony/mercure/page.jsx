@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Alert, Typography } from "@mui/material";
 import CodeBlock from "@/app/components/CodeBlock";
 
 const text1 = 
@@ -80,12 +80,18 @@ const page = () => {
       Create PHP, JS and HTML files :
       <CodeBlock text={text2} />
       <CodeBlock text={text3} />
-      <p>Open a Powershell CLI in mercure directory  (mercure.exe only works in Powershell CLI)</p> 
+      <p>Open a Powershell CLI in mercure directory</p> 
       <p>( List Mercure options:  .\mercure.exe --help)</p>
       <CodeBlock text={".\\mercure.exe run --jwt-key 'demoSecretKey' --cors-allowed-origins 'http://localhost:8000' --allow-anonymous"} />
-      Serve:
+      <p>Or Open a Cmder CLI in mercure directory</p> 
+      <p>(url without quotes)</p>
+      <CodeBlock text={".\\mercure.exe run --jwt-key 'demoSecretKey' --cors-allowed-origins http://localhost:8000 --allow-anonymous"} />
+      <Alert color="warning" sx={{fontSize: '1rem'}}>
+        Stop the Wamp Apache service (e.g. Wamp), to allow Mercure Protocol to listen to clients browser HTTP Requests on localhost !
+      </Alert>
+      And now we can start the PHP built-in server :
       <CodeBlock text={"php -S localhost:8000 -t public"} />
-      <p>Open frontend in browser  http://localhost:8000/home</p>
+      <p>Open frontend in browser  http://localhost:8000/client</p>
       <p>We can see in the log powershell that the client has just subscribed:</p> 
       <CodeBlock text={text4} />
       <p>Go to publish : http://localhost:8000/publish</p>

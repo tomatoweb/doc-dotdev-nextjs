@@ -25,10 +25,13 @@ const page = () => {
   return (
     <div>
       <Typography variant="h6" sx={{fontWeight: 500, marginBottom:4}}>
-        🚀 Use magic constant __DIR__ to get your current script directory
+        🚀 Use magic constant __DIR__ to get your current file directory
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500, marginBottom:4}}>
       {`It has been in PHP only since version 5.3, and it's the same as using dirname(__FILE__)`}
+      </Typography>
+      <Typography variant="body1" sx={{fontWeight: 500, marginBottom:4, color:"coral"}}>
+      {`Current Working Directory VS. Current Script (file) Directory`}
       </Typography>
       <Image
         width={0}
@@ -40,28 +43,29 @@ const page = () => {
         alt=""
       />
       <Typography variant="body1" sx={{fontWeight: 500, marginTop: 4}}>
-      If we go to 
+      If we browse
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500, color: 'greenyellow'}}>
        http://127.0.0.1:8000/inc/file1.php  
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500}}>
-      it works fine because the current script is file1.php
+      it works fine because the current file (script) is file1.php and the CWD is /inc
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500}}>
       file2.php will be included.
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500}}>
-      But if we go to 
+      But if we browse 
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500, color: 'greenyellow'}}>
        http://127.0.0.1:8000 
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500}}>
-      the current script is index.php, thus the path ../shop/file2.php is wrong. 
+      the current file (script) is index.php and the CWD is the root /, thus the path ../shop/file2.php is wrong.
+      We included file1, so the current script is file1 BUT the current working directory (getcwd()) is still the one from index.php 
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500, marginBottom:4}}>
-      To fix this, we add __DIR__ to this path : 
+      To fix this, we add __DIR__ to this path, __DIR__ is the directory (/inc) from the current file (aka script) (/inc/file1.php)
       </Typography>
       <Image
         width={0}

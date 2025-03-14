@@ -34,7 +34,7 @@ const theme = createTheme({
       fontSize: '5rem',
       lineHeight: 1.2,
     },
-    caption12r: {
+    caption: {
       color: "red"
     }
   },

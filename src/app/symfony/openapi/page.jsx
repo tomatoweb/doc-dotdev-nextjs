@@ -27,7 +27,7 @@ const page = () => {
         alt=""
       />
       <Typography variant="h6" sx={{fontWeight: 500, marginTop:6, marginBottom:4}}>
-        OpenAPI is a specification for defining an API's Documentation.
+        {`OpenAPI is a specification for defining an API's Documentation.`}
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500, marginBottom:4, color:"tahiti.main"}}>
       Swagger Editor is a tool that can be used to generate this documentation.

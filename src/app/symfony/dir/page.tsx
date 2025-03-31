@@ -52,7 +52,7 @@ const page = () => {
       it works fine because the current file (script) is file1.php and the CWD is /inc
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500}}>
-      file2.php will be included.
+      Thus, file2.php will be included.
       </Typography>
       <Typography variant="body1" sx={{fontWeight: 500}}>
       But if we browse 

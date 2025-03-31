@@ -119,6 +119,10 @@ const symfonyList = [
     route: '/symfony/api'
   },
   {
+    text: 'OpenAPI - Swagger',
+    route: '/symfony/openapi'
+  },
+  {
     text: 'Doctrine',
     route: '/symfony/doctrine'
   },

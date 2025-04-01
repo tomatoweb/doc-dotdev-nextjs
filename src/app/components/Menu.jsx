@@ -104,23 +104,26 @@ const nextjsList = [
     route: '/nextjs/map-find'
   },
 ];
-const symfonyListTitle = { text:"PHP Symfony Laravel", route: '/symfony'};
+const laravelListTitle = { text:"Laravel", route: '/laravel'};
+const laravelList = [       
+    {
+        text: 'Eager Loading',
+        route: '/laravel/eager-loading'
+    },
+    {
+        text: 'Components',
+        route: '/laravel/components'
+    },
+];
+const symfonyListTitle = { text:"Symfony", route: '/symfony'};
 const symfonyList = [
   {
     text: 'Symfony + Tailwind',
     route: '/symfony/scratch'
   },
   {
-    text: 'Constructor Promotion',
-    route: '/symfony/promotion'
-  },
-  {
     text: 'Service API',
     route: '/symfony/api'
-  },
-  {
-    text: 'OpenAPI - Swagger',
-    route: '/symfony/openapi'
   },
   {
     text: 'Doctrine',
@@ -139,10 +142,6 @@ const symfonyList = [
     route: '/symfony/mercure'
   },
   {
-    text: '__DIR__',
-    route: '/symfony/dir'
-  },
-  {
     text: 'Webpack Encore',
     route: '/symfony/encore'
   },
@@ -159,35 +158,50 @@ const symfonyList = [
     route: '/symfony/bootstrap'
   },
   {
-    text: 'Composer',
-    route: '/symfony/composer'
-  },
-  {
     text: 'KNP Paginator',
     route: '/symfony/kpnpaginator'
   },
 ];
+const phpListTitle = { text:"PHP", route: '/php'};
+const phpList = [  
+  {
+    text: 'Constructor Promotion',
+    route: '/symfony/promotion'
+  },
+  {
+    text: 'OpenAPI - Swagger',
+    route: '/symfony/openapi'
+  },
+  {
+    text: '__DIR__',
+    route: '/symfony/dir'
+  },
+  {
+    text: 'Composer',
+    route: '/symfony/composer'
+  },
+];
 const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [
-  {
-    text: 'sx versus styled',
-    route: '/mui/versus'
-  },
-  {
-    text: 'Custom colors',
-    route: '/mui/color'
-  },
-  {
-    text: 'Custom fonts',
-    route: '/mui/fonts'
-  },
-  {
-    text: 'Draggable Scroll',
-    route: '/mui/draggable'
-  },
-  {
-    text: 'MUI X Tree View',
-    route: '/mui/xtreeview'
+    {
+        text: 'sx versus styled',
+        route: '/mui/versus'
+    },
+    {
+        text: 'Custom colors',
+        route: '/mui/color'
+    },
+    {
+        text: 'Custom fonts',
+        route: '/mui/fonts'
+    },
+    {
+        text: 'Draggable Scroll',
+        route: '/mui/draggable'
+    },
+    {
+        text: 'MUI X Tree View',
+        route: '/mui/xtreeview'
   },
   {
     text: 'Theme',
@@ -258,7 +272,9 @@ const StyledList = styled(List)({
 export default function Menu() {
   const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState('');
+  const [laravelListOpen, setLaravelListOpen] = useState(false);  
   const [symfonyListOpen, setSymfonyListOpen] = useState(false);  
+  const [phpListOpen, setPhpListOpen] = useState(false);  
   const [muiListOpen, setMuiListOpen] = useState(false);  
   const [tailwindListOpen, setTailwindListOpen] = useState(false);  
   const [nextjsListOpen, setNextjsListOpen] = useState(false);  
@@ -270,12 +286,60 @@ export default function Menu() {
       <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
         <StyledList sx={{width: 310, paddingLeft: 5}}>
 
+          <ListItemButton component="a" onClick={()=>{ setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
+            <ListItemText primary={`${laravelListTitle.text}`} /> {laravelListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={laravelListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {laravelList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+          
           <ListItemButton component="a" onClick={()=>{ setSymfonyListOpen(!symfonyListOpen) }} disableRipple dense>
             <ListItemText primary={`${symfonyListTitle.text}`} /> {symfonyListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
           </ListItemButton>
           <Collapse in={symfonyListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {symfonyList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+                  }}
+                  sx={[{pl: 4,}, { justifyContent: 'initial' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton component="a" onClick={()=>{ setPhpListOpen(!phpListOpen) }} disableRipple dense>
+            <ListItemText primary={`${phpListTitle.text}`} /> {phpListOpen ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
+          </ListItemButton>
+          <Collapse in={phpListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {phpList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"

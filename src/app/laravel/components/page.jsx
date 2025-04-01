@@ -1,18 +1,17 @@
 'use client'
 import React from 'react'
 import { styled  } from '@mui/material/styles'
-import { Typography } from '@mui/material'
 
 const StyledImage = styled('img')(() => ({
   width: '100%',
   maxWidth: 'none',
   height: 'auto',
   '&:hover': {
-    width: '170%',
+    width: '95vw',
     zIndex: '2',
-    position: 'relative'
-  },
-  transition: 'width 0.5s'
+    position: 'absolute',
+    left: 20
+  }
 }))
 
 const page = () => {
@@ -26,9 +25,6 @@ const page = () => {
         sizes="100vw"
         alt=""
       />
-      <Typography variant="h6" sx={{fontWeight: 500, marginTop:6, marginBottom:4}}>
-        {``}
-      </Typography>
     </main>
   )
 }

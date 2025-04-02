@@ -114,6 +114,10 @@ const laravelList = [
         text: 'Components',
         route: '/laravel/components'
     },
+    {
+        text: 'Custom Global Function',
+        route: '/laravel/custom-global-function'
+    },
 ];
 const symfonyListTitle = { text:"Symfony", route: '/symfony'};
 const symfonyList = [

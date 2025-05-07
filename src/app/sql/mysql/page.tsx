@@ -2,7 +2,7 @@ import CodeBlock from "@/app/components/CodeBlock";
 
 const page = () => {
   const text = 
-  `MYSQL:
+  `MYSQL (Linux - for Windows see below):
   
 mysql -u root -p
   
@@ -159,6 +159,12 @@ MODIFY \`id\` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+For Windows :
+-----------
+- Add mysql.exe in the system PATH (e.g. C:\\wamp64\\bin\\mysql\\mysql9.1.0\\bin) and restart the computer.
+- open a CLI : mysqld.exe -u mathias -p
 `;
 
 return (

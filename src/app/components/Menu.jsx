@@ -184,6 +184,14 @@ const phpList = [
     text: 'Composer',
     route: '/symfony/composer'
   },
+  {
+    text: 'HTML Bootstrap 5 Template',
+    route: '/symfony/html'
+  },
+  {
+    text: 'Curl API',
+    route: '/symfony/curl'
+  },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [

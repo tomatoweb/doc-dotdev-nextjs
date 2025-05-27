@@ -104,6 +104,7 @@ class User {
 }`;
 
 const StyledImage = styled('img')(() => ({
+    position: 'sticky', 
     width: '100%',
     maxWidth: 'none',
     height: 'auto',

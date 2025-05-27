@@ -192,6 +192,10 @@ const phpList = [
     text: 'Curl API',
     route: '/symfony/curl'
   },
+  {
+    text: 'Merge arrays with foreign key',
+    route: '/symfony/merge'
+  },
 ];
 const muiListTitle = { text:"MUI", route: '/mui'};
 const muiList = [

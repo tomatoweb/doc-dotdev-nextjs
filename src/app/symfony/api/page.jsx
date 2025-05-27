@@ -86,15 +86,16 @@ const text2 = `// template
 {% endblock %}`;
 
 const StyledImage = styled('img')(() => ({
-  width: '100%',
-  maxWidth: 'none',
-  height: 'auto',
-  '&:hover': {
-    width: '170%',
-    zIndex: '2',
-    position: 'relative'
-  },
-  transition: 'width 0.5s'
+    width: '100%',
+    maxWidth: 'none',
+    height: 'auto',
+    transition: 'all 500ms ease-in-out',
+    '&:hover': {
+      width: '60vw',
+      marginLeft: '-20rem',
+      zIndex: '2',
+      left: 20
+    }
 }))
 
 const page = () => {

@@ -1,11 +1,8 @@
 'use client'
 import React from 'react'
-import CodeBlock from '@/app/components/CodeBlock'
 import { Link, Typography } from '@mui/material';
 
-const text = ``;
-
-const page = () => {
+const Page = () => {
 
   return (
     <main>
@@ -39,12 +36,10 @@ const page = () => {
           <span> on top of </span>          
           <span className='text-link'>Webpack</span>
         </p>
-      </Typography>
-      
-      <CodeBlock text={text}/>      
+      </Typography>     
       
     </main>
   )
 }
 
-export default page
+export default Page

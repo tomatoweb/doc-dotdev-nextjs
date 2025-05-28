@@ -1,25 +1,34 @@
 'use client'
-import React from 'react'
-import { styled  } from '@mui/material/styles'
+import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
+import ImageModal from "@/app/components/ImageModal";
 
 const StyledImage = styled('img')(() => ({
   width: '100%',
   maxWidth: 'none',
   height: 'auto',
   '&:hover': {
-    width: '95vw',
-    zIndex: '2',
-    position: 'absolute',
-    left: 20
+    cursor: 'zoom-in'
   }
 }))
 
-const page = () => {
+const Page = () => {
+
+  const [popStatus, setPopStatus] = useState(false);
+
   return (
-    <main>      
-      <StyledImage 
-        className="rounded-lg" 
-        src="/component-laravel.png" 
+    <main>
+
+      <ImageModal
+        popStatus={popStatus}
+        img={"/component-laravel.png"}
+        closePop={(status) => setPopStatus(status)}
+      />
+
+      <StyledImage
+        onClick={() => setPopStatus(true)}
+        className="rounded-lg"
+        src="/component-laravel.png"
         width={0}
         height={0}
         sizes="100vw"
@@ -29,4 +38,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

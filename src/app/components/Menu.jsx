@@ -142,8 +142,8 @@ const symfonyList = [
     route: '/symfony/mercure'
   },
   {
-    text: 'Messenger Async Queued msgs',
-    route: '/symfony/mercure'
+    text: 'Messenger',
+    route: '/symfony/messenger'
   },
   {
     text: 'Webpack Encore',

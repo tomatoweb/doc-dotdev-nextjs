@@ -1,8 +1,9 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
-import { Typography } from '@mui/material';
-import { styled  } from '@mui/material/styles'
+import { Typography } from '@mui/material'
+import { styled } from '@mui/material/styles'
+import ImageModal from "@/app/components/ImageModal";
 
 const text = `<?php
 
@@ -104,37 +105,44 @@ class User {
 }`;
 
 const StyledImage = styled('img')(() => ({
-    position: 'sticky', 
-    width: '100%',
-    maxWidth: 'none',
-    height: 'auto',
-    transition: 'all 500ms ease-in-out',
-    '&:hover': {
-      width: '60vw',
-      marginLeft: '-20rem',
-      zIndex: '2',
-      left: 20
-    }
-  }))
+  position: 'sticky',
+  width: '100%',
+  maxWidth: 'none',
+  height: 'auto',
+  transition: 'all 500ms ease-in-out',
+  '&:hover': {
+    cursor: 'zoom-in'
+  }
+}))
 
-const page = () => {
+const Page = () => {
 
+  const [popStatus, setPopStatus] = useState(false);
+  
   return (
     <main>
       <Typography variant='h6' component="div">
-      🚀  Merge 2 arrays of arrays based on foreign key (id) 
+        🚀  Merge 2 arrays of arrays based on foreign key (id)
       </Typography>
-      <StyledImage 
-        className="rounded-lg" 
-        src="/merge.png" 
+
+      <ImageModal
+        popStatus={popStatus}
+        img={"/merge.png"}
+        closePop={(status) => setPopStatus(status)}
+      />
+
+      <StyledImage
+        onClick={() => setPopStatus(true)}
+        className="rounded-lg"
+        src="/merge.png"
         width={0}
         height={0}
         sizes="100vw"
         alt=""
       />
-      <CodeBlock text={text}/>
+      <CodeBlock text={text} />
     </main>
   )
 }
 
-export default page
+export default Page

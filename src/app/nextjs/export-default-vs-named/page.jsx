@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import Link from 'next/link';
 import { styled } from '@mui/material/styles'
 import { Typography } from '@mui/material'
 import ImageModal from "@/app/components/ImageModal";
@@ -37,9 +38,12 @@ const Page = () => {
         sizes="100vw"
         alt=""
       />
-      <Typography variant="h6" sx={{ fontWeight: 500, marginTop: 6, marginBottom: 4 }}>
-        {``}
+      <Typography variant="body1" sx={{ marginTop: 4}}>
+        {`source: `}
       </Typography>
+      <Link href="https://fr.react.dev/learn/importing-and-exporting-components">
+      https://fr.react.dev/learn/importing-and-exporting-components
+        </Link>
     </main>
   )
 }

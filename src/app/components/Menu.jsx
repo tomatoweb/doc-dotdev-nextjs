@@ -16,6 +16,10 @@ const nextjsList = [
     route: '/nextjs/action'
   },
   {
+    text: 'Export Default vs. Named',
+    route: '/nextjs/export-default-vs-named'
+  },
+  {
     text: 'ORM',
     route: '/nextjs/getbyorm'
   },

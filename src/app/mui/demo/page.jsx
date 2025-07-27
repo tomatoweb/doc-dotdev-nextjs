@@ -13,8 +13,6 @@ const page = () => {
     }
   });
 
-  console.log("Theme:", theme);
-
   return (
     <>
       {/* <ThemeProvider theme={theme}> */}

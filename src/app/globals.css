@@ -19,9 +19,6 @@ nav {
   scrollbar-color: #868282 transparent;
   scrollbar-gutter: stable;
 }
-code {
-  white-space: pre !important;
-}
 .codeblock {
   border: 1px solid #2e2e2e !important;
   scrollbar-width: thin;

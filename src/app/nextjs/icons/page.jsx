@@ -31,6 +31,21 @@ const App = () => {
 
 export default App;
     `;
+    const text3 = `npm install geist-icons
+
+
+import { ChevronDown, ChevronRight } from '@geist-ui/icons';
+
+const App = () => {
+  return (
+    <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
+     <ListItemText primary={\`\${laravelListTitle.text}\`} /> {laravelListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+    </ListItemButton>
+  );
+};
+
+export default App;
+    `;
 
     return (
         <main>
@@ -45,6 +60,11 @@ export default App;
             </Typography>
             <Link href={"https://mui.com/material-ui/material-icons/"} sx={{color: 'link.main'}}>https://mui.com/material-ui/material-icons/</Link>
             <CodeBlock text={text2} />
+            <Typography variant="h6" component="div" sx={{ mb: 2 }}>
+                ✨ Geist Icons
+            </Typography>
+            <Link href={"https://geist-ui.dev/en-us/components/icons"} sx={{color: 'link.main'}}>https://geist-ui.dev/en-us/components/icons</Link>
+            <CodeBlock text={text3} />
 
             <Typography variant="h6" component="div" sx={{ mb: 2 }}>
                 ✨ Demo

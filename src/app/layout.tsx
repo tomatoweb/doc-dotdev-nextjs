@@ -5,22 +5,29 @@ import theme from '@/theme';
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import Rightbar from "./components/Rightbar";
+import { TopNav } from "./components/TopNav";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+	const section = 'home';
+
   return (
     <html lang="en">
       <body>
         <AppRouterCacheProvider>	          
           <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <Navbar/>
-            <div className="flex flex-row max-w-7xl mx-auto justify-between mt-14">
+						<TopNav
+							section={section}
+						/>
+            {/* <Navbar/> */}
+            <div className="flex flex-row justify-between mx-auto mt-14">
               <Menu/>
-              <main className="w-full px-8 min-h-screen max-w-[60%]">              
+              <main className="mx-8">              
                 {children}              
               </main>       
               <Rightbar/>

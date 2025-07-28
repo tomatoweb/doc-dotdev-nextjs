@@ -16,7 +16,7 @@ const theme = createTheme({
     mode: 'dark',
     tahiti: { main: "#42f5b3" },
     banana: { main: "#ebd934" },
-    link: { main: "#52a8ff" },  
+    link: { main: "#5da7e3" },  
     background: {
       default: '#000'
     }

@@ -2,8 +2,8 @@ import { Box, Link, Typography } from "@mui/material";
 import CodeBlock from "@/app/components/CodeBlock";
 import { lightBlue, lime } from "@mui/material/colors";
 
-const text1 = 
-`@tailwind base;
+const text1 =
+	`@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -33,8 +33,8 @@ pre {
 .token {
   text-decoration: none !important;
 }`;
-const text11 = 
-`// use MUI default Theme properties, fo example 'secondary.main'
+const text11 =
+	`// use MUI default Theme properties, fo example 'secondary.main'
 // default theme can be found here
 // https://mui.com/material-ui/customization/default-theme/
 <Box sx={{fontFamily: 'nothingYouCanDo', color: 'secondary.main'}}>Some MUI Box</Box>
@@ -43,8 +43,8 @@ const text11 =
 <Box sx={{fontFamily: 'nothingYouCanDo', color: deepOrange[800]}}>Some MUI Box</Box>
 <li style={{fontFamily: "nothingYouCanDo"}}>Some element</li>
 `;
-const text2 = 
-`import type { Config } from "tailwindcss";
+const text2 =
+	`import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -68,8 +68,8 @@ const config: Config = {
   plugins: [],
 };
 export default config;`;
-const text3 = 
-`// src/theme.ts
+const text3 =
+	`// src/theme.ts
 'use client';
 import { createTheme, PaletteColor, SimplePaletteColorOptions } from '@mui/material/styles';
 declare module "@mui/material/styles" {
@@ -109,8 +109,8 @@ const theme = createTheme({
   },
 });
 export default theme;`;
-const text33 = 
-`// app/layout.tsx
+const text33 =
+	`// app/layout.tsx
 import "./globals.css";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -145,8 +145,8 @@ export default function RootLayout({
   );
 }`;
 
-const navbar = 
-`import Button from '@mui/material/Button';
+const navbar =
+	`import Button from '@mui/material/Button';
 import Link from 'next/link';
 
 export default function Navbar() {
@@ -167,8 +167,8 @@ export default function Navbar() {
     </div>
   );
 }`;
-const menu = 
-`'use client'
+const menu =
+	`'use client'
 import { styled  } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -463,8 +463,8 @@ export default function Menu() {
     </div>
   );
 }`;
-const rightbar = 
-`'use client'
+const rightbar =
+	`'use client'
 import { styled  } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -620,8 +620,8 @@ export default function Menu() {
     
   );
 }`;
-const testPage = 
-`import { Box, Container, Typography } from "@mui/material";
+const testPage =
+	`import { Box, Container, Typography } from "@mui/material";
 
 export default function Test() {
   return (
@@ -655,23 +655,20 @@ export default function Test() {
 }`;
 
 const page = () => {
-  return (
-    <div>
-        <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>
-            Nextjs Tailwind MUI app from scratch           
-        </Typography>
-        <Typography sx={{mb:4}}>
-            <Link href="https://mui.com/material-ui/integrations/nextjs/" target="_blank">
-                https://mui.com/material-ui/integrations/nextjs/
-            </Link>
-        </Typography>
-      1.<CodeBlock text={"npx create-next-app@latest appName"} />
-      2.<CodeBlock text={"cd appName"} />
-      3.<CodeBlock text={"code ."} />
-      4.<CodeBlock text={"npm install @mui/material @emotion/react @emotion/styled\nnpm install @mui/material-nextjs @emotion/cache"} />
-      <Typography sx={{mb:6}}><i>note: for nextjs 15 add option --force</i></Typography>
-      Configuration : Inside app/layout.tsx (or in theme.ts if you customized MUI theme), import the AppRouterCacheProvider and wrap all elements under the body with it:
-      <CodeBlock text={`import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+	return (
+		<div className="flex flex-col">
+			<h5 className="text-2xl font-semibold mb-4">
+				Nextjs,Tailwind and MUI app from scratch
+			</h5>
+			<CodeBlock text={"npx create-next-app@latest appName"} />
+			<CodeBlock text={"cd appName"} />
+			<CodeBlock text={"code ."} />
+			<CodeBlock text={"npm install @mui/material @emotion/react @emotion/styled\nnpm install @mui/material-nextjs @emotion/cache"} />
+			<Typography sx={{ mb: 6 }}><i>note: for nextjs 15 add option --force</i></Typography>
+			<Typography >
+				Configuration : Inside app/layout.tsx (or in theme.ts if you customized MUI theme), import the AppRouterCacheProvider and wrap all elements under the body with it:
+			</Typography>
+			<CodeBlock text={`import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 export default function RootLayout(props) {
    return (
@@ -684,52 +681,49 @@ export default function RootLayout(props) {
      </html>
    );
  }
-
         `} />
-        <Typography sx={{mb:4}}>{`The AppRouterCacheProvider component is responsible for collecting the CSS generated by MUI System on the server, as Next.js is streaming chunks of the .html page to the client.
+			<Typography sx={{ mb: 4 }}>{`The AppRouterCacheProvider component is responsible for collecting the CSS generated by MUI System on the server, as Next.js is streaming chunks of the .html page to the client.
             While it's not required to use the AppRouterCacheProvider component, it's recommended to use it to ensure that the styles are appended to the head and not rendering in the body. 
             See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153 for why it's better.`}
-        </Typography>
-      5. <Typography sx={{mb:4}}>Custom Fonts: Import favorite .woff fonts files to /src/app/fonts,
-      or download .ttf from Google fonts and convert it in .woff</Typography>
-      6.<Typography>Add it to globals.css importing those fonts and add some {"<nav>"} scrollbar thiny css:</Typography>
-      <CodeBlock text={text1} />
-      Now is MUI installed and a custom font is available, use it like this:
-      <CodeBlock text={text11} />
-      <Link href="/mui/demo" className="text-4xl font-nothing font-semibold" target="_blank">here is a demo</Link> 
-      <Typography sx={{my:4}} className="text-[#55eb34]">MUI theme props (e.g. secondary.main) can only be used in MUI components (e.g. Box), Not in native html tags (e.g. div or li)</Typography>
-      <Typography sx={{mb:4, color: lime[400]}}>{`Thus use sx={{}} for MUI component and style={{}} for native html tags`}</Typography>      
-      7. 
-      <Typography sx={{color: lightBlue[400]}} variant="h5">MUI theme</Typography>
-      <Typography sx={{my:2}}>{`You can change the DEFAULT font family for the global app in src/theme.ts by changing the MUI theme.typography.fontFamily property, for example "nothingYouCanDo".`}</Typography>
-      <Typography sx={{my:2}}> You can also set some theme customization for {"colors, body2, <h2>"}, etc.</Typography>
-      <Box sx={{color:'tahiti.main', my:2}}>this is a MUI Box with MUI prop {`sx={{color:'tahiti.main'}}`}, this color is defined in src/theme.ts</Box>
-      <CodeBlock text={text3} />
-      <Typography>Finally, add the ThemeProvider, CssBaseline in app/layout.tsx like this</Typography>
-      <CodeBlock text={text33} />
-
-      8.
-      <Typography sx={{color: lightBlue[400]}} variant="h5">Tailwind theme</Typography>
-      <Typography className="font-nothing">Rewrite tailwind.config.ts by adding custom fonts and colors, that you can use like this: {`className="font-nothing text-tahiti" (does not work with some MUI components (Typography, etc), but well with <Box className="font-nothing text-tahiti"></Box> )`}</Typography>
-      <Box className="font-dynapuff text-tahiti">this is a MUI Box with Tailwind {`className="font-dynapuff text-tahiti"`}</Box>
-      <CodeBlock text={text2} />
-
-      10.
-      <Typography sx={{color: lightBlue[400]}} variant="h5">Create the layout: Navbar, sidebar-menu, Rightbar, Homepage and test it</Typography>
-      src/app/components/Navbar.tsx
-      <CodeBlock text={navbar} />
-      src/app/components/Menu.tsx
-      <CodeBlock text={menu} />
-      src/app/components/Rightbar.tsx
-      <CodeBlock text={rightbar} />
-      src/app/test/page.tsx
-      <CodeBlock text={testPage} />
-      11.<Typography>Install Icons</Typography>
-      <CodeBlock text={"npm i @geist-ui/icons\nnpm i @mui/icons-material"} />
-
-      12.<CodeBlock text={"npm run dev"} />
-
-    </div>
-  )
+			</Typography>
+			<Typography sx={{ mb: 4 }}>Custom Fonts: Import favorite .woff fonts files to /src/app/fonts,
+				or download .ttf from Google fonts and convert it in .woff</Typography>
+			<Typography>Add it to globals.css importing those fonts and add some {"<nav>"} scrollbar thiny css:</Typography>
+			<CodeBlock text={text1} />
+			Now is MUI installed and a custom font is available, use it like this:
+			<CodeBlock text={text11} />
+			<Link href="/mui/demo" className="text-4xl font-nothing font-semibold" target="_blank">here is a demo</Link>
+			<Typography sx={{ my: 4 }} className="text-[#55eb34]">MUI theme props (e.g. secondary.main) can only be used in MUI components (e.g. Box), Not in native html tags (e.g. div or li)</Typography>
+			<Typography sx={{ mb: 4, color: lime[400] }}>{`Thus use sx={{}} for MUI component and style={{}} for native html tags`}</Typography>
+			<Typography sx={{ color: lightBlue[400] }} variant="h5">MUI theme</Typography>
+			<Typography sx={{ my: 2 }}>{`You can change the DEFAULT font family for the global app in src/theme.ts by changing the MUI theme.typography.fontFamily property, for example "nothingYouCanDo".`}</Typography>
+			<Typography sx={{ my: 2 }}> You can also set some theme customization for {"colors, body2, <h2>"}, etc.</Typography>
+			<Box sx={{ color: 'tahiti.main', my: 2 }}>this is a MUI Box with MUI prop {`sx={{color:'tahiti.main'}}`}, this color is defined in src/theme.ts</Box>
+			<CodeBlock text={text3} />
+			<Typography>Finally, add the ThemeProvider, CssBaseline in app/layout.tsx like this</Typography>
+			<CodeBlock text={text33} />
+			<Typography sx={{ color: lightBlue[400] }} variant="h5">Tailwind theme</Typography>
+			<Typography className="font-nothing">Rewrite tailwind.config.ts by adding custom fonts and colors, that you can use like this: {`className="font-nothing text-tahiti" (does not work with some MUI components (Typography, etc), but well with <Box className="font-nothing text-tahiti"></Box> )`}</Typography>
+			<Box className="font-dynapuff text-tahiti">this is a MUI Box with Tailwind {`className="font-dynapuff text-tahiti"`}</Box>
+			<CodeBlock text={text2} />
+			<Typography sx={{ color: lightBlue[400] }} variant="h5">Create the layout: Navbar, sidebar-menu, Rightbar, Homepage and test it</Typography>
+			src/app/components/Navbar.tsx
+			<CodeBlock text={navbar} />
+			src/app/components/Menu.tsx
+			<CodeBlock text={menu} />
+			src/app/components/Rightbar.tsx
+			<CodeBlock text={rightbar} />
+			src/app/test/page.tsx
+			<CodeBlock text={testPage} />
+			<Typography>Install Icons</Typography>
+			<CodeBlock text={"npm i @geist-ui/icons\nnpm i @mui/icons-material"} />
+			<CodeBlock text={"npm run dev"} />
+			<Typography sx={{ mb: 4 }}>
+				<Link href="https://mui.com/material-ui/integrations/nextjs/" target="_blank">
+					https://mui.com/material-ui/integrations/nextjs/
+				</Link>
+			</Typography>
+		</div>
+	)
 }
 export default page

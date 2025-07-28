@@ -14,7 +14,7 @@ const page = () => {
   });
 
   return (
-    <>
+    <div className="mx-4">
       {/* <ThemeProvider theme={theme}> */}
       <Slider
         sx={{ color: "secondary.main" }}
@@ -54,7 +54,7 @@ const page = () => {
         </div>
       </div>
       {/* </ThemeProvider> */}
-    </>
+    </div>
   )
 }
 

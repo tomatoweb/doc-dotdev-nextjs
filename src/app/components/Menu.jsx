@@ -8,6 +8,8 @@ import { Collapse } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
+import useSidebar from '@/app/hooks/useSidebar'
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const nextjsListTitle = { text: "Next.js", route: '/nextjs' };
 const nextjsList = [
@@ -313,11 +315,14 @@ export default function Menu() {
   const [debianListOpen, setDebianListOpen] = useState(false);
   const [sqlListOpen, setSqlListOpen] = useState(false);
 
+	const { sidebarState, setSidebarState }  = useSidebar()  // toggle sidebar
+	const isMobile = useMediaQuery('(max-width:1023px)'); // 1023 or less
+	
   return (
-    <div className='w-1/4 h-[84vh] sticky top-32 hidden lg:flex'>
+		
+		<div className={`bg-black h-full z-50 border border-slate-500 rounded-lg w-60 fixed top-32 transition-all duration-500 ${!isMobile ? 'flex ml-0' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}>
       <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
         <StyledList sx={{ width: 310, paddingLeft: 5 }}>
-
           <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
             <ListItemText primary={`${laravelListTitle.text}`} /> {laravelListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
           </ListItemButton>
@@ -332,7 +337,8 @@ export default function Menu() {
                   selected={selectedIndex === item.route}
                   onClick={() => {
                     setSelectedIndex(item.route);
-                    router.push(item.route)
+                    router.push(item.route);
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -530,5 +536,6 @@ export default function Menu() {
         </StyledList>
       </nav>
     </div>
+		
   );
 }

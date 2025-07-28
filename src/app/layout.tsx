@@ -1,40 +1,31 @@
 import "./globals.css";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import theme from '@/theme';	
-import Navbar from "./components/Navbar";
+import Providers from "@/Providers"
 import Menu from "./components/Menu";
 import Rightbar from "./components/Rightbar";
 import { TopNav } from "./components/TopNav";
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
 
 	const section = 'home';
 
-  return (
-    <html lang="en">
-      <body>
-        <AppRouterCacheProvider>	          
-          <ThemeProvider theme={theme}>
-            <CssBaseline/>
-						<TopNav
-							section={section}
-						/>
-            {/* <Navbar/> */}
-            <div className="flex flex-col sm:flex-row justify-between mx-auto mt-14">
-              <Menu/>
-              <main className="mx-2">              
-                {children}              
-              </main>       
-              <Rightbar/>
-            </div>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body>
+				<Providers>
+					<TopNav	section={section} />
+					<div className="flex flex-col sm:flex-row justify-between mx-auto mt-14">
+						<Menu />
+						<main className="mx-2 mt-10 w-[100vw] lg:w-[70vw]">
+							{children}
+						</main>
+						<Rightbar />
+					</div>
+				</Providers>
+			</body>
+		</html>
+	);
 }

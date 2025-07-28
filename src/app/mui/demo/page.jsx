@@ -14,7 +14,7 @@ const page = () => {
   });
 
   return (
-    <div className="mx-4">
+    <div className="mx-4 flex flex-col justify-center items-center">
       {/* <ThemeProvider theme={theme}> */}
       <Slider
         sx={{ color: "secondary.main" }}

@@ -11,21 +11,16 @@ import {
 	startTransition,
 	Suspense,
 } from 'react';
-import Image from 'next/image';
-import * as React from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-
 import { IconClose } from '@/app/components/Icon/IconClose';
 import { IconHamburger } from '@/app/components/Icon/IconHamburger';
 import { IconSearch } from '@/app/components/Icon/IconSearch';
 import { Search } from '@/app/components/Search';
-import { Logo } from '@/app/components/Logo';
-import { Feedback } from './Feedback';
-import { SidebarRouteTree } from '../Sidebar';
-import type { RouteItem } from '../getRouteMeta';
+import Menu from '@/app/components/Menu';
 import { siteConfig } from '@/siteConfig';
+import useSidebar from '@/app/hooks/useSidebar'
 
 declare global {
 	interface Window {
@@ -157,6 +152,7 @@ export default function TopNav({
 	const [showSearch, setShowSearch] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const scrollParentRef = useRef<HTMLDivElement>(null);
+	const { sidebarState, setSidebarState } = useSidebar()
 
 	// While the overlay is open, disable body scroll.
 	useEffect(() => {
@@ -238,7 +234,7 @@ export default function TopNav({
 							<button
 								type="button"
 								aria-label="Menu"
-								onClick={() => setIsMenuOpen(!isMenuOpen)}
+								onClick={() => {setIsMenuOpen(!isMenuOpen); setSidebarState( prev => !prev)}}
 								className={cn(
 									'active:scale-95 transition-transform flex lg:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link',
 									{
@@ -247,9 +243,8 @@ export default function TopNav({
 								)}>
 								{isMenuOpen ? <IconClose /> : <IconHamburger />}
 							</button>
-
 							<div className="flex flex-column justify-center items-center">
-								<Link href="/" className="text-3xl font-nothing font-semibold">
+								<Link href="/" className="text-4xl font-nothing font-semibold">
 									Docs
 								</Link>
 								<NextLink
@@ -365,34 +360,10 @@ export default function TopNav({
 								className="w-full pt-4 scrolling-touch lg:h-auto grow pe-0 lg:pe-5 lg:py-6 md:pt-4 lg:pt-4 scrolling-gpu">
 								{/* No fallback UI so need to be careful not to suspend directly inside. */}
 								<Suspense fallback={null}>
-									<div className="ps-3 xs:ps-5 xs:gap-0.5 xs:text-base overflow-x-auto flex flex-row lg:hidden text-base font-bold text-secondary dark:text-secondary-dark">
-										<NavItem isActive={section === 'learn'} url="/learn">
-											Learn
-										</NavItem>
-										<NavItem
-											isActive={section === 'reference'}
-											url="/reference/react">
-											Reference
-										</NavItem>
-										<NavItem
-											isActive={section === 'community'}
-											url="/community">
-											Community
-										</NavItem>
-										<NavItem isActive={section === 'blog'} url="/blog">
-											Blog
-										</NavItem>
-									</div>
-									<div
-										role="separator"
-										className="mt-4 mb-2 border-b ms-5 border-border dark:border-border-dark"
-									/>
+									<Menu/>
 								</Suspense>
 								<div className="h-16" />
 							</nav>
-							<div className="fixed bottom-0 hidden lg:block">
-								<Feedback />
-							</div>
 						</aside>
 					</div>
 				)}

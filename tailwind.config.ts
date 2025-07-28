@@ -14,6 +14,7 @@ const config: Config = {
       },
       colors: {
         'tahiti': '#3ab7bf',
+				'banana': '#ebd934',
         'midnight': '#121063',
         'primary': '#7367F0',
         'link': "#52a8ff",

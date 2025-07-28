@@ -25,9 +25,9 @@ export default function RootLayout({
 							section={section}
 						/>
             {/* <Navbar/> */}
-            <div className="flex flex-row justify-between mx-auto mt-14">
+            <div className="flex flex-col sm:flex-row justify-between mx-auto mt-14">
               <Menu/>
-              <main className="mx-8">              
+              <main className="mx-2">              
                 {children}              
               </main>       
               <Rightbar/>

@@ -249,7 +249,7 @@ export default function TopNav({
 							</button>
 
 							<div className="flex flex-column justify-center items-center">
-								<Link href="/" className="text-4xl font-nothing font-semibold">
+								<Link href="/" className="text-3xl font-nothing font-semibold">
 									Docs
 								</Link>
 								<NextLink

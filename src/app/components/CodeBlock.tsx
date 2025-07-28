@@ -8,7 +8,7 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 const CodeBlock = (props: { text: string; color?: string }) => {
   const [copied, setCopied] = useState(false);
   return (
-    <div className="relative my-8">
+    <div className="relative my-4">
       <div className="flex justify-end cursor-pointer mr-4">
         <Box sx={[{fontSize: '0.8rem', color: 'lightGreen', marginRight: 1}, copied ? { visibility: 'visible' } : { visibility: 'hidden'}]}>
           copied

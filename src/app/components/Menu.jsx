@@ -320,8 +320,9 @@ export default function Menu() {
 	
   return (
 		
-		<div className={`bg-black h-full z-50 border border-slate-500 rounded-lg w-60 fixed top-32 transition-all duration-500 ${!isMobile ? 'flex ml-0' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}>
-      <nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
+		<div className={`bg-gray-800 lg:bg-black h-fit z-50 rounded-lg absolute lg:sticky transition-all duration-500 ${sidebarState ? '' : '-ml-80 lg:ml-0'}`}>
+		{/* <div className={`bg-black h-full z-50 border border-slate-500 rounded-lg sticky transition-all duration-500 ${!isMobile ? '' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}> */}
+      <nav className='overflow-y-auto overflow-x-hidden my-6'>
         <StyledList sx={{ width: 310, paddingLeft: 5 }}>
           <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
             <ListItemText primary={`${laravelListTitle.text}`} /> {laravelListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}

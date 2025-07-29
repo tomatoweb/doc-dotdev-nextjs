@@ -221,7 +221,7 @@ export default function TopNav({
 			<div
 				className={cn(
 					isMenuOpen
-						? 'h-screen sticky top-0 lg:bottom-0 lg:h-screen flex flex-col shadow-nav dark:shadow-nav-dark z-20'
+						? ''
 						: 'z-40 sticky top-0'
 				)}>
 				<nav
@@ -238,7 +238,7 @@ export default function TopNav({
 								className={cn(
 									'active:scale-95 transition-transform flex lg:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link',
 									{
-										'text-link dark:text-link-dark': isMenuOpen,
+										'dark:text-link-dark': isMenuOpen,
 									}
 								)}>
 								{isMenuOpen ? <IconClose /> : <IconHamburger />}
@@ -344,29 +344,6 @@ export default function TopNav({
 						</div>
 					</div>
 				</nav>
-
-				{isMenuOpen && (
-					<div
-						ref={scrollParentRef}
-						className="overflow-y-scroll isolate no-bg-scrollbar lg:w-[342px] grow bg-wash dark:bg-wash-dark">
-						<aside
-							className={cn(
-								`lg:grow lg:flex flex-col w-full pb-8 lg:pb-0 lg:max-w-custom-xs z-40`,
-								isMenuOpen ? 'block z-30' : 'hidden lg:block'
-							)}>
-							<nav
-								role="navigation"
-								style={{ '--bg-opacity': '.2' } as React.CSSProperties} // Need to cast here because CSS vars aren't considered valid in TS types (cuz they could be anything)
-								className="w-full pt-4 scrolling-touch lg:h-auto grow pe-0 lg:pe-5 lg:py-6 md:pt-4 lg:pt-4 scrolling-gpu">
-								{/* No fallback UI so need to be careful not to suspend directly inside. */}
-								<Suspense fallback={null}>
-									<Menu/>
-								</Suspense>
-								<div className="h-16" />
-							</nav>
-						</aside>
-					</div>
-				)}
 			</div>
 		</>
 	);

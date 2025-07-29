@@ -241,7 +241,7 @@ export default function TopNav({
 										'dark:text-link-dark': isMenuOpen,
 									}
 								)}>
-								{isMenuOpen ? <IconClose /> : <IconHamburger />}
+								{sidebarState ? <IconClose /> : <IconHamburger />}
 							</button>
 							<div className="flex flex-column justify-center items-center">
 								<Link href="/" className="text-4xl font-nothing font-semibold">

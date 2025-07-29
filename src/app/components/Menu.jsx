@@ -365,6 +365,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -389,6 +390,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -413,6 +415,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -437,6 +440,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -461,6 +465,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -485,6 +490,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -509,6 +515,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
+										setSidebarState( prev => !prev)
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -526,6 +533,7 @@ export default function Menu() {
                 onClick={() => {
                   setSelectedIndex(item.route)
                   router.push(item.route)
+									setSidebarState( prev => !prev)
                 }}
                 sx={{ justifyContent: 'initial' }} dense
               >

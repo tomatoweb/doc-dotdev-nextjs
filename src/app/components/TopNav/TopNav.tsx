@@ -226,7 +226,7 @@ export default function TopNav({
 				)}>
 				<nav
 					className={cn(
-						'duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 px-1.5 lg:pe-5 lg:ps-4 z-40',
+						'duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 px-1.5 lg:pe-5 lg:ps-4 z-50',
 						{ 'dark:shadow-nav-dark shadow-nav': isScrolled || isMenuOpen }
 					)}>
 					<div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">

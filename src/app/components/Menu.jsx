@@ -325,7 +325,8 @@ export default function Menu() {
       <nav className='overflow-y-auto overflow-x-hidden my-6'>
         <StyledList sx={{ width: 310, paddingLeft: 5 }}>
           <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
-            <ListItemText primary={`${laravelListTitle.text}`} /> {laravelListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+            <ListItemText primary={`${laravelListTitle.text}`} /> 
+						{laravelListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
           </ListItemButton>
           <Collapse in={laravelListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>

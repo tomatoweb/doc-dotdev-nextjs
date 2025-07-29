@@ -23,7 +23,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "geistSans",
-    fontWeightRegular: 400, 
+    fontSize: 16, 
     h1: {
       fontFamily: 'Papyrus',
       fontWeight: 500,

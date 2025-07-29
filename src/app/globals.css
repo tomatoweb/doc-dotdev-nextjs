@@ -20,6 +20,7 @@ nav {
   scrollbar-gutter: stable;
 }
 .codeblock {
+	font-size: 1rem;
   border: 1px solid #2e2e2e !important;
   scrollbar-width: thin;
   scrollbar-color: #eaeaea transparent;

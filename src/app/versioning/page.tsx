@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import CodeBlock from "@/app/components/CodeBlock";
 
 const page = () => {
   const text = 
@@ -41,15 +42,11 @@ Résumé :
     "vendor/package": "^0.3.2", // >=0.3.2 <0.4.0 // except if major version is 0
 }
 `;
-  return (
-    
-      <nav className='overflow-x-auto text-sm'>
-        <Typography variant="h5" mb={4}>Versioning</Typography>
-        <pre>
-          {text}
-        </pre>
-      </nav>
-   
+  return (    
+      <>
+        <Typography variant="h5" mb={4} ml={6}>Versioning</Typography>
+        <CodeBlock text={text} />
+      </>   
   )
 }
 

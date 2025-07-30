@@ -226,8 +226,8 @@ export default function TopNav({
 			<div
 				className={cn(
 					isMenuOpen
-						? 'fixed w-full z-50'
-						: 'z-50 fixed w-full top-0'
+						? 'w-full z-50'
+						: 'z-50 w-full top-0'
 				)}>
 				<nav
 					className={cn(

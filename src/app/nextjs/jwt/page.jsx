@@ -1,3 +1,4 @@
+import CodeBlock from "@/app/components/CodeBlock";
 import { Typography } from "@mui/material";
 
 const page = () => {
@@ -70,15 +71,11 @@ Exemple de PAYLOAD contenu dans le JWT:
 Doc : https://jwt.io/introduction
 
 `;
-  return (
-    
-      <nav className='overflow-x-auto text-sm'>
-        <Typography variant="h5" mb={4}>Json Web Token</Typography>
-        <pre className="text-wrap">
-          {text}
-        </pre>
-      </nav>
-   
+  return (    
+      <>
+        <Typography variant="h5" mb={4} ml={6}>Json Web Token</Typography>
+        <CodeBlock text={text} />
+      </>   
   )
 }
 

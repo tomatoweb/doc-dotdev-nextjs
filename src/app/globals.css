@@ -25,6 +25,7 @@ nav {
   scrollbar-width: thin;
   scrollbar-color: #eaeaea transparent;
   scrollbar-gutter: stable;
+	word-wrap: break-word;
 }
 .token {
   text-decoration: none !important;

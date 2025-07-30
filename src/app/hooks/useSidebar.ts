@@ -8,7 +8,7 @@ const useSidebar = () => {
 
 	if (context === undefined) {
     //TODO: set better error message
-    throw new Error('useVerticalNav must be used within a VerticalNavProvider')
+    throw new Error('useSidebar must be used within a SidebarProvider')
   }
 
 	return context

@@ -18,9 +18,12 @@ import { IconClose } from '@/app/components/Icon/IconClose';
 import { IconHamburger } from '@/app/components/Icon/IconHamburger';
 import { IconSearch } from '@/app/components/Icon/IconSearch';
 import { Search } from '@/app/components/Search';
-import Menu from '@/app/components/Menu';
 import { siteConfig } from '@/siteConfig';
 import useSidebar from '@/app/hooks/useSidebar'
+import useSettings from '@/app/hooks/useSettings';
+import { useColorScheme } from '@mui/material/styles'
+import { Switch } from '@mui/material';
+
 
 declare global {
 	interface Window {
@@ -153,6 +156,8 @@ export default function TopNav({
 	const [isScrolled, setIsScrolled] = useState(false);
 	const scrollParentRef = useRef<HTMLDivElement>(null);
 	const { sidebarState, setSidebarState } = useSidebar()
+	const { settingsState, setSettingsState } = useSettings()
+	const { mode, setMode, setColorScheme } = useColorScheme();
 
 	// While the overlay is open, disable body scroll.
 	useEffect(() => {
@@ -175,7 +180,7 @@ export default function TopNav({
 				setIsMenuOpen(false);
 			}
 		}
-
+		setMode('dark')
 		closeIfNeeded();
 		media.addEventListener('change', closeIfNeeded);
 		return () => {
@@ -221,12 +226,12 @@ export default function TopNav({
 			<div
 				className={cn(
 					isMenuOpen
-						? ''
-						: 'z-40 sticky top-0'
+						? 'fixed w-full z-50'
+						: 'z-50 fixed w-full top-0'
 				)}>
 				<nav
 					className={cn(
-						'duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 px-1.5 lg:pe-5 lg:ps-4 z-50',
+						'duration-300 bg-black transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50',
 						{ 'dark:shadow-nav-dark shadow-nav': isScrolled || isMenuOpen }
 					)}>
 					<div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">
@@ -234,7 +239,7 @@ export default function TopNav({
 							<button
 								type="button"
 								aria-label="Menu"
-								onClick={() => {setIsMenuOpen(!isMenuOpen); setSidebarState( prev => !prev)}}
+								onClick={() => { setIsMenuOpen(!isMenuOpen); setSidebarState(prev => !prev) }}
 								className={cn(
 									'active:scale-95 transition-transform flex lg:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link',
 									{
@@ -305,7 +310,7 @@ export default function TopNav({
 										type="button"
 										aria-label="Use Dark Mode"
 										onClick={() => {
-											window.__setPreferredTheme('dark');
+											setMode(settingsState.mode ? 'dark' : 'light')
 										}}
 										className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
 										{darkIcon}
@@ -316,7 +321,7 @@ export default function TopNav({
 										type="button"
 										aria-label="Use Light Mode"
 										onClick={() => {
-											window.__setPreferredTheme('light');
+											setMode(settingsState.mode ? 'dark' : 'light')
 										}}
 										className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
 										{lightIcon}

@@ -19,7 +19,7 @@ export default function RootLayout({
 					<TopNav	section={section} />
 					<div className="flex flex-col sm:flex-row justify-between mx-auto">
 						<Menu />
-						<main className="ml-24 mr-6 lg:ml-[21rem] lg:w-[70vw] mt-28">
+						<main className="mx-6 mt-24 lg:ml-[21rem] lg:w-[70vw]">
 							{children}
 						</main>
 						<Rightbar />

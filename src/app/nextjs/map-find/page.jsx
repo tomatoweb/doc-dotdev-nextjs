@@ -47,10 +47,10 @@ export default Sandbox`;
 
 const FindMap = () => {
   return (
-    <main>
+    <>
       <CodeBlock text={text} />
       <CodeBlock text={text1} />
-    </main>
+    </>
   )
 }
 

@@ -22,7 +22,7 @@ import { siteConfig } from '@/siteConfig';
 import useSidebar from '@/app/hooks/useSidebar'
 import useSettings from '@/app/hooks/useSettings';
 import { useColorScheme } from '@mui/material/styles'
-import { Switch } from '@mui/material';
+import { useCookie, useMedia } from 'react-use'
 
 
 declare global {
@@ -146,6 +146,8 @@ function Kbd(props: { children?: React.ReactNode; wide?: boolean }) {
 	);
 }
 
+
+
 export default function TopNav({
 	section,
 }: {
@@ -156,8 +158,15 @@ export default function TopNav({
 	const [isScrolled, setIsScrolled] = useState(false);
 	const scrollParentRef = useRef<HTMLDivElement>(null);
 	const { sidebarState, setSidebarState } = useSidebar()
-	const { settingsState, setSettingsState } = useSettings()
+	const { settings, setSettings } = useSettings()
 	const { mode, setMode, setColorScheme } = useColorScheme();
+	const [isDark, setIsDark] = useState(true)
+	const systemModeDark = useMedia('(prefers-color-scheme: dark)', false)
+	const dark = systemModeDark && isDark
+
+	console.log('isdark : ', isDark)
+	console.log('systemModeDark : ', systemModeDark)
+	console.log('dark : ', dark)
 
 	// While the overlay is open, disable body scroll.
 	useEffect(() => {
@@ -169,25 +178,7 @@ export default function TopNav({
 			return undefined;
 		}
 	}, [isMenuOpen]);
-
-	// Also close the overlay if the window gets resized past mobile layout.
-	// (This is also important because we don't want to keep the body locked!)
-	useEffect(() => {
-		const media = window.matchMedia(`(max-width: 1023px)`);
-
-		function closeIfNeeded() {
-			if (!media.matches) {
-				setIsMenuOpen(false);
-			}
-		}
-		setMode('dark')
-		closeIfNeeded();
-		media.addEventListener('change', closeIfNeeded);
-		return () => {
-			media.removeEventListener('change', closeIfNeeded);
-		};
-	}, []);
-
+	
 	const scrollDetectorRef = useRef(null);
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -205,7 +196,7 @@ export default function TopNav({
 		observer.observe(scrollDetectorRef.current!);
 		return () => observer.disconnect();
 	}, []);
-
+	
 	const onOpenSearch = useCallback(() => {
 		startTransition(() => {
 			setShowSearch(true);
@@ -215,13 +206,26 @@ export default function TopNav({
 		setShowSearch(false);
 	}, []);
 
+	// Also close the overlay if the window gets resized past mobile layout.
+	// (This is also important because we don't want to keep the body locked!)
+	useEffect(() => {
+		const media = window.matchMedia(`(max-width: 1023px)`); // lg: 1023 or less
+
+		function closeIfNeeded() {
+			if (!media.matches) {
+				//setIsMenuOpen(false);
+			}
+		}
+		//closeIfNeeded();
+		media.addEventListener('change', closeIfNeeded);
+		return () => {
+			media.removeEventListener('change', closeIfNeeded);
+		};
+	}, []);
+
 	return (
 		<>
-			<Search
-				isOpen={showSearch}
-				onOpen={onOpenSearch}
-				onClose={onCloseSearch}
-			/>
+			<Search	isOpen={showSearch} onOpen={onOpenSearch}	onClose={onCloseSearch}	/>
 			<div ref={scrollDetectorRef} />
 			<div
 				className={cn(
@@ -231,8 +235,7 @@ export default function TopNav({
 				)}>
 				<nav
 					className={cn(
-						'duration-300 bg-black transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50',
-						{ 'dark:shadow-nav-dark shadow-nav': isScrolled || isMenuOpen }
+						'duration-300 transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50 '
 					)}>
 					<div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">
 						<div className="flex flex-row 3xl:flex-1 items-centers">
@@ -254,7 +257,7 @@ export default function TopNav({
 								</Link>
 								<NextLink
 									href="/versions"
-									className=" flex p-2 flex-column justify-center items-center text-gray-50 dark:text-gray-30 hover:text-link hover:dark:text-link-dark hover:underline text-sm ms-1 cursor-pointer">
+									className=" flex p-2 justify-center items-center text-sm ms-1">
 									v{siteConfig.version}
 								</NextLink>
 							</div>
@@ -263,7 +266,8 @@ export default function TopNav({
 							<button
 								type="button"
 								className={cn(
-									'flex 3xl:w-[56rem] 3xl:mx-0 relative ps-4 pe-1 py-1 h-10 bg-gray-800 dark:bg-gray-40/20 outline-none focus:outline-link betterhover:hover:bg-opacity-80 pointer items-center text-start w-full text-gray-30 rounded-full align-middle text-base'
+									'flex 3xl:w-[56rem] 3xl:mx-0 relative ps-4 pe-1 py-1 h-10 outline-none focus:outline-link betterhover:hover:bg-opacity-80 pointer items-center text-start w-full text-gray-30 rounded-full align-middle text-base',
+									{ 'bg-gray-800': dark, 'bg-gray-300': !dark }
 								)}
 								onClick={onOpenSearch}>
 								<IconSearch className="align-middle me-3 text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
@@ -305,28 +309,34 @@ export default function TopNav({
 										<IconSearch className="w-5 h-5 align-middle" />
 									</button>
 								</div>
-								<div className="flex dark:hidden">
+								{!dark && (
+								<div className="flex">
 									<button
 										type="button"
 										aria-label="Use Dark Mode"
 										onClick={() => {
-											setMode(settingsState.mode ? 'dark' : 'light')
+												setMode("dark")
+												setIsDark(true)
 										}}
 										className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
 										{darkIcon}
 									</button>
 								</div>
-								<div className="hidden dark:flex">
-									<button
-										type="button"
-										aria-label="Use Light Mode"
-										onClick={() => {
-											setMode(settingsState.mode ? 'dark' : 'light')
-										}}
-										className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
-										{lightIcon}
-									</button>
-								</div>
+								)} 
+								{dark && (
+									<div className="flex">
+										<button
+											type="button"
+											aria-label="Use Light Mode"
+											onClick={() => {
+												setMode("light")
+												setIsDark(false)
+											}}
+											className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
+											{lightIcon}
+										</button>
+									</div>								
+								)}
 								<div className="flex">
 									<Link
 										href="/community/translations"

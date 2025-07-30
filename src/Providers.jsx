@@ -9,16 +9,16 @@ const Providers = props => {
 	const { children } = props
 
 	return (
-		<ThemeProvider theme={theme}>
-			<AppRouterCacheProvider>
-				<CssBaseline />
-					<SettingsProvider>		
-						<SidebarProvider>							
-						{children}				
-							</SidebarProvider>		
-					</SettingsProvider>
-			</AppRouterCacheProvider>
-		</ThemeProvider>
+		<SidebarProvider>
+			<SettingsProvider>
+				<ThemeProvider theme={theme}>
+					<AppRouterCacheProvider>
+						<CssBaseline />
+						{children}
+					</AppRouterCacheProvider>
+				</ThemeProvider>
+			</SettingsProvider>
+		</SidebarProvider>
 	)
 }
 

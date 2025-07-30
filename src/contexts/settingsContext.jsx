@@ -1,16 +1,25 @@
 'use client'
-
 import { createContext, useState } from 'react'
+import settingsConfig from '@/settingsConfig'
+
 
 const SettingsContext = createContext()
 
-export const SettingsProvider = ({ children }) => {
+console.log(settingsConfig)
 
-	const [settingsState, setSettingsState] = useState("dark")
+export const SettingsProvider = props => {
 
-	return <SettingsContext.Provider value={{settingsState, setSettingsState}}>
-		{children}
+	const [settings, setSettings] = useState(settingsConfig)
+
+	return <SettingsContext.Provider 
+		value={{
+			settings, 
+			setSettings
+		}}
+	>
+		{props.children}
 	</SettingsContext.Provider>
 }
+
 
 export default SettingsContext

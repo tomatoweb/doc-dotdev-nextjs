@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Collapse } from '@mui/material';
+import { Collapse, Paper } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
@@ -311,7 +311,7 @@ export default function Menu() {
 	const isMobile = useMediaQuery('(max-width:1023px)'); // 1023 or less
 	
   return (		
-		<div className={`bg-gray-800 lg:bg-black z-10 rounded-lg absolute lg:fixed top-0 transition-all duration-500 ${sidebarState ? 'w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}>
+		<Paper className={`z-10 rounded-lg absolute lg:fixed top-0 lg:top-16 transition-all duration-500 ${sidebarState ? 'w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}>
 	   {/* <div className={`bg-gray-800 lg:bg-black z-10 rounded-lg absolute lg:sticky lg:flex top-14 transition-all duration-500 ${sidebarState ? 'ml-0 w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}> */}
 		{/* <div className={`bg-black h-full z-50 border border-slate-500 rounded-lg sticky transition-all duration-500 ${!isMobile ? '' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}> */}
       <nav className='overflow-y-auto overflow-x-hidden my-6'>
@@ -332,7 +332,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route);
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -357,7 +357,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -382,7 +382,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -407,7 +407,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -432,7 +432,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -457,7 +457,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -482,7 +482,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -507,7 +507,7 @@ export default function Menu() {
                   onClick={() => {
                     setSelectedIndex(item.route);
                     router.push(item.route)
-										setSidebarState( prev => !prev)
+										setSidebarState( false )
                   }}
                   sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
                 >
@@ -525,7 +525,7 @@ export default function Menu() {
                 onClick={() => {
                   setSelectedIndex(item.route)
                   router.push(item.route)
-									setSidebarState( prev => !prev)
+									setSidebarState( false )
                 }}
                 sx={{ justifyContent: 'initial' }} dense
               >
@@ -537,7 +537,7 @@ export default function Menu() {
 
         </StyledList>
       </nav>
-    </div>
+    </Paper>
 		
   );
 }

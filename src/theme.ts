@@ -12,7 +12,10 @@ declare module "@mui/material/styles" {
   }
 }
 const theme = createTheme({
-	colorSchemes: { light: true, dark: true },
+	colorSchemes: {
+    dark: true,
+		light: true,
+  },
   palette: {
 		mode: 'dark',
     tahiti: { main: "#42f5b3" },

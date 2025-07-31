@@ -23,6 +23,7 @@ import useSidebar from '@/app/hooks/useSidebar'
 import useSettings from '@/app/hooks/useSettings';
 import { useColorScheme } from '@mui/material/styles'
 import { useCookie, useMedia } from 'react-use'
+import { AppBar, Box } from '@mui/material';
 
 
 declare global {
@@ -160,13 +161,8 @@ export default function TopNav({
 	const { sidebarState, setSidebarState } = useSidebar()
 	const { settings, setSettings } = useSettings()
 	const { mode, setMode, setColorScheme } = useColorScheme();
-	const [isDark, setIsDark] = useState(true)
 	const systemModeDark = useMedia('(prefers-color-scheme: dark)', false)
-	const dark = systemModeDark && isDark
-
-	console.log('isdark : ', isDark)
-	console.log('systemModeDark : ', systemModeDark)
-	console.log('dark : ', dark)
+	const light = (mode === 'light' || !systemModeDark)
 
 	// While the overlay is open, disable body scroll.
 	useEffect(() => {
@@ -180,6 +176,7 @@ export default function TopNav({
 	}, [isMenuOpen]);
 	
 	const scrollDetectorRef = useRef(null);
+
 	useEffect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -202,6 +199,7 @@ export default function TopNav({
 			setShowSearch(true);
 		});
 	}, []);
+
 	const onCloseSearch = useCallback(() => {
 		setShowSearch(false);
 	}, []);
@@ -227,16 +225,8 @@ export default function TopNav({
 		<>
 			<Search	isOpen={showSearch} onOpen={onOpenSearch}	onClose={onCloseSearch}	/>
 			<div ref={scrollDetectorRef} />
-			<div
-				className={cn(
-					isMenuOpen
-						? 'w-full z-50'
-						: 'z-50 w-full top-0'
-				)}>
-				<nav
-					className={cn(
-						'duration-300 transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50 '
-					)}>
+			<AppBar className={cn( isMenuOpen ? 'w-full z-50 sticky' : 'z-50 w-full top-0 sticky' )}>
+				<Box className={cn('duration-300 transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50')}>
 					<div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">
 						<div className="flex flex-row 3xl:flex-1 items-centers">
 							<button
@@ -267,7 +257,7 @@ export default function TopNav({
 								type="button"
 								className={cn(
 									'flex 3xl:w-[56rem] 3xl:mx-0 relative ps-4 pe-1 py-1 h-10 outline-none focus:outline-link betterhover:hover:bg-opacity-80 pointer items-center text-start w-full text-gray-30 rounded-full align-middle text-base',
-									{ 'bg-gray-800': dark, 'bg-gray-300': !dark }
+									{ 'bg-gray-800': !light, 'bg-gray-300': light }
 								)}
 								onClick={onOpenSearch}>
 								<IconSearch className="align-middle me-3 text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
@@ -309,29 +299,23 @@ export default function TopNav({
 										<IconSearch className="w-5 h-5 align-middle" />
 									</button>
 								</div>
-								{!dark && (
+								{light && (
 								<div className="flex">
 									<button
 										type="button"
 										aria-label="Use Dark Mode"
-										onClick={() => {
-												setMode("dark")
-												setIsDark(true)
-										}}
+										onClick={() => { setMode("dark")}}
 										className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
 										{darkIcon}
 									</button>
 								</div>
 								)} 
-								{dark && (
+								{!light && (
 									<div className="flex">
 										<button
 											type="button"
 											aria-label="Use Light Mode"
-											onClick={() => {
-												setMode("light")
-												setIsDark(false)
-											}}
+											onClick={() => { setMode("light") }}
 											className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
 											{lightIcon}
 										</button>
@@ -358,8 +342,8 @@ export default function TopNav({
 							</div>
 						</div>
 					</div>
-				</nav>
-			</div>
+				</Box>
+			</AppBar >
 		</>
 	);
 }

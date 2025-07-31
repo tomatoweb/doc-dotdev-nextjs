@@ -174,7 +174,7 @@ export default function TopNav({
 			return undefined;
 		}
 	}, [isMenuOpen]);
-	
+
 	const scrollDetectorRef = useRef(null);
 
 	useEffect(() => {
@@ -193,7 +193,7 @@ export default function TopNav({
 		observer.observe(scrollDetectorRef.current!);
 		return () => observer.disconnect();
 	}, []);
-	
+
 	const onOpenSearch = useCallback(() => {
 		startTransition(() => {
 			setShowSearch(true);
@@ -223,9 +223,9 @@ export default function TopNav({
 
 	return (
 		<>
-			<Search	isOpen={showSearch} onOpen={onOpenSearch}	onClose={onCloseSearch}	/>
+			<Search isOpen={showSearch} onOpen={onOpenSearch} onClose={onCloseSearch} />
 			<div ref={scrollDetectorRef} />
-			<AppBar className={cn( isMenuOpen ? 'w-full z-50 sticky' : 'z-50 w-full top-0 sticky' )}>
+			<AppBar className={cn(isMenuOpen ? 'w-full z-50 sticky' : 'z-50 w-full top-0 sticky')}>
 				<Box className={cn('duration-300 transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50')}>
 					<div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">
 						<div className="flex flex-row 3xl:flex-1 items-centers">
@@ -271,22 +271,36 @@ export default function TopNav({
 								</span>
 							</button>
 						</div>
-						<div className="text-base justify-center items-center gap-1.5 flex 3xl:flex-1 flex-row 3xl:justify-end">
+						<div className="text-base justify-center items-center gap-4 flex 3xl:flex-1 flex-row 3xl:justify-end">
 							<div className="mx-2.5 gap-1.5 hidden lg:flex">
-								<NavItem isActive={section === 'learn'} url="/learn">
-									Learn
-								</NavItem>
-								<NavItem
-									isActive={section === 'reference'}
-									url="/reference/react">
-									Reference
-								</NavItem>
-								<NavItem isActive={section === 'community'} url="/community">
-									Community
-								</NavItem>
-								<NavItem isActive={section === 'blog'} url="/blog">
-									Blog
-								</NavItem>
+								<Link
+									href="https://mathiasappelmans.be/"
+									target="_blank"
+									rel="noreferrer noopener"
+									aria-label="Open on GitHub"
+									className="">
+									Portfolio
+								</Link>
+							</div>
+							<div className="mx-2.5 gap-1.5 hidden lg:flex">
+								<Link
+									href="https://mathiasappelmans.be/geo"
+									target="_blank"
+									rel="noreferrer noopener"
+									aria-label="Open on GitHub"
+									className="">
+									React Leaflet
+								</Link>
+							</div>
+							<div className="mx-2.5 gap-1.5 hidden lg:flex">
+								<Link
+									href="https://dashboard.dotdev.be/"
+									target="_blank"
+									rel="noreferrer noopener"
+									aria-label="Open on GitHub"
+									className="">
+									Dashboard
+								</Link>
 							</div>
 							<div className="flex w-full md:hidden"></div>
 							<div className="flex items-center -space-x-2.5 xs:space-x-0 ">
@@ -300,16 +314,16 @@ export default function TopNav({
 									</button>
 								</div>
 								{light && (
-								<div className="flex">
-									<button
-										type="button"
-										aria-label="Use Dark Mode"
-										onClick={() => { setMode("dark")}}
-										className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
-										{darkIcon}
-									</button>
-								</div>
-								)} 
+									<div className="flex">
+										<button
+											type="button"
+											aria-label="Use Dark Mode"
+											onClick={() => { setMode("dark") }}
+											className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
+											{darkIcon}
+										</button>
+									</div>
+								)}
 								{!light && (
 									<div className="flex">
 										<button
@@ -319,19 +333,19 @@ export default function TopNav({
 											className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
 											{lightIcon}
 										</button>
-									</div>								
+									</div>
 								)}
-								<div className="flex">
+								{/* <div className="flex">
 									<Link
 										href="/community/translations"
 										aria-label="Translations"
 										className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link">
 										{languageIcon}
 									</Link>
-								</div>
+								</div> */}
 								<div className="flex">
 									<Link
-										href="https://github.com/facebook/react/releases"
+										href="https://github.com/tomatoweb/doc-dotdev-nextjs"
 										target="_blank"
 										rel="noreferrer noopener"
 										aria-label="Open on GitHub"

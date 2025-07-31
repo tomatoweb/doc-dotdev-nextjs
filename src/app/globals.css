@@ -31,6 +31,7 @@ nav {
   text-decoration: none !important;
 }
 
+
 /* Enable scroll on position:fixed element */
 @layer utilities {
   .scrollbar::-webkit-scrollbar {

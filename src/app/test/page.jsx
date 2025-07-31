@@ -13,7 +13,7 @@ const page = () => {
 	console.log(mode)
 
 	return (		
-			<Paper sx={{height: '100vh'}}>
+			<Paper elevation={0} sx={{height: '100vh', borderColor: 'gray'}}>
 			<Switch onClick={
 				() => {
 					setSettingsState(settingsState === "light" ? "dark" : "light")

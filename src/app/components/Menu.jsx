@@ -298,20 +298,21 @@ const StyledList = styled(List)({
 export default function Menu() {
   const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState('');
-  const [laravelListOpen, setLaravelListOpen] = useState(false);
-  const [symfonyListOpen, setSymfonyListOpen] = useState(false);
-  const [phpListOpen, setPhpListOpen] = useState(false);
-  const [muiListOpen, setMuiListOpen] = useState(false);
-  const [tailwindListOpen, setTailwindListOpen] = useState(false);
-  const [nextjsListOpen, setNextjsListOpen] = useState(false);
-  const [debianListOpen, setDebianListOpen] = useState(false);
-  const [sqlListOpen, setSqlListOpen] = useState(false);
+  const [laravelListOpen, setLaravelListOpen] = useState(true);
+  const [symfonyListOpen, setSymfonyListOpen] = useState(true);
+  const [phpListOpen, setPhpListOpen] = useState(true);
+  const [muiListOpen, setMuiListOpen] = useState(true);
+  const [tailwindListOpen, setTailwindListOpen] = useState(true);
+  const [nextjsListOpen, setNextjsListOpen] = useState(true);
+  const [debianListOpen, setDebianListOpen] = useState(true);
+  const [sqlListOpen, setSqlListOpen] = useState(true);
 
 	const { sidebarState, setSidebarState }  = useSidebar()  // toggle sidebar
 	const isMobile = useMediaQuery('(max-width:1023px)'); // 1023 or less
 	
   return (		
-		<Paper className={`z-10 rounded-lg absolute lg:fixed top-0 lg:top-16 transition-all duration-500 ${sidebarState ? 'w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}>
+		<Paper elevation={0} 
+			className={`scrollbar z-10 rounded-lg absolute lg:fixed lg:bottom-0 lg:overflow-y-scroll lg:scroll top-16 transition-all duration-500 ${sidebarState ? 'w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}>
 	   {/* <div className={`bg-gray-800 lg:bg-black z-10 rounded-lg absolute lg:sticky lg:flex top-14 transition-all duration-500 ${sidebarState ? 'ml-0 w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}> */}
 		{/* <div className={`bg-black h-full z-50 border border-slate-500 rounded-lg sticky transition-all duration-500 ${!isMobile ? '' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}> */}
       <nav className='overflow-y-auto overflow-x-hidden my-6'>

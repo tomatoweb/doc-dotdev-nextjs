@@ -306,14 +306,12 @@ export default function Menu() {
   const [nextjsListOpen, setNextjsListOpen] = useState(true);
   const [debianListOpen, setDebianListOpen] = useState(true);
   const [sqlListOpen, setSqlListOpen] = useState(true);
+	const { sidebarState, setSidebarState }  = useSidebar()  // hook: toggle topbar open/close icon 
 
-	const { sidebarState, setSidebarState }  = useSidebar()  // toggle sidebar
-	const isMobile = useMediaQuery('(max-width:1023px)'); // 1023 or less
-	
   return (		
 		<Paper elevation={0} 
 			sx={{boxShadow: "4px 0 4px -5px #999"}}
-			className={`scrollbar z-10 rounded-lg fixed lg:fixed lg:bottom-0 overflow-y-scroll lg:scroll top-16 transition-all duration-500 shadow-[red_1px_0_5px_-2px] ${sidebarState ? 'w-full h-full' : '-ml-[24rem] lg:ml-0'}`}>
+			className={`scrollbar z-10 rounded-lg fixed bottom-0 overflow-y-scroll lg:scroll top-16 transition-all duration-500 shadow-[red_1px_0_5px_-2px] ${sidebarState ? 'w-fit h-full ml-0' : '-ml-80 lg:ml-0'}`}>
 	   {/* <div className={`bg-gray-800 lg:bg-black z-10 rounded-lg absolute lg:sticky lg:flex top-14 transition-all duration-500 ${sidebarState ? 'ml-0 w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}> */}
 		{/* <div className={`bg-black h-full z-50 border border-slate-500 rounded-lg sticky transition-all duration-500 ${!isMobile ? '' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}> */}
       <nav className='overflow-y-auto overflow-x-hidden my-6'>
@@ -327,7 +325,7 @@ export default function Menu() {
               {laravelList.map((item) => (
                 <ListButton
                   disableRipple
-                  component="a"
+                  component="div"
                   key={item.text}
                   dense
                   selected={selectedIndex === item.route}

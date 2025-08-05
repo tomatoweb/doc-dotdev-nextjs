@@ -189,11 +189,10 @@ export default function TopNav({
 								<Link href="/" className="text-4xl font-nothing font-semibold">
 									Docs
 								</Link>
-								<NextLink
-									href="/versions"
+								<div
 									className=" flex p-2 justify-center items-center text-sm ms-1">
 									v{settings.version}
-								</NextLink>
+								</div>
 							</div>							
 						</div>
 

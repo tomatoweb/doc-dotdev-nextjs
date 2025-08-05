@@ -5,23 +5,18 @@
 
 import {
 	useState,
-	useRef,
-	useCallback,
-	useEffect,
-	startTransition,
-	Children,
+	useEffect
 } from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { IconClose } from '@/app/components/Icon/IconClose';
 import { IconHamburger } from '@/app/components/Icon/IconHamburger';
 import useSidebar from '@/app/hooks/useSidebar'
 import useSettings from '@/app/hooks/useSettings';
 import { useColorScheme } from '@mui/material/styles'
-import { useCookie, useMedia } from 'react-use'
 import { AppBar, Box } from '@mui/material';
 import Search from '@/app/components/search'
+import { useMedia } from 'react-use';
 
 declare global {
 	interface Window {
@@ -75,7 +70,7 @@ const lightIcon = (
 	</svg>
 );
 
-const languageIcon = (
+/* const languageIcon = (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="24"
@@ -86,7 +81,7 @@ const languageIcon = (
 			d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z "
 		/>
 	</svg>
-);
+); */
 
 const githubIcon = (
 	<svg
@@ -115,35 +110,11 @@ function Link({
 	);
 }
 
-function NavItem({ url, isActive, children }: any) {
-	return (
-		<div className="flex flex-auto sm:flex-1">
-			<Link
-				href={url}
-				className={cn(
-					'active:scale-95 transition-transform w-full text-center outline-link py-1.5 px-1.5 xs:px-3 sm:px-4 rounded-full capitalize whitespace-nowrap',
-					!isActive && 'hover:bg-primary/5 hover:dark:bg-primary-dark/5',
-					isActive &&
-					'bg-highlight dark:bg-highlight-dark text-link dark:text-link-dark'
-				)}>
-				{children}
-			</Link>
-		</div>
-	);
-}
-
-export default function TopNav({
-	section,
-}: {
-	section: 'learn' | 'reference' | 'community' | 'blog' | 'home' | 'unknown';
-}) {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [showSearch, setShowSearch] = useState(false);
-	const [isScrolled, setIsScrolled] = useState(false);
-	const scrollParentRef = useRef<HTMLDivElement>(null);
+export default function TopNav() {
+	const [isMenuOpen] = useState(false);
 	const { sidebarState, setSidebarState } = useSidebar()
-	const { settings, setSettings } = useSettings()
-	const { mode, setMode, setColorScheme } = useColorScheme();
+	const { settings} = useSettings()
+	const { mode, setMode} = useColorScheme();
 	const systemModeDark = useMedia('(prefers-color-scheme: dark)', false)
 	const light = (mode === 'light' || !systemModeDark)
 	

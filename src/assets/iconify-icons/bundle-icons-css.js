@@ -56,9 +56,9 @@ const sources = {
 }
 
 // File to save bundle to
-const target = join(__dirname, 'generated-icons.css')
+const target = join(__dirname, 'generated-icons.css');
 
-;(async function () {
+(async function () {
   // Create directory for output if missing
   const dir = dirname(target)
 
@@ -67,7 +67,7 @@ const target = join(__dirname, 'generated-icons.css')
       recursive: true
     })
   } catch (err) {
-    //
+    console.log(err)
   }
 
   const allIcons = []

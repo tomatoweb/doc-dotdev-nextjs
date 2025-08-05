@@ -1,11 +1,9 @@
 import { KBarAnimator, KBarPortal, KBarPositioner, KBarProvider, KBarResults, KBarSearch, useKBar, useMatches } from "kbar"
+import { useColorScheme } from '@mui/material/styles'
+import { useMedia } from 'react-use';
 import cn from 'classnames';
-import { IconButton, useColorScheme } from "@mui/material";
-import { useCookie, useMedia } from 'react-use'
 import { IconSearch } from '@/app/components/Icon/IconSearch';
 import data from '@/data/searchData'
-import AppleIcon from '@mui/icons-material/Apple';
-
 
 /* You can open Kbar using Toggle button.
 
@@ -33,7 +31,7 @@ const ComponentWithUseKBar = props => {
 
 const Search = () => {
 
-	const { mode, setMode, setColorScheme } = useColorScheme();
+	const { mode } = useColorScheme();
 	const systemModeDark = useMedia('(prefers-color-scheme: dark)', false)
 	const light = (mode === 'light' || !systemModeDark)	
 

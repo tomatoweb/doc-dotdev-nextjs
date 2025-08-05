@@ -1,14 +1,13 @@
 'use client'
-import { createTheme, Paper, Switch, ThemeProvider, Typography } from "@mui/material"
-import { useEffect, useState } from "react"
+import { Paper, Switch, Typography } from "@mui/material"
 import { useColorScheme } from '@mui/material'
 import useSettings from "../hooks/useSettings"
 
 
-const page = () => {
+const Page = () => {
 
 	const { settingsState, setSettingsState } = useSettings()
-	const { mode, setMode, setColorScheme } = useColorScheme();
+	const { setColorScheme } = useColorScheme();
 
 	return (		
 			<Paper elevation={0} sx={{height: '100vh', borderColor: 'gray'}}>
@@ -27,4 +26,4 @@ const page = () => {
 	)
 }
 
-export default page
+export default Page

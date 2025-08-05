@@ -9,22 +9,19 @@ import {
 	useCallback,
 	useEffect,
 	startTransition,
-	Suspense,
+	Children,
 } from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { IconClose } from '@/app/components/Icon/IconClose';
 import { IconHamburger } from '@/app/components/Icon/IconHamburger';
-import { IconSearch } from '@/app/components/Icon/IconSearch';
-import { Search } from '@/app/components/Search';
-import { siteConfig } from '@/siteConfig';
 import useSidebar from '@/app/hooks/useSidebar'
 import useSettings from '@/app/hooks/useSettings';
 import { useColorScheme } from '@mui/material/styles'
 import { useCookie, useMedia } from 'react-use'
 import { AppBar, Box } from '@mui/material';
-
+import Search from '@/app/components/search'
 
 declare global {
 	interface Window {
@@ -135,20 +132,6 @@ function NavItem({ url, isActive, children }: any) {
 	);
 }
 
-function Kbd(props: { children?: React.ReactNode; wide?: boolean }) {
-	const { wide, ...rest } = props;
-	const width = wide ? 'w-10' : 'w-5';
-
-	return (
-		<kbd
-			className={`${width} h-5 border border-transparent me-1 bg-wash dark:bg-wash-dark text-gray-30 align-middle p-0 inline-flex justify-center items-center text-xs text-center rounded-md`}
-			{...rest}
-		/>
-	);
-}
-
-
-
 export default function TopNav({
 	section,
 }: {
@@ -163,46 +146,7 @@ export default function TopNav({
 	const { mode, setMode, setColorScheme } = useColorScheme();
 	const systemModeDark = useMedia('(prefers-color-scheme: dark)', false)
 	const light = (mode === 'light' || !systemModeDark)
-
-	// While the overlay is open, disable body scroll.
-	useEffect(() => {
-		if (isMenuOpen) {
-			const preferredScrollParent = scrollParentRef.current!;
-			disableBodyScroll(preferredScrollParent);
-			return () => enableBodyScroll(preferredScrollParent);
-		} else {
-			return undefined;
-		}
-	}, [isMenuOpen]);
-
-	const scrollDetectorRef = useRef(null);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					setIsScrolled(!entry.isIntersecting);
-				});
-			},
-			{
-				root: null,
-				rootMargin: `0px 0px`,
-				threshold: 0,
-			}
-		);
-		observer.observe(scrollDetectorRef.current!);
-		return () => observer.disconnect();
-	}, []);
-
-	const onOpenSearch = useCallback(() => {
-		startTransition(() => {
-			setShowSearch(true);
-		});
-	}, []);
-
-	const onCloseSearch = useCallback(() => {
-		setShowSearch(false);
-	}, []);
+	
 
 	// Also close the overlay if the window gets resized past mobile layout.
 	// (This is also important because we don't want to keep the body locked!)
@@ -223,16 +167,16 @@ export default function TopNav({
 
 	return (
 		<>
-			<Search isOpen={showSearch} onOpen={onOpenSearch} onClose={onCloseSearch} />
-			<div ref={scrollDetectorRef} />
 			<AppBar className={cn(isMenuOpen ? 'w-full z-50 sticky' : 'z-50 w-full top-0 sticky')}>
 				<Box className={cn('duration-300 transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50')}>
 					<div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">
+
+							{/* mobile open/close side menu , logo, version */}
 						<div className="flex flex-row 3xl:flex-1 items-centers">
 							<button
 								type="button"
 								aria-label="Menu"
-								onClick={() => { setIsMenuOpen(!isMenuOpen); setSidebarState(prev => !prev) }}
+								onClick={() => { setSidebarState(!sidebarState) }}
 								className={cn(
 									'active:scale-95 transition-transform flex lg:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link',
 									{
@@ -240,7 +184,7 @@ export default function TopNav({
 									}
 								)}>
 								{sidebarState ? <IconClose /> : <IconHamburger />}
-							</button>
+							</button>							
 							<div className="flex flex-column justify-center items-center">
 								<Link href="/" className="text-4xl font-nothing font-semibold">
 									Docs
@@ -248,29 +192,15 @@ export default function TopNav({
 								<NextLink
 									href="/versions"
 									className=" flex p-2 justify-center items-center text-sm ms-1">
-									v{siteConfig.version}
+									v{settings.version}
 								</NextLink>
-							</div>
+							</div>							
 						</div>
-						<div className="items-center justify-center flex-1 hidden w-full md:flex 3xl:w-auto 3xl:shrink-0 3xl:justify-center">
-							<button
-								type="button"
-								className={cn(
-									'flex 3xl:w-[56rem] 3xl:mx-0 relative ps-4 pe-1 py-1 h-10 outline-none focus:outline-link betterhover:hover:bg-opacity-80 pointer items-center text-start w-full text-gray-30 rounded-full align-middle text-base',
-									{ 'bg-gray-800': !light, 'bg-gray-300': light }
-								)}
-								onClick={onOpenSearch}>
-								<IconSearch className="align-middle me-3 text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
-								Search
-								<span className="hidden ms-auto sm:flex item-center me-1">
-									<Kbd data-platform="mac">⌘</Kbd>
-									<Kbd data-platform="win" wide>
-										Ctrl
-									</Kbd>
-									<Kbd>K</Kbd>
-								</span>
-							</button>
-						</div>
+
+						{/* Kbar */}
+						<Search />						
+
+						{/* Links bar, icons */}
 						<div className="text-base justify-center items-center gap-4 flex 3xl:flex-1 flex-row 3xl:justify-end">
 							<div className="mx-2.5 gap-1.5 hidden lg:flex">
 								<Link
@@ -304,7 +234,7 @@ export default function TopNav({
 							</div>
 							<div className="flex w-full md:hidden"></div>
 							<div className="flex items-center -space-x-2.5 xs:space-x-0 ">
-								<div className="flex md:hidden">
+								{/* <div className="flex md:hidden">
 									<button
 										aria-label="Search"
 										type="button"
@@ -312,7 +242,7 @@ export default function TopNav({
 										onClick={onOpenSearch}>
 										<IconSearch className="w-5 h-5 align-middle" />
 									</button>
-								</div>
+								</div> */}
 								{light && (
 									<div className="flex">
 										<button
@@ -355,6 +285,7 @@ export default function TopNav({
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</Box>
 			</AppBar >

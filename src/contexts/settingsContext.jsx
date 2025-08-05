@@ -5,8 +5,6 @@ import settingsConfig from '@/settingsConfig'
 
 const SettingsContext = createContext()
 
-console.log(settingsConfig)
-
 export const SettingsProvider = props => {
 
 	const [settings, setSettings] = useState(settingsConfig)

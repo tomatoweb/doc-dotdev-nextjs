@@ -9,8 +9,6 @@ const page = () => {
 
 	const { settingsState, setSettingsState } = useSettings()
 	const { mode, setMode, setColorScheme } = useColorScheme();
-	
-	console.log(mode)
 
 	return (		
 			<Paper elevation={0} sx={{height: '100vh', borderColor: 'gray'}}>

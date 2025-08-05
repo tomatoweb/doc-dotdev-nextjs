@@ -58,6 +58,10 @@ const nextjsList = [
     route: '/nextjs/icons'
   },
   {
+    text: 'Iconify',
+    route: '/nextjs/iconify'
+  },
+  {
     text: 'Form',
     route: '/nextjs/form-old-way'
   },
@@ -315,6 +319,7 @@ export default function Menu() {
 	   {/* <div className={`bg-gray-800 lg:bg-black z-10 rounded-lg absolute lg:sticky lg:flex top-14 transition-all duration-500 ${sidebarState ? 'ml-0 w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}> */}
 		{/* <div className={`bg-black h-full z-50 border border-slate-500 rounded-lg sticky transition-all duration-500 ${!isMobile ? '' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}> */}
       <nav className='overflow-y-auto overflow-x-hidden my-6'>
+				{/*  */}
         <StyledList sx={{ width: 310, paddingLeft: 5 }}>
           <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
             <ListItemText primary={`${laravelListTitle.text}`} /> 

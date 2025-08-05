@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const CodeBlock = (props: { text: string; color?: string }) => {
+const CodeBlock = (props: { text: string; color?: string; lang?: string }) => {
   const [copied, setCopied] = useState(false);
+	const language = props.lang || "jsx"
   return (
     <div className="relative my-4">
       <div className="flex justify-end cursor-pointer mr-4">
@@ -30,7 +31,7 @@ const CodeBlock = (props: { text: string; color?: string }) => {
       </div>
       <SyntaxHighlighter
         className="codeblock"
-        language="jsx"
+        language={language}
         style={atomDark}
         wrapLongLines
         customStyle={{

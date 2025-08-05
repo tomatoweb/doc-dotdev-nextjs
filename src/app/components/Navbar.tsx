@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Github from '@geist-ui/icons/github'
 import LightIcon from './Icon/LightIcon';
 import DarkIcon from './Icon/DarkIcon';
 import GithubIcon from './Icon/GithubIcon';

@@ -1,17 +1,11 @@
 "use client";
 
-import { Avatar, Button, Chip, createTheme, Slider } from "@mui/material";
+import { Avatar, Button, Chip, Slider } from "@mui/material";
 import AppleIcon from '@mui/icons-material/Apple';
 import { deepOrange } from "@mui/material/colors";
 import { Bone } from 'lucide-react';
 
 const page = () => {
-
-  const theme = createTheme({
-    palette: {
-      primary: deepOrange,
-    }
-  });
 
   return (
     <div className="mx-4 flex flex-col justify-center items-center">

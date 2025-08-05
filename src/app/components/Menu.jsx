@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 import useSidebar from '@/app/hooks/useSidebar'
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 const nextjsListTitle = { text: "Next.js", route: '/nextjs' };
 const nextjsList = [

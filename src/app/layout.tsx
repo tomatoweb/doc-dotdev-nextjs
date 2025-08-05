@@ -12,13 +12,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 
-	const section = 'home';
-
 	return (
 		<html lang="en">
 			<body>
 				<Providers>
-					<TopNav	section={section} />
+					<TopNav />
 					<div className="relative flex flex-col sm:flex-row justify-between mx-auto">
 						<Menu />
 						<main className="mx-6 mt-20 lg:ml-[21rem] lg:w-[70vw]">

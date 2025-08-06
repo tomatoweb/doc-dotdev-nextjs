@@ -1,5 +1,5 @@
 import { Box, Link, Typography } from "@mui/material";
-//import CodeBlock from "@/app/components/CodeBlock";
+import CodeBlock from "@/app/components/CodeBlock";
 import { lightBlue, lime } from "@mui/material/colors";
 
 const text1 =
@@ -702,6 +702,20 @@ const page = () => {
 			src/app/test/page.tsx
 			
 			<Typography>Install Icons</Typography>
+			<CodeBlock text={`import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+
+export default function RootLayout(props) {
+   return (
+     <html lang="en">
+       <body>
+        <AppRouterCacheProvider>
+           {props.children}
+        </AppRouterCacheProvider>
+       </body>
+     </html>
+   );
+ }
+        `} />
 			<div>
 				{text1}
 				{text11}

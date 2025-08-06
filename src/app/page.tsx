@@ -1,3 +1,4 @@
+'use client'
 import { Box, Link, Typography } from "@mui/material";
 //import CodeBlock from "@/app/components/CodeBlock";
 import { lightBlue, lime } from "@mui/material/colors";

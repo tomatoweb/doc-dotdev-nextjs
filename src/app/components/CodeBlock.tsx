@@ -2,12 +2,9 @@
 import { Copy } from '@geist-ui/icons';
 import { Box } from '@mui/material';
 import { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const CodeBlock = (props: { text: string; color?: string; lang?: string }) => {
   const [copied, setCopied] = useState(false);
-	const language = props.lang || "jsx"
   return (
     <div className="relative my-4">
       <div className="flex justify-end cursor-pointer mr-4">
@@ -15,6 +12,7 @@ const CodeBlock = (props: { text: string; color?: string; lang?: string }) => {
           copied
         </Box>
         <Copy
+					className='absolute top-5 right-8'
           size={17}
           color='lightgray'
           onClick={() => {
@@ -29,24 +27,13 @@ const CodeBlock = (props: { text: string; color?: string; lang?: string }) => {
           }}
           />
       </div>
-      <SyntaxHighlighter
-        className="codeblock"
-        language={language}
-        style={atomDark}
-        wrapLongLines
-        customStyle={{
-            backgroundColor: "#0a0a0a",
-            opacity: "1",
-            marginTop: "-2rem",
-            paddingTop: "1.7rem"
-        }}
-        codeTagProps={{
-            style: {
-                color: props.color || 'white',
-            },
-        }}>
+      <div
+        className="codeblock bg-slate-800 mx-4 -mt-2 py-4 px-5 overflow-x-auto rounded-md">
+					<pre className=''>
         {props.text}
-      </SyntaxHighlighter>
+
+					</pre>
+      </div>
     </div>
   )
 }

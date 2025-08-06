@@ -711,6 +711,7 @@ const page = () => {
 				{navbar}
 				{menu}
 				{rightbar}
+				{testPage}
 			</div>
 			
 			<Typography sx={{ mb: 4 }}>

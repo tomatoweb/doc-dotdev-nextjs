@@ -16,7 +16,7 @@ Unhandled Runtime Error : TypeError: undefined is not an object (evaluating ‘q
 	in others words, the query object from useKBar() must be hooked in the component that toggle the KBar query 
 */
 const ComponentWithUseKBar = props => {
-	// Props
+	console.log('search')
 	const { children, className, tag, triggerClick = false } = props
 	const { query } = useKBar()
 	const Tag = tag || 'div' // customizable component
@@ -26,8 +26,6 @@ const ComponentWithUseKBar = props => {
 		</Tag>
 	)
 }
-
-
 
 const Search = () => {
 

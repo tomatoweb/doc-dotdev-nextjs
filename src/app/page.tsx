@@ -2,6 +2,8 @@
 import { Box, Link, Typography } from "@mui/material";
 import CodeBlock from "@/app/components/CodeBlock";
 import { lightBlue, lime } from "@mui/material/colors";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const text1 =
 	`@tailwind base;
@@ -703,7 +705,9 @@ const page = () => {
 			src/app/test/page.tsx
 			
 			<Typography>Install Icons</Typography>
-			<CodeBlock text={`import`} />
+			<SyntaxHighlighter language="javascript" style={docco}>
+      {`some tex`}
+    </SyntaxHighlighter>
 			<div>
 				{text1}
 				{text11}

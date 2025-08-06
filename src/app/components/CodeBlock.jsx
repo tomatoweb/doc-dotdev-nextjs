@@ -9,7 +9,7 @@ const CodeBlock = props => {
 		<div className="relative my-8">
 
 			<SyntaxHighlighter language="javascript" style={docco}>
-      {props.text}
+      {props.tex}
     </SyntaxHighlighter>
 
 		</div>

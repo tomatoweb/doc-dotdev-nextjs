@@ -702,20 +702,7 @@ const page = () => {
 			src/app/test/page.tsx
 			
 			<Typography>Install Icons</Typography>
-			<CodeBlock text={`import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-
-export default function RootLayout(props) {
-   return (
-     <html lang="en">
-       <body>
-        <AppRouterCacheProvider>
-           {props.children}
-        </AppRouterCacheProvider>
-       </body>
-     </html>
-   );
- }
-        `} />
+			
 			<div>
 				{text1}
 				{text11}

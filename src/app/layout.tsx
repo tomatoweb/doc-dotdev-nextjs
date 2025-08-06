@@ -4,7 +4,7 @@ import '@/assets/iconify-icons/generated-icons.css';
 import Providers from "@/Providers";
 import Menu from "./components/Menu";
 import Rightbar from "./components/Rightbar";
-//import { TopNav } from "./components/TopNav";
+import { TopNav } from "./components/TopNav";
 
 export default function RootLayout({
 	children,
@@ -16,7 +16,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<Providers>
-					{/* <TopNav /> */}
+					<TopNav />
 					<div className="relative flex flex-col sm:flex-row justify-between mx-auto">
 						<Menu />
 						<main className="mx-6 mt-20 lg:ml-[21rem] lg:w-[70vw]">

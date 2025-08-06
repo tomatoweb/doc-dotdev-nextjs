@@ -706,7 +706,7 @@ const page = () => {
 			
 			<Typography>Install Icons</Typography>
 			<SyntaxHighlighter language="javascript" style={docco}>
-      {`some tex`}
+      some text
     </SyntaxHighlighter>
 			<div>
 				{text1}

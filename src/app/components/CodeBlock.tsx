@@ -11,22 +11,7 @@ const CodeBlock = (props: { text: string; color?: string }) => {
           color='lightgray'
           />
 			{props.text}
-			<SyntaxHighlighter
-        className="codeblock"
-        language="jsx"
-        style={atomDark}
-        wrapLongLines
-        customStyle={{
-            backgroundColor: "#0a0a0a",
-            opacity: "1",
-            marginTop: "-2rem",
-            paddingTop: "1.7rem"
-        }}
-        codeTagProps={{
-            style: {
-                color: props.color || 'white',
-            },
-        }}>
+			<SyntaxHighlighter>
         {props.text}
       </SyntaxHighlighter>
 		</div>

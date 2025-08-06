@@ -10,7 +10,7 @@ const CodeBlock = (props: { text: string; color?: string }) => {
   return (
     <div className="relative my-8">
       <div className="flex justify-end cursor-pointer mr-4">
-        <Box sx={[{fontSize: '0.8rem'}, copied ? { visibility: 'visible' } : { visibility: 'hidden'}]}>
+			<Box sx={[{fontSize: '0.8rem', color: 'lightGreen', marginRight: 1}, copied ? { visibility: 'visible' } : { visibility: 'hidden'}]}>
           copied
         </Box>
         <Copy

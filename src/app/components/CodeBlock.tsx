@@ -3,8 +3,6 @@ import { Copy } from '@geist-ui/icons';
 
 const CodeBlock = (props: { text: string; color?: string }) => {
 
-	const codeString = '(num) => num + 1';
-
 	return (
 		<div className="relative my-8">
 			<Copy

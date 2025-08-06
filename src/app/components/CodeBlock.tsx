@@ -1,7 +1,5 @@
 'use client';
 import { Copy } from '@geist-ui/icons';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const CodeBlock = (props: { text: string; color?: string }) => {
 
@@ -15,9 +13,7 @@ const CodeBlock = (props: { text: string; color?: string }) => {
           />
 			{props.text}
 
-			<SyntaxHighlighter language="javascript" style={docco}>
-      {codeString}
-    </SyntaxHighlighter>
+			
 
 		</div>
 	)

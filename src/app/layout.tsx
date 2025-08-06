@@ -4,7 +4,7 @@ import '@/assets/iconify-icons/generated-icons.css';
 import Providers from "@/Providers";
 import Menu from "./components/Menu";
 import Rightbar from "./components/Rightbar";
-import { TopNav } from "./components/TopNav";
+//import { TopNav } from "./components/TopNav";
 
 export default function RootLayout({
 	children,

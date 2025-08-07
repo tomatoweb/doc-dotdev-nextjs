@@ -19,13 +19,18 @@ nav {
   scrollbar-color: #868282 transparent;
   scrollbar-gutter: stable;
 }
-.codeblock {
+code {
+	white-space: break-spaces !important;
 	font-size: 1rem;
   border: 1px solid #2e2e2e !important;
   scrollbar-width: thin;
   scrollbar-color: #eaeaea transparent;
   scrollbar-gutter: stable;
 	word-wrap: break-word;
+}
+button[aria-label="Copy Code"]{
+	top: -24px;
+	right: 0;
 }
 .token {
   text-decoration: none !important;

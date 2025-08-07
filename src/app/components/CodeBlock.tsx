@@ -1,41 +1,39 @@
 'use client';
-import { Copy } from '@geist-ui/icons';
-import { Box } from '@mui/material';
-import { useState } from 'react';
+import { CopyBlock, solarizedDark } from 'react-code-blocks';
+//import { useState } from 'react';
 
 const CodeBlock = (props: { text: string; color?: string; lang?: string }) => {
-  const [copied, setCopied] = useState(false);
-  return (
-    <div className="relative my-4">
-      <div className="flex justify-end cursor-pointer mr-4">
-        <Box sx={[{fontSize: '0.8rem', color: 'lightGreen', marginRight: 1}, copied ? { visibility: 'visible' } : { visibility: 'hidden'}]}>
-          copied
-        </Box>
-        <Copy
+	//const [copied, setCopied] = useState(false);
+	return (
+		<div className="my-4 py-2">
+			{/* <div className="">
+				<Box sx={[{ fontSize: '0.8rem', color: 'lightGreen', marginRight: 1 }, copied ? { visibility: 'visible' } : { visibility: 'hidden' }]}>
+					copied
+				</Box>
+				<Copy
 					className='absolute top-5 right-8'
-          size={17}
-          color='lightgray'
-          onClick={() => {
-            navigator.clipboard.writeText(props.text).then(
-              () => {
-                setCopied(true);
-              },
-              () => {
-                console.log("clipboard write failed");
-              },
-            );
-          }}
-          />
-      </div>
-      <div
-        className="codeblock bg-slate-800 mx-4 -mt-2 py-4 px-5 overflow-x-auto rounded-md">
-					<pre className=''>
-        {props.text}
-
-					</pre>
-      </div>
-    </div>
-  )
+					size={17}
+					color='lightgray'
+					onClick={() => {
+						navigator.clipboard.writeText(props.text).then(
+							() => {
+								setCopied(true);
+							},
+							() => {
+								console.log("clipboard write failed");
+							},
+						);
+					}}
+				/>
+			</div> */}
+			<CopyBlock
+				text={props.text}
+				language="jsx"
+				showLineNumbers={false}
+				theme={solarizedDark}
+			/>
+		</div>
+	)
 }
 
 export default CodeBlock

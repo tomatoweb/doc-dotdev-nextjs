@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { cookies } from 'next/headers'
 
 export async function createPost(formData: FormData) {
 
@@ -22,4 +23,11 @@ export async function createPost(formData: FormData) {
   }
 
   revalidatePath('/posts-action')
+}
+
+
+export async function setCookie(data : { name: string; value: string }) {
+	if(!cookies().get(data.name)) {
+		cookies().set(data.name, data.value);
+	}	
 }

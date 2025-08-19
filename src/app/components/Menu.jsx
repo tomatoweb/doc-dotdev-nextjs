@@ -37,6 +37,14 @@ const nextjsList = [
     route: '/nextjs/useeffect'
   },
   {
+    text: 'useContext',
+    route: '/nextjs/usecontext'
+  },
+  {
+    text: 'Headers Cookies',
+    route: '/nextjs/headers'
+  },
+  {
     text: 'dynamic import',
     route: '/nextjs/dynamic'
   },

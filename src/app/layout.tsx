@@ -12,6 +12,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 
+	//const mode = getSettingsFromCookie()
+
 	return (
 		<html lang="en">
 			<body>

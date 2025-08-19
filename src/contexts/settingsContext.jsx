@@ -2,22 +2,17 @@
 import { createContext, useState } from 'react'
 import settingsConfig from '@/settingsConfig'
 
-
 const SettingsContext = createContext()
 
 export const SettingsProvider = props => {
 
 	const [settings, setSettings] = useState(settingsConfig)
 
-	return <SettingsContext.Provider 
-		value={{
-			settings, 
-			setSettings
-		}}
-	>
-		{props.children}
-	</SettingsContext.Provider>
+	return ( 
+		<SettingsContext.Provider value={{ settings, setSettings }}>
+			{props.children}
+	  </SettingsContext.Provider>
+	)
 }
-
 
 export default SettingsContext

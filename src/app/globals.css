@@ -29,7 +29,7 @@ code {
 	word-wrap: break-word;
 }
 button[aria-label="Copy Code"]{
-	top: -24px;
+	top: 0px;
 	right: 0;
 }
 .token {

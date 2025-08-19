@@ -83,6 +83,8 @@ const page = () => {
       <CodeBlock text={"symfony new myapp --webapp\ncd myapp"} />
       Or with composer
       <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" myapp\ncd myapp\ncomposer require webapp"} />     
+      Add the viewport meta in base.html.twig (enable mobile responsive)
+      <CodeBlock text={'<meta name="viewport" content="width=device-width, initial-scale=1.0">'} />     
       Install the Bundler Webpack-Encore
       <CodeBlock text={"composer require symfony/webpack-encore-bundle"} />
       This will update the project like this

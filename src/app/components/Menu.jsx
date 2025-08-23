@@ -12,10 +12,38 @@ import useSidebar from '@/app/hooks/useSidebar'
 
 const nextjsListTitle = { text: "Next.js", route: '/nextjs' };
 const nextjsList = [
+	{
+		text: 'Promise - Callback',
+    route: '/nextjs/promise'
+  },
   {
     text: 'Server Actions',
     route: '/nextjs/action'
   },
+	{
+		text: 'useState',
+		route: '/nextjs/usestate'
+	},
+	{
+		text: 'useEffect',
+		route: '/nextjs/useeffect'
+	},
+	{
+		text: 'useContext',
+		route: '/nextjs/usecontext'
+	},
+	{
+		text: 'Headers Cookies',
+		route: '/nextjs/headers'
+	},
+	{
+		text: 'SSR',
+		route: '/nextjs/server-side'
+	},
+	{
+		text: 'Children Pattern',
+		route: '/nextjs/children-pattern'
+	},
   {
     text: 'Export Default vs. Named',
     route: '/nextjs/export-default-vs-named'
@@ -24,41 +52,25 @@ const nextjsList = [
     text: 'ORM',
     route: '/nextjs/getbyorm'
   },
+	{
+		text: 'Prisma',
+		route: '/nextjs/prisma'
+	},
   {
     text: 'API',
     route: '/nextjs/getbyapi'
-  },
-  {
-    text: 'useState',
-    route: '/nextjs/usestate'
-  },
-  {
-    text: 'useEffect',
-    route: '/nextjs/useeffect'
-  },
-  {
-    text: 'useContext',
-    route: '/nextjs/usecontext'
-  },
-  {
-    text: 'Headers Cookies',
-    route: '/nextjs/headers'
   },
   {
     text: 'dynamic import',
     route: '/nextjs/dynamic'
   },
   {
-    text: 'SSR',
-    route: '/nextjs/server-side'
-  },
-  {
-    text: 'Children Pattern',
-    route: '/nextjs/children-pattern'
-  },
-  {
     text: 'Image',
     route: '/nextjs/next-image'
+  },
+  {
+    text: 'Code Block',
+    route: '/nextjs/codeblock'
   },
   {
     text: 'Icons',
@@ -75,10 +87,6 @@ const nextjsList = [
   {
     text: 'setInterval',
     route: '/nextjs/setinterval'
-  },
-  {
-    text: 'Prisma',
-    route: '/nextjs/prisma'
   },
   {
     text: 'Tailwind+MUI from scratch',

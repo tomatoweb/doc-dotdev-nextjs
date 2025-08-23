@@ -1,5 +1,4 @@
 import "./globals.css";
-// Generated Icon CSS Imports
 import '@/assets/iconify-icons/generated-icons.css';
 import Providers from "@/Providers";
 import Menu from "./components/Menu";
@@ -11,8 +10,6 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-
-	//const mode = getSettingsFromCookie()
 
 	return (
 		<html lang="en">

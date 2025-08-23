@@ -8,7 +8,7 @@ export default function BasicCard() {
 
   const text7 = 
 `<Typography variant="h5" component="div">
-  🖐🏻 ✨ ✔ 👋
+  🖐🏻 ✨ ✔ 👋 🐛
 </Typography>
 <Typography variant="h4" component="div">
   💓 🚀
@@ -19,7 +19,7 @@ export default function BasicCard() {
       <Card sx={{ minWidth: 275 }}>
         <CardContent>        
           <Typography variant="h5" component="div" sx={{mb:2}}>
-            🖐🏻 ✨ ✔ 👋
+            🖐🏻 ✨ ✔ 👋 🐛
           </Typography>
           <Typography variant="h4" component="div" sx={{mb:6}}>
             💓 🚀

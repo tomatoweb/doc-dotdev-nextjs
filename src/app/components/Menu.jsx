@@ -13,12 +13,12 @@ import useSidebar from '@/app/hooks/useSidebar'
 const nextjsListTitle = { text: "Next.js", route: '/nextjs' };
 const nextjsList = [
 	{
+		text: 'SSR',
+		route: '/nextjs/server-side'
+	},
+	{
 		text: 'Promise - Callback',
     route: '/nextjs/promise'
-  },
-  {
-    text: 'Server Actions',
-    route: '/nextjs/action'
   },
 	{
 		text: 'useState',
@@ -33,12 +33,12 @@ const nextjsList = [
 		route: '/nextjs/usecontext'
 	},
 	{
-		text: 'Headers Cookies',
+		text: 'Headers - Cookies',
 		route: '/nextjs/headers'
 	},
 	{
-		text: 'SSR',
-		route: '/nextjs/server-side'
+		text: 'DOM vs HTML',
+		route: '/nextjs/dom'
 	},
 	{
 		text: 'Children Pattern',
@@ -48,20 +48,28 @@ const nextjsList = [
     text: 'Export Default vs. Named',
     route: '/nextjs/export-default-vs-named'
   },
-  {
-    text: 'ORM',
-    route: '/nextjs/getbyorm'
-  },
 	{
 		text: 'Prisma',
 		route: '/nextjs/prisma'
 	},
   {
-    text: 'API',
-    route: '/nextjs/getbyapi'
+		text: 'ORM',
+    route: '/nextjs/getbyorm'
   },
   {
-    text: 'dynamic import',
+		text: 'API',
+    route: '/nextjs/getbyapi'
+  },
+	{
+		text: 'Server Actions',
+		route: '/nextjs/action'
+	},
+	{
+		text: 'Suspense',
+		route: '/nextjs/suspence'
+	},
+  {
+		text: 'dynamic import',
     route: '/nextjs/dynamic'
   },
   {
@@ -87,6 +95,10 @@ const nextjsList = [
   {
     text: 'setInterval',
     route: '/nextjs/setinterval'
+  },
+  {
+    text: 'setTimeout',
+    route: '/nextjs/settimeout'
   },
   {
     text: 'Tailwind+MUI from scratch',
@@ -127,6 +139,10 @@ const nextjsList = [
   {
     text: 'map - find',
     route: '/nextjs/map-find'
+  },
+  {
+    text: 'metadata api',
+    route: '/nextjs/metadata'
   },
 ];
 const laravelListTitle = { text: "Laravel", route: '/laravel' };

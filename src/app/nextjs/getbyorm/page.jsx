@@ -1,9 +1,22 @@
 'use client';
-
 import CodeBlock from '@/app/components/CodeBlock';
-import { Typography } from '@mui/material';
+import ImageModal from '@/app/components/ImageModal';
+import { styled, Typography } from '@mui/material';
+import { useState } from 'react';
 
 const PostsWithPrisma = () => {
+
+	const [popStatus1, setPopStatus1] = useState(false);
+
+	const StyledImage = styled('img')(() => ({
+		width: '100%',
+		maxWidth: 'none',
+		height: 'auto',
+		transition: 'all 500ms ease-in-out',
+		'&:hover': {
+			cursor: 'zoom-in'
+		}
+	}))
   
   const text = `
 import prisma from "@/lib/db";
@@ -187,7 +200,10 @@ export async function POST(req: Request) {
     return (
     <main>
       <Typography variant="h6" component="div" sx={{mb:2}}>
-      ✨ Get data direct in server component, no fetch, with Prisma ORM
+      ✨ Get data with Prisma ORM from a server component, no fetch api
+      </Typography>
+			<Typography variant="body2" component="div" sx={{mb:2}}>
+      ( image on bottom )
       </Typography>
       <CodeBlock text={text} />
       <Typography variant="h6" component="div" sx={{mb:2}}>
@@ -195,9 +211,23 @@ export async function POST(req: Request) {
       </Typography>
       <CodeBlock text={text1} />
       <Typography variant="h6" component="div" sx={{mb:2}}>
-      ✨ The API
+      ✨ The API to add a post by POST method
       </Typography>
       <CodeBlock text={text2} />
+			<ImageModal
+				popStatus={popStatus1}
+				img={"/posts-orm.png"}
+				closePop={(status) => setPopStatus1(status)}
+			/>
+			<StyledImage
+				onClick={() => setPopStatus1(true)}
+				className="rounded-lg"
+				src="/posts-orm.png"
+				width={0}
+				height={0}
+				sizes="100vw"
+				alt=""
+			/>
     </main>
   )
 }

@@ -18,7 +18,7 @@ const ImageModal = ({
           src={img}
           width={1300}
           height={0}
-          style={{maxHeight: '99vh', width: 'auto'}}
+          style={{maxHeight: '99vh', width: 'auto', marginTop: '8rem'}}
           alt=""
           quality={100}
         />

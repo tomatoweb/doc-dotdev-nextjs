@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { styled } from '@mui/material/styles'
 import ImageModal from "@/app/components/ImageModal";
+import { Typography } from '@mui/material';
 
 const StyledImage = styled('img')(() => ({
 	width: '100%',
@@ -20,6 +21,9 @@ const Page = () => {
 
 	return (
 		<main>
+			<Typography variant="body1" component="div" sx={{mb:2}}>
+      ✨ A Promise is an Object that links Producing code and Consuming code
+      </Typography>
 			<ImageModal
 				popStatus={popStatus1}
 				img={"/promise-callback1.png"}

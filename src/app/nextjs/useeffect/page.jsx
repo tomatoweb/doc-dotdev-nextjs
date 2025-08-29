@@ -121,6 +121,10 @@ export default MyUseEffect`;
       <Typography variant='h6' component="div">
         useEffect - avoid side effect - éviter les effets de bord 
       </Typography>
+      <Typography variant='body2' component="div">
+			UseEffect triggers (re-runs the logic) whenever any of the variables that are defined in the dependency array change. 
+			When none is defined, useEffect triggers only on(re)Mount of the component. 
+      </Typography>
       <pre>{text0}</pre>
       <CodeBlock text={text2}/>
       <StyledImage 

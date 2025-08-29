@@ -19,6 +19,10 @@ const menuList = [
 		text: '/posts-action',
 		route: '/posts-action'
 	},
+	{
+		text: '/suspense',
+		route: '/suspense'
+	},
 ];
 
 export default function Menu() {
@@ -29,7 +33,7 @@ export default function Menu() {
 		<div className='w-1/4 h-[84vh] sticky top-32 hidden lg:flex'>
 			<nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
 				<List sx={{ width: 260 }}>
-					<div className='ml-5 mb-4'>Sandbox</div>
+					<div className='ml-5 mb-4'>Demo</div>
 					{menuList.map((item) => (
 						<ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
 							<ListItemButton

@@ -1,9 +1,9 @@
 "use server";
-
 import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { cookies } from 'next/headers'
 
+// Server Action : add a new post (publication, article) in database
 export async function createPost(formData: FormData) {
 
   try {
@@ -26,6 +26,7 @@ export async function createPost(formData: FormData) {
 }
 
 
+// Server Action : Set cookie in user browser
 export async function setCookie(data : { name: string; value: string }) {
 	if(!cookies().get(data.name)) {
 		cookies().set(data.name, data.value);

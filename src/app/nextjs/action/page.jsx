@@ -4,14 +4,15 @@ import prisma from "@/lib/db";
 import Form from "@/app/components/Form";
 import CodeBlock from '@/app/components/CodeBlock';
 import { Typography } from '@mui/material';
+import Image from "next/image";
 
 const ServerActions = async () => {
 
-const posts = await prisma.post.findMany()
+	const posts = await prisma.post.findMany()
 
-const postsCount = await prisma.post.count();
+	const postsCount = await prisma.post.count();
 
-const text = `
+	const text = `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -24,7 +25,7 @@ const nextConfig = {
 export default nextConfig;
 `;
 
-const text1 = `import Link from "next/link";
+	const text1 = `import Link from "next/link";
 import prisma from "@/lib/db";
 import Form from "../components/Form";
 
@@ -132,6 +133,9 @@ export async function createPost(formData: FormData) {
       <Typography variant="h4" component="div" sx={{mb:2}}>
       ✨ Server actions - Prisma ORM
       </Typography>
+			<Typography variant="body2" component="div" sx={{mb:2}}>
+      ( image on bottom )
+      </Typography>
       <main className="flex flex-col items-center justify-center mb-8 py-8 gap-y-6 text-center bg-gray-800">
         <h1 className="text-3xl font-semibold">All Posts ({postsCount})</h1>
         <ul className="border-t border-b border-primary py-5 leading-8">
@@ -161,6 +165,15 @@ export async function createPost(formData: FormData) {
       ✨ The Action
       </Typography>
       <CodeBlock text={text3} />
+			<Image
+				className="rounded-lg"
+				src="/posts-action.png"
+				width={0}
+				height={0}
+				sizes="100vw"
+				style={{ width: '100%', height: 'auto' }}
+				alt=""
+			/>
     </main>
   )
 }

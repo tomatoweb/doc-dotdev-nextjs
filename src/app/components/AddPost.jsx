@@ -1,5 +1,4 @@
 "use client"
-
 import { useRouter } from "next/navigation";
 import { NextResponse } from "next/server";
 import { useState } from "react";
@@ -69,7 +68,7 @@ export default function AddPost() {
             placeholder="content" 
             className="p-2 rounded-sm bg-gray-900" 
           />
-          <button type="submit" className="bg-blue-500 py-2 text-white rounded-sm">Create post</button>
+          <button type="submit" className="bg-blue-500 p-2 text-white rounded-md mx-auto">Create post</button>
         </form>
     </main>
   );

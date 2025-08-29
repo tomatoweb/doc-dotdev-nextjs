@@ -1,29 +1,38 @@
 'use client'
-import { Paper, Switch, Typography } from "@mui/material"
-import { useColorScheme } from '@mui/material'
-import useSettings from "../hooks/useSettings"
+
+import { useEffect, useState } from "react"
 
 
-const Page = () => {
+const MyComponent = () => {
 
-	const { settingsState, setSettingsState } = useSettings()
-	const { setColorScheme } = useColorScheme();
+    const [title, setTitle] = useState("original title")
+    const [firstName, setFirstName] = useState("")
 
-	return (		
-			<Paper elevation={0} sx={{height: '100vh', borderColor: 'gray'}}>
-			<Switch onClick={
-				() => {
-					setSettingsState(settingsState === "light" ? "dark" : "light")
-					setColorScheme(settingsState)
-				}}>					
-				</Switch>
-				<div>
-					<Typography>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. In magni, pariatur facilis quibusdam numquam repellendus ullam sapiente quod impedit labore aliquam soluta ipsum dicta non modi temporibus sit! Tenetur, nemo.
-					</Typography>
-				</div>
-			</Paper>		
-	)
+		// this useEffect allows us to set/change the document title
+		// that is normally impossible on client side because the page html code is allready sended to client 
+		// that page html code can only be setted/changed before sending 
+    useEffect(() => {
+			document.title = title;
+		}, [title]);
+    console.log('rendering...')
+
+    return (
+      <main className="flex flex-col p-4 bg-gray-900">    
+        <input 
+          type="text" 
+          onChange={e => setTitle(e.target.value)} 
+          className="m-4 bg-gray-800" 
+          placeholder="title" 
+        />
+        <input 
+          type="text" 
+          onChange={e => setFirstName(e.target.value)} 
+          className="m-4 bg-gray-800" 
+          placeholder="first name"
+        />
+				<span className="hidden">{firstName}</span>
+      </main>
+    )
 }
 
-export default Page
+export default MyComponent

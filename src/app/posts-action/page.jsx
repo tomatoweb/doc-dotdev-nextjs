@@ -21,7 +21,9 @@ export default async function PostsPage() {
         ) )}
       </ul>
 
-      { postsCount < 50 && <Form /> }      
+      { postsCount < 50 && 
+				<Form />
+			 }      
 
     </main>
   );

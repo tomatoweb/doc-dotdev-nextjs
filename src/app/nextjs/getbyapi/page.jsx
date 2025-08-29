@@ -1,9 +1,22 @@
 'use client';
-
 import CodeBlock from '@/app/components/CodeBlock';
-import { Typography } from '@mui/material';
+import ImageModal from '@/app/components/ImageModal';
+import { styled, Typography } from '@mui/material';
+import { useState } from 'react';
 
 const PostsWithPrisma = () => {
+
+	const [popStatus1, setPopStatus1] = useState(false);
+
+	const StyledImage = styled('img')(() => ({
+		width: '100%',
+		maxWidth: 'none',
+		height: 'auto',
+		transition: 'all 500ms ease-in-out',
+		'&:hover': {
+			cursor: 'zoom-in'
+		}
+	}))
   
   const text = `
 import Link from "next/link";
@@ -16,7 +29,7 @@ export default async function PostsPage() {
   if (!response.ok) {
     throw new Error(\`HTTP error! status: \${response.status}\`);
 	}
-	const res = await response.json();
+const res = await response.json();
   
   const posts = res.data
   
@@ -200,15 +213,32 @@ export async function POST(req: Request) {
       <Typography variant="h6" component="div" sx={{mb:2}}>
       ✨ Get data with fetch API
       </Typography>
+      <Typography variant="body2" component="div" sx={{mb:2}}>
+      ( image on bottom )
+      </Typography>
       <CodeBlock text={text} />
       <Typography variant="h6" component="div" sx={{mb:2}}>
       ✨ The AddPost client component to create a new post
       </Typography>
       <CodeBlock text={text1} />
       <Typography variant="h6" component="div" sx={{mb:2}}>
-      ✨ The API
+      ✨ The API to add a post by POST method
       </Typography>
       <CodeBlock text={text2} />
+			<ImageModal
+				popStatus={popStatus1}
+				img={"/posts-api.png"}
+				closePop={(status) => setPopStatus1(status)}
+			/>
+			<StyledImage
+				onClick={() => setPopStatus1(true)}
+				className="rounded-lg"
+				src="/posts-api.png"
+				width={0}
+				height={0}
+				sizes="100vw"
+				alt=""
+			/>
     </main>
   )
 }

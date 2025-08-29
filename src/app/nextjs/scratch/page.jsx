@@ -665,10 +665,10 @@ const page = () => {
                 https://mui.com/material-ui/integrations/nextjs/
             </Link>
         </Typography>
-      1.<CodeBlock text={"npx create-next-app@latest appName"} />
-      2.<CodeBlock text={"cd appName"} />
-      3.<CodeBlock text={"code ."} />
-      4.<CodeBlock text={"npm install @mui/material @emotion/react @emotion/styled\nnpm install @mui/material-nextjs @emotion/cache"} />
+      <CodeBlock text={"npx create-next-app@latest appName"} />
+      <CodeBlock text={"cd appName"} />
+      <CodeBlock text={"code ."} />
+      <CodeBlock text={"npm install @mui/material @emotion/react @emotion/styled\nnpm install @mui/material-nextjs @emotion/cache"} />
       <Typography sx={{mb:6}}><i>note: for nextjs 15 add option --force</i></Typography>
       Configuration : Inside app/layout.tsx (or in theme.ts if you customized MUI theme), import the AppRouterCacheProvider and wrap all elements under the body with it:
       <CodeBlock text={`import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
@@ -724,10 +724,10 @@ export default function RootLayout(props) {
       <CodeBlock text={rightbar} />
       src/app/test/page.tsx
       <CodeBlock text={testPage} />
-      11.<Typography>Install Icons</Typography>
+      <Typography>Install Icons</Typography>
       <CodeBlock text={"npm i @geist-ui/icons\nnpm i @mui/icons-material"} />
 
-      12.<CodeBlock text={"npm run dev"} />
+      <CodeBlock text={"npm run dev"} />
 
     </div>
   )

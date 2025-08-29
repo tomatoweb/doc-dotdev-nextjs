@@ -1,24 +1,28 @@
+'use client';
 
-import prisma from "@/lib/db";
+import CodeBlock from '@/app/components/CodeBlock';
+import { Typography } from '@mui/material';
+
+const Page = () => {
+  
+  const text = `import prisma from "@/lib/db";
 import Link from "next/link";
 import AddPost from "@/app/components/AddPost";
 
-/* Prisma client provides direct query from this React component
-	 without creating REST API, but it will be only available for server side component
-	 because client side browser does not have support for nodejs.
-	 Be aware that this will be build as static/cached route
-	 thus, the re-rendered posts list will NOT reflect the DB state
-	 Except if "force-dynamic" is specified on top of the component,
-	 thus, If you want no caching from posts at all :
-*/
-export const dynamic = "force-dynamic";  
+export const dynamic = "force-dynamic"; // If you want no caching from posts at all
 
 export default async function PostsPage() {
 
+  /* Here we can see that Prisma client provides
+     direct query from your react component
+     without creating REST API but it will be only available for server side component
+     because client side browser does not have support for nodejs.
+     Be aware that this will be build as static/cached route
+     thus, the re-rendered posts list will NOT reflected the DB state,
+     except if "force-dynamic" is specified on top of the component
+  */
   const posts = await prisma.post.findMany();
   const postsCount = await prisma.post.count();
-
-	// await new Promise( (resolve) => setTimeout(resolve, 3000) ); // delay (dev)
 
   return (
     <main className="flex flex-col items-center justify-center py-8 gap-y-24 text-center bg-gray-800">
@@ -27,7 +31,7 @@ export default async function PostsPage() {
       <ul className="border-t border-b border-primary py-5 leading-8 ">
         {posts.map( (post) => (
             <li key={post.id} className="flex items-center justify-center px-5">
-              <Link href={`/posts-orm/${post.slug}`}>
+              <Link href={\`/posts-orm/\${post.slug}\`}>
                 {post.title}
               </Link>
             </li>
@@ -50,4 +54,16 @@ export default async function PostsPage() {
 
     </main>
   );
+}`;
+    
+    return (
+    <main>
+      <Typography variant="h6" component="div" sx={{mb:2}}>
+      ✨ Suspense
+      </Typography>
+      <CodeBlock text={text} />
+    </main>
+  )
 }
+
+export default Page

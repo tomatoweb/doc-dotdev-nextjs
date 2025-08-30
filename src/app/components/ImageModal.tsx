@@ -1,31 +1,47 @@
-import Image from "next/image";
+'use client'
+import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
+import Image from 'next/image'
 
-const ImageModal = ({
-  popStatus, img, closePop
-}:{
-  popStatus: boolean;
-  img: string;
-  closePop: (status: boolean) => void;
-}) => {
-  return (
-    popStatus && (
-    <section
-      onClick={() => closePop(false)}
-      className="fixed z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-80">
-      <aside className='rounded-2xl w-full shadow-md'>        
-        <Image                  
-          className="mx-auto rounded-xl cursor-zoom-out transition delay-150 duration-300 ease-in-out"
-          src={img}
-          width={1300}
-          height={0}
-          style={{maxHeight: '99vh', width: 'auto', marginTop: '8rem'}}
-          alt=""
-          quality={100}
-        />
-      </aside>
-    </section>
-    )
-  )
+const StyledImage = styled('img')(() => ({
+	height: 'auto',
+	transition: 'all 500ms ease-in-out',
+	'&:hover': {
+		cursor: 'zoom-in'
+	}
+}))
+
+const ImageModal = ({img}: {img: string;}) => {
+
+	const [popStatus, setPopStatus] = useState(false);
+
+	return (
+		<>
+			<StyledImage
+				onClick={() => setPopStatus(true)}
+				className="w-full xl:w-1/2 rounded-lg mx-auto my-4"
+				src={img}
+				width={0}
+				height={0}
+				alt=""
+			/>
+			{popStatus && (
+			<section
+				onClick={() => setPopStatus(false)}
+				className="fixed z-50 top-[4rem] left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-80">
+				<aside className='rounded-2xl w-full shadow-md'>
+					<Image
+						className="w-[auto] max-w-[99%] max-h-[91vh] mx-auto my-auto rounded-xl cursor-zoom-out"
+						width={1000}
+						height={1000}
+						src={img}
+						alt=''
+					/>
+				</aside>
+			</section>
+			)}
+		</>
+	)
 }
 
 export default ImageModal

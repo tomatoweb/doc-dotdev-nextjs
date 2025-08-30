@@ -14,7 +14,6 @@ const MyComponent = () => {
     useEffect(() => {
 			document.title = title;
 		}, [title]);
-    console.log('rendering...')
 
     return (
       <main className="flex flex-col p-4 bg-gray-900">    

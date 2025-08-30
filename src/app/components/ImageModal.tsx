@@ -31,9 +31,9 @@ const ImageModal = ({img}: {img: string;}) => {
 				className="fixed z-50 top-[4rem] left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-80">
 				<aside className='rounded-2xl w-full shadow-md'>
 					<Image
-						className="w-[auto] max-w-[99%] max-h-[91vh] mx-auto my-auto rounded-xl cursor-zoom-out"
-						width={1000}
-						height={1000}
+						className="w-[auto] h-[92vh] mx-auto my-auto rounded-xl cursor-zoom-out"
+						width={2000}
+						height={2000}
 						src={img}
 						alt=''
 					/>

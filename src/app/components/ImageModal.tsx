@@ -26,19 +26,20 @@ const ImageModal = ({img}: {img: string;}) => {
 				alt=""
 			/>
 			{popStatus && (
-			<section
+			<div
 				onClick={() => setPopStatus(false)}
-				className="fixed z-50 top-[4rem] left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-80">
-				<aside className='rounded-2xl w-full shadow-md'>
+				className="fixed z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-80">
+				<div className='rounded-2xl shadow-md'>
 					<Image
-						className="w-[auto] h-[92vh] mx-auto my-auto rounded-xl cursor-zoom-out"
-						width={2000}
-						height={2000}
+						width="0"
+						height="0"
+						sizes="390vh"
+						className="w-full h-auto mt-16"
 						src={img}
 						alt=''
 					/>
-				</aside>
-			</section>
+				</div>
+			</div>
 			)}
 		</>
 	)

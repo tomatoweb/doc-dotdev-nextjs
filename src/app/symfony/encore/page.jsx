@@ -9,7 +9,9 @@ const Page = () => {
       <Typography variant='h4' component="div" sx={{marginTop:4, marginBottom:3}}>
       🚀 Asset Mapper vs. Bundler 
       </Typography>
-      <Link href={"https://symfony.com/doc/current/frontend.html#frontend-twig-php"} sx={{color: 'link.main'}}> 
+      <Link 
+				href={"https://symfony.com/doc/current/frontend.html#frontend-twig-php"} 
+				sx={{color: 'link.main', wordBreak: 'break-all'}}> 
         https://symfony.com/doc/current/frontend.html#frontend-twig-php
       </Link>
       <Typography variant='h6' component="div" sx={{marginTop:4, marginBottom:2}}>

@@ -1,9 +1,10 @@
+import CodeBlock from "@/app/components/CodeBlock";
+import { Typography } from "@mui/material";
+
 const page = () => {
   const text = 
-  `Reinstall from scratch VPS 5*.***.**.**6 with Debian 11
--------------------------------------------------------
+  `https://www.ovh.com/manager
 
-https://www.ovh.com/manager 
 En bas de cette page, click on Serveurs privés virtuels 1 vps******.ovh.net
 Then click  reinstall my VPS --> Debian 11
 if a public key is required, it's in c:/users/matha/.ssh/id_rsa.pub
@@ -30,13 +31,13 @@ Configure the nginx and srv_dev files, based on backup H:/DEV/srv_dev :
 /etc/php
 /var/www/srv_dev
 `;
-  return (
-    
-      <nav className='overflow-x-auto text-sm'>
-        <pre>
-          {text}
-        </pre>
-      </nav>
+  return (    
+      <div className='overflow-x-auto text-sm'>
+				<Typography variant='body1' component="div" sx={{marginTop:4, marginBottom:2}}>
+				Reinstall VPS from scratch on Debian 11
+      </Typography>
+				<CodeBlock text={text} />
+      </div>
    
   )
 }

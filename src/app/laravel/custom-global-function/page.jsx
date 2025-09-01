@@ -29,11 +29,19 @@ const page = () => {
       <Typography variant="body1" sx={{fontWeight: 500, marginBottom:4, marginTop: 4}}>
       More details :
       </Typography>
-      <Link href={"https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel"} sx={{color: 'link'}}> https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel</Link> 
+      <Link 
+				href={"https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel"} 
+				sx={{color: 'link', wordBreak: 'break-all'}}>
+					https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel
+			</Link> 
       <Typography variant="body1" sx={{fontWeight: 500, marginBottom:4, marginTop: 4}}>
       Same for Blade directive :
       </Typography>
-      <Link href={"https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel#36888067"} sx={{color: 'link'}}> https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel#36888067</Link> 
+      <Link 
+				href={"https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel#36888067"} 
+				sx={{color: 'link', wordBreak: 'break-all'}}> 
+					https://stackoverflow.com/questions/28290332/how-to-create-custom-helper-functions-in-laravel#36888067
+			</Link> 
     </main>
   )
 }

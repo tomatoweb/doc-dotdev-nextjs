@@ -1,9 +1,10 @@
+import CodeBlock from "@/app/components/CodeBlock";
+import { Typography } from "@mui/material";
+
 const page = () => {
   const text = 
-  `1.
-  go to
-  https://www.ovh.com/manager/web/index.html#/configuration/domain/dotdev.be/zone
-  click add an entry
+  `1.  https://www.ovh.com/manager/web/index.html#/configuration/domain/dotdev.be/zone
+  click 'add an entry'
   champ de pointage: A
   cible: 51.***.**.196
 
@@ -87,10 +88,8 @@ Pour déployer un projet PHP:
   return (
     <div>
       <h1>Add and deploy subdomain app on Debian</h1>
-      <div className='overflow-x-auto text-sm mt-6'>      
-        <pre>
-          {text}
-        </pre>
+      <div className='overflow-x-auto text-sm'>
+				<CodeBlock text={text} />
       </div>
     </div>
   )

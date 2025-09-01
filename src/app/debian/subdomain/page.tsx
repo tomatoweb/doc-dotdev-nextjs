@@ -1,6 +1,4 @@
 import CodeBlock from "@/app/components/CodeBlock";
-import { Typography } from "@mui/material";
-
 const page = () => {
   const text = 
   `1.  https://www.ovh.com/manager/web/index.html#/configuration/domain/dotdev.be/zone

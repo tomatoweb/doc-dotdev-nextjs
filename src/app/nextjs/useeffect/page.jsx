@@ -137,9 +137,12 @@ export default MyUseEffect`;
       />
       <pre className='text-wrap'>{text1}</pre>
       <CodeBlock text={text3}/>
-      <pre>{"c'est un exemple de side effect: directly updating the DOM,"}</pre>
-      <pre>{"Some other examples are fetching data, and timers.\n\n"}</pre>
-      
+			<Typography variant='body2' component="div">
+				{"c'est un exemple de side effect: directly updating the DOM,"}
+      </Typography>
+			<Typography variant='body2' component="div">
+				{"Some other examples are fetching data, and timers.\n\n"}
+      </Typography>      
     </main>
   )
 }

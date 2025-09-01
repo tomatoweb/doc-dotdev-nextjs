@@ -58,7 +58,7 @@ server {
         src="/deploy-react.png" 
         alt=""
       />
-        <Typography variant="body2" component="div" sx={{mt:5}}>
+        <Typography variant="body2" component="div" sx={{mt:5, wordBreak: "break-all"}}>
           configure /var/www/srv_dev/config/nginx/domains/social.dotdev.be.conf, restart nginx
         </Typography>
         <CodeBlock text={text1} />

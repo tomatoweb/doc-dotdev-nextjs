@@ -50,7 +50,9 @@ liste des icônes : https://icon-sets.iconify.design/
 			<Typography variant="body1" component="div" sx={{ mb: 2 }}>
 				for example:
 			</Typography>
-			<Link href={"https://www.npmjs.com/package/@tabler/icons"} sx={{ color: 'link.main' }}>https://www.npmjs.com/package/@tabler/icons</Link>
+			<Link href={"https://www.npmjs.com/package/@tabler/icons"} sx={{ color: 'link.main', wordBreak: "break-all" }}>
+				https://www.npmjs.com/package/@tabler/icons
+			</Link>
 			<CodeBlock text={text} lang='html' />
 			<Link href={"https://icon-sets.iconify.design/"} sx={{ color: 'link.main' }}>https://icon-sets.iconify.design/</Link>
 			<footer className="mb-20"></footer>

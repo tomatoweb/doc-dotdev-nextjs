@@ -1,22 +1,9 @@
 'use client';
 import CodeBlock from '@/app/components/CodeBlock';
 import ImageModal from '@/app/components/ImageModal';
-import { styled, Typography } from '@mui/material';
-import { useState } from 'react';
+import { Typography } from '@mui/material';
 
 const PostsWithPrisma = () => {
-
-	const [popStatus1, setPopStatus1] = useState(false);
-
-	const StyledImage = styled('img')(() => ({
-		width: '100%',
-		maxWidth: 'none',
-		height: 'auto',
-		transition: 'all 500ms ease-in-out',
-		'&:hover': {
-			cursor: 'zoom-in'
-		}
-	}))
   
   const text = `
 import prisma from "@/lib/db";
@@ -214,20 +201,7 @@ export async function POST(req: Request) {
       ✨ The API to add a post by POST method
       </Typography>
       <CodeBlock text={text2} />
-			<ImageModal
-				popStatus={popStatus1}
-				img={"/posts-orm.png"}
-				closePop={(status) => setPopStatus1(status)}
-			/>
-			<StyledImage
-				onClick={() => setPopStatus1(true)}
-				className="rounded-lg"
-				src="/posts-orm.png"
-				width={0}
-				height={0}
-				sizes="100vw"
-				alt=""
-			/>
+			<ImageModal	img={"/posts-orm.png"} />
     </main>
   )
 }

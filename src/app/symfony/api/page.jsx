@@ -1,7 +1,5 @@
 'use client'
-import React, { useState } from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
-import { styled } from '@mui/material/styles'
 import ImageModal from "@/app/components/ImageModal";
 
 const text = `// Controller
@@ -86,38 +84,12 @@ const text2 = `// template
 </div>
 {% endblock %}`;
 
-const StyledImage = styled('img')(() => ({
-  width: '100%',
-  maxWidth: 'none',
-  height: 'auto',
-  transition: 'all 500ms ease-in-out',
-  '&:hover': {
-    cursor: 'zoom-in'
-  }
-}))
-
 const Page = () => {
-
-  const [popStatus, setPopStatus] = useState(false);
 
   return (
     <main>
 
-      <ImageModal
-        popStatus={popStatus}
-        img={"/symfony-service-api.png"}
-        closePop={(status) => setPopStatus(status)}
-      />
-
-      <StyledImage
-        onClick={() => setPopStatus(true)}
-        className="rounded-lg"
-        src="/symfony-service-api.png"
-        width={0}
-        height={0}
-        sizes="100vw"
-        alt=""
-      />
+      <ImageModal img={"/symfony-service-api.png"} />
       <CodeBlock text={text} />
       <CodeBlock text={text1} />
       <CodeBlock text={text2} />

@@ -19,7 +19,7 @@ const ImageModal = ({img}: {img: string;}) => {
 		<>
 			<StyledImage
 				onClick={() => setPopStatus(true)}
-				className="w-full xl:w-1/2 rounded-lg mx-auto my-4"
+				className="w-full rounded-lg mx-auto my-4"
 				src={img}
 				width={0}
 				height={0}
@@ -33,8 +33,8 @@ const ImageModal = ({img}: {img: string;}) => {
 					<Image
 						width="0"
 						height="0"
-						sizes="390vh"
-						className="w-full h-auto mt-16"
+						sizes="95vh"
+						className="w-auto h-auto mt-16"
 						src={img}
 						alt=''
 					/>

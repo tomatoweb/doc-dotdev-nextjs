@@ -1,8 +1,6 @@
 'use client'
-import React, { useState } from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
 import { Typography } from '@mui/material'
-import { styled } from '@mui/material/styles'
 import ImageModal from "@/app/components/ImageModal";
 
 const text = `<?php
@@ -104,42 +102,14 @@ class User {
     }
 }`;
 
-const StyledImage = styled('img')(() => ({
-  position: 'sticky',
-  width: '100%',
-  maxWidth: 'none',
-  height: 'auto',
-  transition: 'all 500ms ease-in-out',
-  '&:hover': {
-    cursor: 'zoom-in'
-  }
-}))
-
 const Page = () => {
-
-  const [popStatus, setPopStatus] = useState(false);
   
   return (
     <main>
       <Typography variant='h6' component="div">
         🚀  Merge 2 arrays of arrays based on foreign key (id)
       </Typography>
-
-      <ImageModal
-        popStatus={popStatus}
-        img={"/merge.png"}
-        closePop={(status) => setPopStatus(status)}
-      />
-
-      <StyledImage
-        onClick={() => setPopStatus(true)}
-        className="rounded-lg"
-        src="/merge.png"
-        width={0}
-        height={0}
-        sizes="100vw"
-        alt=""
-      />
+      <ImageModal img={"/merge.png"} />
       <CodeBlock text={text} />
     </main>
   )

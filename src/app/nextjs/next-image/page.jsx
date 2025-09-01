@@ -46,41 +46,14 @@ const StyledImage = styled('img')(() => ({
 const text2 = 
 `// With Click to enlarge
 'use client'
-import React, { useState } from 'react'
-import { styled } from '@mui/material/styles'
 import { Typography } from '@mui/material';
 import ImageModal from "@/app/components/ImageModal";
 
-const StyledImage = styled('img')(() => ({
-	width: '100%',
-	maxWidth: 'none',
-	height: 'auto',
-	transition: 'all 500ms ease-in-out',
-	'&:hover': {
-		cursor: 'zoom-in'
-	}
-}))
-
 const Page = () => {
-
-	const [popStatus, setPopStatus] = useState(false);
 
 	return (
 		<main>
-			<ImageModal
-				popStatus={popStatus1}
-				img={"/promise-callback1.png"}
-				closePop={(status) => setPopStatus1(status)}
-			/>
-			<StyledImage
-				onClick={() => setPopStatus1(true)}
-				className="rounded-lg"
-				src="/promise-callback1.png"
-				width={0}
-				height={0}
-				sizes="100vw"
-				alt=""
-			/>
+			<ImageModal	img={"/promise-callback1.png"} />
 		</main>
 	)
 }

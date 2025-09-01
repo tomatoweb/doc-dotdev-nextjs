@@ -141,7 +141,7 @@ const nextjsList = [
     route: '/nextjs/map-find'
   },
   {
-    text: 'metadata api',
+    text: 'Metadata api',
     route: '/nextjs/metadata'
   },
 ];

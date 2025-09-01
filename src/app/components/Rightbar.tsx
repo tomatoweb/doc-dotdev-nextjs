@@ -30,8 +30,8 @@ export default function Menu() {
 	const [selectedIndex, setSelectedIndex] = useState('');
 
 	return (
-		<div className='w-1/4 h-[84vh] sticky top-32 hidden lg:flex'>
-			<nav className='overflow-y-auto overflow-x-hidden h-[calc(100vh-200px)]'>
+		<div className='top-28 -right-28 hidden fixed lg:flex'>
+			<nav>
 				<List sx={{ width: 260 }}>
 					<div className='ml-5 mb-4'>Demo</div>
 					{menuList.map((item) => (

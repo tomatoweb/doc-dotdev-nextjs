@@ -18,7 +18,7 @@ export default function RootLayout({
 					<TopNav />
 					<div className="flex justify-between">
 						<Menu />
-						<main className="px-1 mt-20 lg:ml-[21rem] w-full lg:mr-[12rem]">
+						<main className="px-1 mt-20 md:ml-[21rem] w-full lg:mr-[12rem]">
 							{children}
 						</main>
 						<Rightbar />

@@ -105,7 +105,7 @@ const nextjsList = [
     route: '/nextjs/scratch'
   },
   {
-    text: 'SWC/Webpack Compile Bundle',
+    text: 'Webpack, SWC, Babel : transpile and bundle',
     route: '/nextjs/swc'
   },
   {
@@ -226,7 +226,7 @@ const phpList = [
     route: '/symfony/composer'
   },
   {
-    text: 'HTML Bootstrap 5 Template',
+    text: 'Bootstrap template',
     route: '/symfony/html'
   },
   {
@@ -234,7 +234,7 @@ const phpList = [
     route: '/symfony/curl'
   },
   {
-    text: 'Merge arrays with foreign key',
+    text: 'Merge arrays',
     route: '/symfony/merge'
   },
 ];
@@ -341,16 +341,15 @@ export default function Menu() {
   const [nextjsListOpen, setNextjsListOpen] = useState(true);
   const [debianListOpen, setDebianListOpen] = useState(true);
   const [sqlListOpen, setSqlListOpen] = useState(true);
-	const { sidebarState, setSidebarState }  = useSidebar()  // hook: toggle topbar open/close icon 
+	const { sidebarState, setSidebarState }  = useSidebar()
 
   return (		
 		<Paper elevation={0} 
 			sx={{boxShadow: "4px 0 4px -5px #999"}}
-			className={`scrollbar z-10 rounded-lg fixed bottom-0 overflow-y-scroll lg:scroll top-16 transition-all duration-500 shadow-[red_1px_0_5px_-2px] ${sidebarState ? 'w-fit h-full ml-0' : '-ml-80 lg:ml-0'}`}>
+			className={`scrollbar z-10 rounded-lg fixed bottom-0 overflow-y-scroll lg:scroll top-16 transition-all duration-500 shadow-[red_1px_0_5px_-2px] ${sidebarState ? 'w-fit h-full ml-0' : '-ml-80 md:ml-0'}`}>
 	   {/* <div className={`bg-gray-800 lg:bg-black z-10 rounded-lg absolute lg:sticky lg:flex top-14 transition-all duration-500 ${sidebarState ? 'ml-0 w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}> */}
 		{/* <div className={`bg-black h-full z-50 border border-slate-500 rounded-lg sticky transition-all duration-500 ${!isMobile ? '' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}> */}
       <nav className='overflow-y-auto overflow-x-hidden my-6'>
-				{/*  */}
         <StyledList sx={{ width: 310, paddingLeft: 5 }}>
           <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
             <ListItemText primary={`${laravelListTitle.text}`} /> 

@@ -1,37 +1,27 @@
 import { Typography } from "@mui/material";
 
 const page = () => {
-  const text = 
-  `
-The Next.js Compiler, written in Rust using SWC, allows Next.js to transform and minify your JavaScript code for production. This replaces Babel for individual files and Terser for minifying output bundles.
-
-Compilation using the Next.js Compiler is 17x faster than Babel and enabled by default since Next.js version 12. If you have an existing Babel configuration or are using unsupported features, your application will opt-out of the Next.js Compiler and continue using Babel.
-
-Why SWC?
-SWC is an extensible Rust-based platform for the next generation of fast developer tools.
-
-SWC can be used for compilation, minification, bundling, and more – and is designed to be extended. It's something you can call to perform code transformations (either built-in or custom). Running those transformations happens through higher-level tools like Next.js.
-
-We chose to build on SWC for a few reasons:
-
-Extensibility: SWC can be used as a Crate inside Next.js, without having to fork the library or workaround design constraints.
-Performance: We were able to achieve ~3x faster Fast Refresh and ~5x faster builds in Next.js by switching to SWC, with more room for optimization still in progress.
-WebAssembly: Rust's support for WASM is essential for supporting all possible platforms and taking Next.js development everywhere.
-Community: The Rust community and ecosystem are amazing and still growing.
-`;
-  return (
-    
-      <div className='overflow-x-auto text-sm'>
-        <Typography variant="body1" mb={4}>Turbopack can replace Webpack in development fast refresh mode by adding it in package.json scripts next dev --turbopack</Typography>
-        <Typography variant="body1" mb={4}>Webpack is used by Next.js to bundle JavaScript files</Typography>
-        <Typography variant="body1" mb={4}>Nextjs uses SWC compiler for Transpiling modern JavaScript and JSX into browser-compatible JavaScript</Typography>
-        <Typography variant="body1" mb={4}>SWC compile/transpile JavaScript and Typescript written in modern JavaScript features and outputs it in valid code that is supported by all major browsers</Typography>
-        <pre className="text-wrap">
-          {text}
-        </pre>
-      </div>
-   
-  )
+	return (
+		<div className='overflow-x-auto text-sm'>
+			<Typography variant="h5" sx={{ fontWeight: '600' }} mb={4}>Transpile and Bundle the code</Typography>
+			<Typography variant="body1" mb={4}>
+				<span className="text-link font-semibold">Babel </span>
+				{`transpile a Javascript code version, e.g. ES2017 described by ECMAScript 6 latest standard (React's JSX, JS/TS arrow functions, etc) to the standard ES2015 Javascript code supported by majority of browsers`}
+			</Typography>
+			<Typography variant="body1" mb={4}>
+				<span className="text-link font-semibold">Webpack </span>
+				is a module bundler that packages the Javascript code and other assets (like CSS, images, and fonts) into a small number of optimized files called bundles.
+				This process makes web applications load faster and more efficiently by reducing the number of HTTP requests and optimizing file sizes. </Typography>
+			<Typography variant="body1" mb={4}>
+				<span className="text-link font-semibold">SWC </span>
+				or Speedy Web Compiler, Written in Rust, can perform both code compilation that the older Babel does and bundling that Webpack does  </Typography>
+			<Typography variant="body1" mb={4}>
+				<span className="text-link font-semibold">Turbopack </span>
+				is a Rust-based, incremental bundler and the successor to Webpack, designed to make local development and builds significantly faster,
+				especially for large JavaScript and TypeScript applications like those built with Next.js.
+				It can replace Webpack in development fast refresh mode by adding it in package.json scripts next dev --turbopack</Typography>
+		</div>
+	)
 }
 
 export default page

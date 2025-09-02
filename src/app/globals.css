@@ -26,7 +26,7 @@ code {
   scrollbar-width: thin;
   scrollbar-color: #eaeaea transparent;
   scrollbar-gutter: stable;
-	word-wrap: break-word;
+	word-break: break-all;
 }
 button[aria-label="Copy Code"]{
 	top: 0px;

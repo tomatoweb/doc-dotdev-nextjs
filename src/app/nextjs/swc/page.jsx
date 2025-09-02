@@ -14,7 +14,9 @@ const page = () => {
 				This process makes web applications load faster and more efficiently by reducing the number of HTTP requests and optimizing file sizes. </Typography>
 			<Typography variant="body1" mb={4}>
 				<span className="text-link font-semibold">SWC </span>
-				or Speedy Web Compiler, Written in Rust, can perform both code compilation that the older Babel does and bundling that Webpack does  </Typography>
+				or Speedy Web Compiler, Written in Rust, can perform both code compilation that the older Babel does and bundling that Webpack does.
+				This is the Next.js default bundler.
+				 </Typography>
 			<Typography variant="body1" mb={4}>
 				<span className="text-link font-semibold">Turbopack </span>
 				is a Rust-based, incremental bundler and the successor to Webpack, designed to make local development and builds significantly faster,

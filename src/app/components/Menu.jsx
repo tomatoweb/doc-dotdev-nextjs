@@ -348,7 +348,6 @@ export default function Menu() {
 	const { sidebarState, setSidebarState }  = useSidebar();
 
 	const handleSwitchAll = (checked) => {
-		console.log(checked)
 		setLaravelListOpen(checked)
 		setSymfonyListOpen(checked)
 		setPhpListOpen(checked)

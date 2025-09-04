@@ -35,9 +35,8 @@ const Search = () => {
 
 	return (
 		<KBarProvider actions={data}>
-
 			<ComponentWithUseKBar	triggerClick className='flex-1 cursor-pointer'>
-				<div className="items-center justify-center w-full md:flex 3xl:w-auto 3xl:shrink-0 3xl:justify-center">
+				<div className="items-center justify-center px-4 w-full md:flex 3xl:w-auto 3xl:shrink-0 3xl:justify-center">
 					<button
 						type="button"
 						className={cn(

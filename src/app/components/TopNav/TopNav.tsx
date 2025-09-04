@@ -126,7 +126,7 @@ export default function TopNav() {
 	return (
 		<>
 			<AppBar className={cn(isMenuOpen ? 'w-full z-50 sticky' : 'z-50 w-full top-0 sticky')}>
-				<Box className={cn('duration-300 transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50')}>
+				<Box className={cn('duration-300 transition-shadow items-center w-full flex justify-between px-1.5 lg:pe-5 lg:ps-4 z-50 bg-slate-500')}>
 					<div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">
 
 							{/* mobile open/close side menu , logo, version */}
@@ -148,7 +148,7 @@ export default function TopNav() {
 									Docs
 								</Link>
 								<div
-									className=" flex p-2 justify-center items-center text-sm ms-1">
+									className="hidden sm:flex p-2 justify-center items-center text-sm ms-1">
 									v{settings.version}
 								</div>
 							</div>							
@@ -189,17 +189,7 @@ export default function TopNav() {
 									Dashboard
 								</Link>
 							</div>
-							<div className="flex w-full md:hidden"></div>
 							<div className="flex items-center -space-x-2.5 xs:space-x-0 ">
-								{/* <div className="flex md:hidden">
-									<button
-										aria-label="Search"
-										type="button"
-										className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 md:hidden hover:bg-secondary-button hover:dark:bg-secondary-button-dark outline-link"
-										onClick={onOpenSearch}>
-										<IconSearch className="w-5 h-5 align-middle" />
-									</button>
-								</div> */}
 								{light && (
 									<div className="flex">
 										<button

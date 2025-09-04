@@ -9,7 +9,6 @@ import {
 } from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
-import { IconClose } from '@/app/components/Icon/IconClose';
 import { IconHamburger } from '@/app/components/Icon/IconHamburger';
 import useSidebar from '@/app/hooks/useSidebar'
 import useSettings from '@/app/hooks/useSettings';

@@ -143,7 +143,7 @@ export default function TopNav() {
 								)}>
 								{sidebarState ? <IconCloseMenu color='current' className='mt-4 ml-1' /> : <IconHamburger />}
 							</button>							
-							<div className="flex flex-column justify-center items-center ml-4">
+							<div className="flex flex-column justify-center items-center sm:ml-4">
 								<Link href="/" className="text-4xl font-nothing font-semibold">
 									Docs
 								</Link>

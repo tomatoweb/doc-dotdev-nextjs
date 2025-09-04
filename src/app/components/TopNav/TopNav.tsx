@@ -17,6 +17,7 @@ import { useColorScheme } from '@mui/material/styles'
 import { AppBar, Box } from '@mui/material';
 import Search from '@/app/components/search'
 import { useMedia } from 'react-use';
+import { IconCloseMenu } from '../Icon/IconCloseMenu';
 
 declare global {
 	interface Window {
@@ -154,7 +155,7 @@ export default function TopNav() {
 										'dark:text-link-dark': isMenuOpen,
 									}
 								)}>
-								{sidebarState ? <IconClose /> : <IconHamburger />}
+								{sidebarState ? <IconCloseMenu color='current' className='mt-4 ml-1' /> : <IconHamburger />}
 							</button>							
 							<div className="flex flex-column justify-center items-center">
 								<Link href="/" className="text-4xl font-nothing font-semibold">

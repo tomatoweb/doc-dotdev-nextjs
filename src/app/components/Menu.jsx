@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Collapse, Paper } from '@mui/material';
+import { Collapse, Paper, Switch } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
@@ -304,6 +304,10 @@ const sqlList = [
 ];
 const mainList = [
   {
+    text: 'GitLab CI/CD',
+    route: '/gitlab'
+  },
+  {
     text: 'Versioning',
     route: '/versioning'
   },
@@ -333,22 +337,38 @@ const StyledList = styled(List)({
 export default function Menu() {
   const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState('');
-  const [laravelListOpen, setLaravelListOpen] = useState(true);
-  const [symfonyListOpen, setSymfonyListOpen] = useState(true);
-  const [phpListOpen, setPhpListOpen] = useState(true);
-  const [muiListOpen, setMuiListOpen] = useState(true);
-  const [tailwindListOpen, setTailwindListOpen] = useState(true);
-  const [nextjsListOpen, setNextjsListOpen] = useState(true);
-  const [debianListOpen, setDebianListOpen] = useState(true);
-  const [sqlListOpen, setSqlListOpen] = useState(true);
-	const { sidebarState, setSidebarState }  = useSidebar()
+  const [laravelListOpen, setLaravelListOpen] = useState(false);
+  const [symfonyListOpen, setSymfonyListOpen] = useState(false);
+  const [phpListOpen, setPhpListOpen] = useState(false);
+  const [muiListOpen, setMuiListOpen] = useState(false);
+  const [tailwindListOpen, setTailwindListOpen] = useState(false);
+  const [nextjsListOpen, setNextjsListOpen] = useState(false);
+  const [debianListOpen, setDebianListOpen] = useState(false);
+  const [sqlListOpen, setSqlListOpen] = useState(false);
+	const { sidebarState, setSidebarState }  = useSidebar();
+
+	const handleSwitchAll = (checked) => {
+		console.log(checked)
+		setLaravelListOpen(checked)
+		setSymfonyListOpen(checked)
+		setPhpListOpen(checked)
+		setNextjsListOpen(checked)
+		setMuiListOpen(checked)
+		setTailwindListOpen(checked)
+		setDebianListOpen(checked)
+		setSqlListOpen(checked)
+	}
 
   return (		
-		<Paper elevation={0} 
+		<Paper 
+			elevation={0} 
 			sx={{boxShadow: "4px 0 4px -5px #999"}}
-			className={`scrollbar z-10 rounded-lg fixed bottom-0 overflow-y-scroll lg:scroll top-16 transition-all duration-500 shadow-[red_1px_0_5px_-2px] ${sidebarState ? 'w-fit h-full ml-0' : '-ml-80 md:ml-0'}`}>
-	   {/* <div className={`bg-gray-800 lg:bg-black z-10 rounded-lg absolute lg:sticky lg:flex top-14 transition-all duration-500 ${sidebarState ? 'ml-0 w-full h-fit' : '-ml-[24rem] lg:ml-0'}`}> */}
-		{/* <div className={`bg-black h-full z-50 border border-slate-500 rounded-lg sticky transition-all duration-500 ${!isMobile ? '' : (sidebarState ? 'flex ml-0' : '-ml-60')}`}> */}
+			className={`scrollbar z-10 rounded-lg fixed bottom-0 overflow-y-scroll lg:scroll top-16 transition-all duration-500 shadow-[red_1px_0_5px_-2px] ${sidebarState ? 'w-fit h-full ml-0' : '-ml-80 md:ml-0'}`}
+		>
+			<div className='flex gap-1 justify-end items-center mt-3'>
+				<div className='text-sm'>Collapse</div>
+				<Switch onChange={(event) => handleSwitchAll(event.target.checked)} />
+			</div>
       <nav className='overflow-y-auto overflow-x-hidden my-6'>
         <StyledList sx={{ width: 310, paddingLeft: 5 }}>
           <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>

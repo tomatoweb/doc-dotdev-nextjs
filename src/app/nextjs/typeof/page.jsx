@@ -1,4 +1,11 @@
 'use client'
+import React from 'react'
+import CodeBlock from '@/app/components/CodeBlock'
+import { Typography } from '@mui/material';
+
+const Page = () => {
+
+const text = `'use client'
 
 import { useState } from "react"
 import { useEffect} from "react"
@@ -47,4 +54,19 @@ const MyComponent = () => {
     )
 }
 
-export default MyComponent
+export default MyComponent`;	
+
+  return (
+    <main>
+      <Typography variant='h6' component="div" sx={{marginBottom: '2rem'}}>
+        Typeof window vs. useEffect
+      </Typography>
+      <Typography variant='body1' sx={{marginBottom: '2rem'}}>
+        How to initially render on server side a browser Object (document)
+      </Typography>
+			<CodeBlock text={text} />  
+    </main>
+  )
+}
+
+export default Page

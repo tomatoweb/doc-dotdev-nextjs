@@ -1,7 +1,7 @@
 
-import prisma from "@/lib/db";
-import Link from "next/link";
 import AddPost from "@/app/components/AddPost";
+import PostsList from "../components/posts-list";
+import { Suspense } from "react";
 
 /* Prisma client provides direct query from this React component
 	 without creating REST API, but it will be only available for server side component
@@ -13,26 +13,23 @@ import AddPost from "@/app/components/AddPost";
 */
 export const dynamic = "force-dynamic";  
 
-export default async function PostsPage() {
-
-  const posts = await prisma.post.findMany();
-  const postsCount = await prisma.post.count();
+export default async function PostsPage() {  
 
 	// await new Promise( (resolve) => setTimeout(resolve, 3000) ); // delay (dev)
 
   return (
     <main className="flex flex-col items-center justify-center py-8 gap-y-24 text-center bg-gray-800">
 
-      <h1 className="text-3xl font-semibold">All Posts ({postsCount})</h1>
-      <ul className="border-t border-b border-primary py-5 leading-8 ">
-        {posts.map( (post) => (
-            <li key={post.id} className="flex items-center justify-center px-5">
-              <Link href={`/posts-orm/${post.slug}`}>
-                {post.title}
-              </Link>
-            </li>
-        ) )}
-      </ul>
+      <h1 className="text-3xl font-semibold">All Posts</h1>
+
+
+			{/* Suspense will make Nextjs rendering and sending immediately the code that is outside this Suspense tag,
+			meaning, the h1 element and the AddPost form are immediately sended to the client,
+			and after 3 secondes (I added a 3 sec timeout in the utils/getPostsByOrm to easy visualize the delay) 
+			the posts list will be sended. */}
+			<Suspense fallback={<p className="text-emerald-700">Loading...</p>}>
+      	<PostsList />
+			</Suspense>
 
       <AddPost/>
 

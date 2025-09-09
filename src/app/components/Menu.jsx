@@ -18,7 +18,7 @@ const nextjsList = [
 	},
 	{
 		text: 'typeof window',
-		route: '/nextjs/server-side'
+		route: '/nextjs/typeof'
 	},
 	{
 		text: 'Promise - Callback',

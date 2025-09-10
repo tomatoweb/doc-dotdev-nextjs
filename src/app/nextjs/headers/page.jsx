@@ -98,7 +98,6 @@ const CookiesBar = (props : any) => {
 				<Link href="https://nextjs.org/docs/app/api-reference/functions/headers" target="_blank">
 					https://nextjs.org/docs/app/api-reference/functions/headers
 				</Link>
-			</Typography><Typography sx={{ mb: 4 }}>
 				<Link href="https://nextjs.org/docs/app/api-reference/functions/cookies" target="_blank">
 					https://nextjs.org/docs/app/api-reference/functions/cookies
 				</Link>

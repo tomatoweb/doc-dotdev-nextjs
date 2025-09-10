@@ -167,8 +167,8 @@ const laravelList = [
 const symfonyListTitle = { text: "Symfony", route: '/symfony' };
 const symfonyList = [
   {
-    text: 'Symfony + Tailwind',
-    route: '/symfony/scratch'
+    text: 'Tailwind',
+    route: '/symfony/tailwind'
   },
   {
     text: 'Service API',
@@ -190,13 +190,13 @@ const symfonyList = [
     text: 'Messenger',
     route: '/symfony/messenger'
   },
+	{
+		text: 'Asset Mapper',
+		route: '/symfony/asset-mapper'
+	},
   {
     text: 'Webpack Encore',
     route: '/symfony/encore'
-  },
-  {
-    text: 'Asset Mapper',
-    route: '/symfony/asset-mapper'
   },
   {
     text: 'Twig',
@@ -234,13 +234,9 @@ const phpList = [
     route: '/symfony/html'
   },
   {
-    text: 'Curl API',
-    route: '/symfony/curl'
-  },
-  {
-    text: 'Merge arrays',
+    text: 'Curl API Merge arrays',
     route: '/symfony/merge'
-  },
+  }
 ];
 const muiListTitle = { text: "MUI", route: '/mui' };
 const muiList = [

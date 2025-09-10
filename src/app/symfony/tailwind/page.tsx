@@ -78,12 +78,13 @@ npm run build
 const page = () => {
   return (
     <div>
-      <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Symfony7-Tailwind from scratch</Typography>
-      Install Symfony with symfony.exe
-      <CodeBlock text={"symfony new myapp --webapp\ncd myapp"} />
-      Or with composer
-      <CodeBlock text={"composer create-project symfony/skeleton:\"7.1.*\" myapp\ncd myapp\ncomposer require webapp"} />     
-      Add the viewport meta in base.html.twig (enable mobile responsive)
+      <Typography variant="h5" sx={{fontWeight: 600, marginBottom:4}}>Install Tailwind</Typography>
+      <CodeBlock text={`// https://github.com/symfony-cli/symfony-cli
+symfony new my-tailwind-app --webapp\ncd my-tailwind-app`} />
+      Alternativ Composer
+      <CodeBlock text={`
+composer create-project symfony/skeleton:\"7.3.*\" my-tailwind-app\ncd my-tailwind-app\ncomposer require webapp`} />     
+      Add the viewport meta tag in base.html.twig to enable mobile responsivity
       <CodeBlock text={'<meta name="viewport" content="width=device-width, initial-scale=1.0">'} />     
       Install the Bundler Webpack-Encore
       <CodeBlock text={"composer require symfony/webpack-encore-bundle"} />
@@ -94,7 +95,7 @@ const page = () => {
         width={0}
         height={0}
         sizes="100vw"
-        style={{ width: '100%', height: 'auto', marginTop:12, marginBottom:24 }} alt=""
+        style={{ width: '40rem', height: 'auto', marginTop:12, marginBottom:24 }} alt=""
       />
       <Image 
         className="rounded-lg" 
@@ -102,7 +103,7 @@ const page = () => {
         width={0}
         height={0}
         sizes="100vw"
-        style={{ width: '100%', height: 'auto', marginTop:12, marginBottom:24 }} alt=""
+        style={{ width: '40rem', height: 'auto', marginTop:12, marginBottom:24 }} alt=""
       />
       Install npm packages
       <CodeBlock text={"npm install"} />

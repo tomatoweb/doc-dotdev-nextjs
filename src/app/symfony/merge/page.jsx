@@ -5,111 +5,102 @@ import ImageModal from "@/app/components/ImageModal";
 
 const text = `<?php
 
-class User {
+	$users = [];
+	$apiKey = 'reqres-free-v1';
+	$endpoint = 'https://reqres.in/api/users';
 
-    public function get_users(): ?array
-    {
-        $users = [];
-        $copy_users = [];
-        $users_products = [];
-        $apiKey = 'reqres-free-v1';
-        $endpoint = 'https://reqres.in/api/users';
+	$curl = curl_init();
 
-        $curl = curl_init();
+	curl_setopt_array($curl, [
+		CURLOPT_URL => $endpoint,
+		CURLOPT_TIMEOUT => 10,
+		//CURLOPT_CAINFO => __DIR__ . DIRECTORY_SEPARATOR . '../certificates/cert.crt', // with certificate
+		CURLOPT_SSL_VERIFYPEER => false, // without certificate - NOT SECURE
+		CURLOPT_RETURNTRANSFER => true,
+		//CURLOPT_CUSTOMREQUEST => "GET",
+		CURLOPT_HTTPHEADER => [
+			"x-api-key: $apiKey"
+		],
+	]);
 
-        curl_setopt_array($curl, [
-            CURLOPT_URL => $endpoint,
-            CURLOPT_TIMEOUT => 10,
-            //CURLOPT_CAINFO => __DIR__ . DIRECTORY_SEPARATOR . '../certificates/cert.crt', // with certificate
-            CURLOPT_SSL_VERIFYPEER => false, // without certificate - NOT SECURE
-            CURLOPT_RETURNTRANSFER => true,
-            //CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => [
-                "x-api-key: $apiKey"
-            ],
-        ]);
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
 
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        
-        curl_close($curl);
+	curl_close($curl);
 
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
-            $data = json_decode($response, true);
-            $users = ($data['data']);
-
-            echo '<pre>';
-            echo $this->encode_php($users);
-            echo '</pre>';
-        }
-
-        $infos = include __DIR__ . DIRECTORY_SEPARATOR . '../data.php';
-
-        echo '<pre>';
-        echo $this->encode_php($infos);
-        echo '</pre>';      
-        
-        foreach($infos as $k=>$v){
-            // id of info (foreign key referencing user id)
-            $id = $v['id'];
-            // key of user having id = id of info
-            $key_user = array_search($id, array_column($users, 'id'));
-            if($key_user >= 0){
-                $users[$key_user] += [
-                    'job'=>$infos[$k]['job'],
-                    'location'=>$infos[$k]['location']
-                ];
-            }
-        }
-
-        echo '<pre>';
-        echo $this->encode_php($users);
-        echo '</pre>';
-
-        return $users;
-    }
-
-    private function encode_php($var, $tab = '   ',  $add = ''){
-		if($var === null) return 'null';
-		elseif(is_int($var) or is_float($var)) return $var;
-		elseif(is_string($var)) return '"'.str_replace(['\\','"'],['\\\\','\"'], $var).'"';
-		elseif(is_bool($var)) return $var ? 'true' : 'false';
-		elseif($x = is_array($var) or is_object($var)){
-			$o = $x ? '[' : '(object) [';
-			$n = true;
-			$end = empty($tab) ? '' : "\n";
-			$op = empty($tab) ? '=>' : ' => ';
-			$sequential = self::is_sequentialArray($var);
-			foreach($var as $key => $sub){
-				$o .= ($n ? '' : ',').$end.$tab.$add.($sequential ? '' : self::encode_php($key).$op).self::encode_php($sub, $tab, $add.$tab);
-				$n = false;
-				}
-			return $o.(!$n ? $end.$tab.$add : '').']';
-			}
-		else return 'null';
+	if ($err) {
+		echo "cURL Error #:" . $err;
+	} else {
+		$data = json_decode($response, true);
+		$users = ($data['data']);
 	}
-    
-    public static function is_sequentialArray($val){
-        if(!is_array($val)) return false;
-        $i = 0;
-        foreach($val as $k => $v){
-            if($k !== $i) return false;
-            $i++;
-            }
-        return true;
-    }
-}`;
+
+	// Serialize (json_encode) and put a second array in a file
+	// the id (foreign key) here refers the to user id (primary key) from the $users array
+	$data = [
+		[
+			"id" => 1,
+			"job" => "developer",
+			"location" => "Central"
+			],
+		[
+			"id" => 3,
+			"job" => "manager",
+			"location" => "Germany"
+			],
+		[
+			"id" => 5,
+			"job" => "support",
+			"location" => "USA"
+			],
+		[
+			"id" => 6,
+			"job" => "admin",
+			"location" => "China"
+			]
+	];
+
+	file_put_contents('data.php', json_encode($data) );
+
+	//include __DIR__ . DIRECTORY_SEPARATOR . './data.php';
+	$infos = json_decode(file_get_contents('data.php') , 1);  // 1 Array , 0  Object
+
+	foreach ($infos as $k => $v) {
+		// id of info (foreign key referencing user id)
+		$id = $v['id'];
+		// key of user having id = id of info
+		$key_user = array_search($id, array_column($users, 'id'));
+		if ($key_user >= 0) {
+			$users[$key_user] += [
+				'job' => $infos[$k]['job'],
+				'location' => $infos[$k]['location']
+			];
+		}
+	};
+
+	print "<pre>";
+	print_r($users);
+	print "</pre>";
+
+`;
 
 const Page = () => {
   
   return (
     <main>
       <Typography variant='h6' component="div">
-        🚀  Merge 2 arrays of arrays based on foreign key (id)
+        🚀  Merge 2 data arrays based on foreign key
+      </Typography>
+      <Typography variant='body2' component="div">
+      This is a written test that I coded by a client interview (MediaWind in Nivelles).
+      </Typography>
+      <Typography variant='body2' component="div">
+      {`Make 2 curl's to 2 api's, unserialize with json_decode and merge the 2 results arrays on id key, if exists.`}
       </Typography>
       <ImageModal img={"/merge.png"} />
+      <Typography variant='h6' component="div">
+        🚀  Solution : copy this file to some-project/index.php and serve (php -S localhost:8000)
+      </Typography>
       <CodeBlock text={text} />
     </main>
   )

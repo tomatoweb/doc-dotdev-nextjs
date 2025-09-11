@@ -5,30 +5,56 @@ import { Link, Typography } from '@mui/material';
 
 const page = () => {
 
-  return (
-    <main>
-      <Typography variant='h4' component="div" sx={{marginTop:4, marginBottom:3}}>
-      🚀 Asset Mapper vs. Webpack Encore vs. React/Nextjs/Vuejs
-      </Typography>
-			<Link href={"https://symfony.com/doc/current/frontend.html#frontend-twig-php"} sx={{color: 'link.main'}}> 
+	return (
+		<main>
+			<Typography variant='h4' component="div" sx={{ marginTop: 4, marginBottom: 3 }}>
+				🚀 Asset Mapper vs. Webpack Encore vs. React/Nextjs/Vuejs
+			</Typography>
+			<Link href={"https://symfony.com/doc/current/frontend.html#frontend-twig-php"} sx={{ color: 'link.main' }}>
 				https://symfony.com/doc/current/frontend.html#frontend-twig-php
-			</Link>     
-			<div className='whitespace-pre mb-10'>{`Symfony gives us the flexibility to choose any front-end tools we want. 
+			</Link>
+			<div className='mb-10'>
+				{`Symfony gives us the flexibility to choose any front-end tools we want. 
 There are generally three approaches:
 
-0. put all css js img files in public folder, and load it classicaly
-1. building your HTML with PHP & Twig with AssetMapper (no build, use asset() function in template)
-2. building your HTML with PHP & Twig with Webpack Encore (Tailwind compatible) 
-3. building your frontend with a JavaScript framework like React, Vue, Svelte, etc.
+- Put all css js img files in public folder, and load it classicaly
+- Use the assets folder, build your HTML with PHP & Twig with AssetMapper (no build, use asset() function in template)
+- Use a Builder Webpack Encore (Tailwind compatible) 
+- Build your frontend with a JavaScript framework like React, Vue, Svelte, etc.`}
+			</div>
+			<Typography variant='h4' component="div" sx={{ marginTop: 2}}>
+				Asset Mapper
+			</Typography>
+			<Typography variant='body1' component="div" sx={{ marginY: 2 }}>
+				{`AssetMapper is included in the "symfony new myapp --webapp" installation.`}
+			</Typography>
+			<Typography variant='body1' component="div" sx={{ marginY: 2 }}>
+				To use it put all your js css and images in /assets folder
+			</Typography>
+			<Typography variant='body1' component="div" sx={{ marginY: 2 }}>
+				and, in <span className='text-tahiti'>production</span>, compile it with php bin/console asset-map:compile
+				</Typography>
+			<Typography variant='body1' component="div" sx={{ marginY: 2 }}>
+				this creates a /public/assets folder with all your css js etc versioned for caching
+			</Typography>
+			<Typography variant='body1' component="div" sx={{ marginY: 2 }}>
+				In <span className='text-tahiti'>development</span> mode, to avoid repeating asset-map:compile after every source code update,
+				delete the just created public/assets folder 
+				and start the Symfony server (symfony serve -d), 
+				insteed of the PHP internal server (php -S localhost:8000 -t public)
+			</Typography>
+			<Typography variant='body1' component="div" sx={{ marginY: 2 }}>
+				To add an image, put it in assets/images
+			</Typography>
+			<Typography variant='body1' component="div" sx={{ marginY: 2 }}>
+				and in template {`<img src="{{ asset('images/background.jpg') }}" height="100" width="100" alt="" />`}
+			</Typography>
+			<Link href={"https://www.youtube.com/watch?v=LytWiEDprOY&ab_channel=Grafikart.fr"} sx={{ position: 'fixed', bottom: '2rem', color: 'link.main' }} target="_blank">
+				tuto AssetMapper Youtube FR
+			</Link>
 
-- AssetMapper bundle is included in the "symfony new myapp --webapp" installation.
-- Webpack Encore needs Node.js to build`}</div>
-      <Link href={"https://www.youtube.com/watch?v=LytWiEDprOY&ab_channel=Grafikart.fr"} sx={{color: 'link.main'}}  target="_blank"> 
-        tuto AssetMapper Youtube FR
-      </Link>     
-      
-    </main>
-  )
+		</main>
+	)
 }
 
 export default page

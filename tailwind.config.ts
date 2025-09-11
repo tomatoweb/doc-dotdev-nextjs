@@ -13,7 +13,7 @@ const config: Config = {
         dynapuff: ['dynapuff'],
       },
       colors: {
-        'tahiti': '#3ab7bf',
+        'tahiti': '#00ffec',
 				'banana': '#ebd934',
         'midnight': '#121063',
         'primary': '#7367F0',

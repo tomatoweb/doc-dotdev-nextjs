@@ -62,11 +62,10 @@ const text = `<?php
 
 	file_put_contents('data.php', json_encode($data) );
 
-	//include __DIR__ . DIRECTORY_SEPARATOR . './data.php';
 	$infos = json_decode(file_get_contents('data.php') , 1);  // 1 Array , 0  Object
 
 	foreach ($infos as $k => $v) {
-		// id of info (foreign key referencing user id)
+		// id is the foreign key referencing user id
 		$id = $v['id'];
 		// key of user having id = id of info
 		$key_user = array_search($id, array_column($users, 'id'));

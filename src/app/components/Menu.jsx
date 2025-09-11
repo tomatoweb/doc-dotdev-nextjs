@@ -179,6 +179,10 @@ const symfonyList = [
     route: '/symfony/doctrinefix'
   },
   {
+		text: 'Services',
+    route: '/symfony/services'
+  },
+  {
 		text: 'Mercure Push Hub',
     route: '/symfony/mercure'
   },

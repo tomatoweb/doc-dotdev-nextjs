@@ -166,24 +166,20 @@ const laravelList = [
 ];
 const symfonyListTitle = { text: "Symfony", route: '/symfony' };
 const symfonyList = [
-  {
-    text: 'Tailwind',
-    route: '/symfony/tailwind'
-  },
-  {
-    text: 'Service API',
+	{
+		text: 'Service API',
     route: '/symfony/api'
   },
   {
-    text: 'Doctrine',
+		text: 'Doctrine',
     route: '/symfony/doctrine'
   },
   {
-    text: 'Doctrine n+1 fix',
+		text: 'Doctrine n+1 fix',
     route: '/symfony/doctrinefix'
   },
   {
-    text: 'Mercure Push Hub',
+		text: 'Mercure Push Hub',
     route: '/symfony/mercure'
   },
   {
@@ -195,13 +191,17 @@ const symfonyList = [
 		route: '/symfony/asset-mapper'
 	},
   {
-    text: 'Webpack Encore',
+		text: 'Webpack Encore',
     route: '/symfony/encore'
   },
   {
-    text: 'Twig',
+		text: 'Twig',
     route: '/symfony/twig'
   },
+	{
+		text: 'Tailwind',
+		route: '/symfony/tailwind'
+	},
   {
     text: 'Bootstrap css',
     route: '/symfony/bootstrap'

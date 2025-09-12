@@ -167,6 +167,10 @@ const laravelList = [
 const symfonyListTitle = { text: "Symfony", route: '/symfony' };
 const symfonyList = [
 	{
+		text: '.env order',
+    route: '/symfony/env'
+  },
+	{
 		text: 'Service API',
     route: '/symfony/api'
   },
@@ -177,6 +181,10 @@ const symfonyList = [
   {
 		text: 'Doctrine n+1 fix',
     route: '/symfony/doctrinefix'
+  },
+  {
+		text: 'DTO',
+    route: '/symfony/dto'
   },
   {
 		text: 'Services',

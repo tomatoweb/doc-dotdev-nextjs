@@ -2,55 +2,34 @@
 import React from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
 import { Typography } from '@mui/material';
-import { styled  } from '@mui/material/styles';
-
-const StyledImage = styled('img')(() => ({
-  width: '100%',
-  maxWidth: 'none',
-  height: 'auto',
-  '&:hover': {
-    width: '150%',
-    zIndex: '2',
-    position: 'relative'
-  },
-  transition: 'width 0.5s'
-}))
+import ImageModal from '@/app/components/ImageModal';
 
 const page = () => {
 
-  const text0 = `
-Qu'est ce qu'un effet de bord ?
+  const text = `When one of the useState of a component changes, a new render is triggered.
+This means that the entire code of the component is re-executed.
+But some code may not need to be executed on each re-render, it would produce a Side Effect.
+Some examples of side effects are: 
+fetching data, directly updating the DOM, and timers.
 
-Voici un component avec 2 input :
-  `;
+Let's put this code in a useEffect :  
+UseEffect execute it's code on any change of it's Dependency.
+UseEffect also execute on first initial render. 
+If dependency array is empty, useEffect triggers only on mount of the component.
 
-  const text1 = `
-On voit dans la console du browser que quand la value de l'input title change il y a un rendering.
-En effet, comme la variable title est "contrôlée" par le useState, 
-si sa valeur change tout le code du component est ré-executé:
-non seulement le code "document.title = title", 
-mais aussi le code "return <main>...</main>".
-et c'est très bien puique c'est ce qu'on veut : 
-on veut que le titre du document html (DOM) change quand le user tape dans l'input title.
-Par contre, si le user modifie l'input firstName, 
-il y a aussi un rendering, dans ce cas-ci le rendering ne sert à rien,
-car pour ce component le firstName ne fait pas partie de la vue,
-(je l'ai mis dans un div en fin de page pour éviter la lint error variable never used)
-il peut être envoyé quelque part, mais pas dans la vue :
-c'est donc un effet de bord.
-On ne veut que le code "document.title = title" ne s'exécute 
-que si le valeur de la variable title change.
+Example : updating directly the DOM by changing the Document title :
+A component with 2 inputs :
+One to change the Document title, and another to update the firstname.
+If we update the firstname, the firstname's useState is updated and triggers a new render, executing the full code of the component
+unnecessary including document.title = title`;
 
+  const text1 = `The code 'document.title' = title only needs to be executed if the user updates the title input value
+and consequently updating the title useState.
+Let's put this code in a useEffect :`;
 
-Pour que le code document.title = title ne s'exécute que si la variable title change
-on met ce code dans la callback d'un useEffect, 
-et on ajoute la variable title dans le array des dépendances du useEffect.
-Ainsi, il n'y aura pas de rendering lorsque la variable firstName est updatée.`;
-
-  const text2 = `'use client'
-
+  const text2 = ` // src/app/test/page.jsx
+'use client'
 import { useState } from "react"
-
 
 const MyComponent = () => {
 
@@ -85,16 +64,31 @@ export default MyComponent`;
 import { useEffect, useState } from "react"
 
 
-const MyUseEffect = () => {
+const MyComponent = () => {
 
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState("original title")
     const [firstName, setFirstName] = useState("")
 
-    useEffect(() => {
-      document.title = title
-      console.log('rendering...')
-    }, [title]);
+    console.log('the component is rendering...')
 
+    // Use Case : change the title of the document (page) 
+    // But document is a client side DOM API 
+    // e.g. : document.getElementById, window, document, ...
+    // Thus not available on server side
+    // for first rendering (SSR)
+    
+
+    // option 1 : useEffect
+    useEffect(() => {
+      
+      // option 2 : typeof window
+      // if (typeof window !== "undefined") {
+      
+      document.title = title;
+      
+      //}
+
+    }, [title]);
 
     return (
       <main className="flex flex-col p-4 bg-gray-900">    
@@ -110,39 +104,28 @@ const MyUseEffect = () => {
           className="m-4 bg-gray-800" 
           placeholder="first name"
         />
+        <span className="">first name is : {firstName}</span>
       </main>
     )
 }
 
-export default MyUseEffect`;
+export default MyComponent`;
+
 
   return (
     <main>
-      <Typography variant='h6' component="div">
-        useEffect - avoid side effect - éviter les effets de bord 
+      <Typography variant='h5' sx={{marginBottom: '1em'}}>
+        {`UseEffect`}
       </Typography>
-      <Typography variant='body2' component="div">
-			UseEffect triggers (re-runs the logic) whenever any of the variables that are defined in the dependency array change. 
-			When none is defined, useEffect triggers only on(re)Mount of the component. 
+      <Typography variant='body1' sx={{ whiteSpace: 'pre-wrap', lineHeight: '2em' }}>
+        {text}
       </Typography>
-      <pre>{text0}</pre>
-      <CodeBlock text={text2}/>
-      <StyledImage 
-        className="rounded-lg" 
-        src="/useEffect.png" 
-        width={0}
-        height={0}
-        sizes="100vw"
-        alt=""
-      />
-      <pre className='text-wrap'>{text1}</pre>
-      <CodeBlock text={text3}/>
-			<Typography variant='body2' component="div">
-				{"c'est un exemple de side effect: directly updating the DOM,"}
+      <CodeBlock text={text2} />
+      <ImageModal img={"/useEffect.png"} />
+      <Typography variant='h7' component="div" sx={{ whiteSpace: 'pre-wrap', lineHeight: '2em' }}>
+        {text1}
       </Typography>
-			<Typography variant='body2' component="div">
-				{"Some other examples are fetching data, and timers.\n\n"}
-      </Typography>      
+      <CodeBlock text={text3} />
     </main>
   )
 }

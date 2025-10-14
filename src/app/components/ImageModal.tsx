@@ -4,7 +4,8 @@ import { styled } from '@mui/material/styles'
 import Image from 'next/image'
 
 const StyledImage = styled('img')(() => ({
-	height: 'auto',
+	maxHeight: '85vh',
+	width: 'auto',
 	transition: 'all 500ms ease-in-out',
 	'&:hover': {
 		cursor: 'zoom-in'
@@ -28,7 +29,7 @@ const ImageModal = ({img}: {img: string;}) => {
 			{popStatus && (
 			<div
 				onClick={() => setPopStatus(false)}
-				className="fixed z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-80">
+				className="cursor-zoom-out fixed z-50 top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-80">
 				<div className='rounded-2xl shadow-md'>
 					<Image
 						width="0"

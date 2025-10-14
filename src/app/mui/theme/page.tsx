@@ -822,7 +822,7 @@ export default theme;`;
   },
   toRuntimeSource: [Function: stringifyTheme]`;
   return (
-    <div className='text-center'>
+    <div>
       <Typography variant='h5'>MUI Theme and debug theme (below)</Typography>
       <Typography variant='h5'>Typescript version</Typography>
       <CodeBlock text={text} />  

@@ -167,7 +167,7 @@ const laravelList = [
 const symfonyListTitle = { text: "Symfony", route: '/symfony' };
 const symfonyList = [
 	{
-		text: '.env order',
+		text: '.env',
     route: '/symfony/env'
   },
 	{

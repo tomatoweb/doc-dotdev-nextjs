@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight } from '@geist-ui/icons';
 import useSidebar from '@/app/hooks/useSidebar'
 
-const nextjsListTitle = { text: "Next.js", route: '/nextjs' };
+const nextjsListTitle = { text: "React Next.js", route: '/nextjs' };
 const nextjsList = [
 	{
 		text: 'SSR',
@@ -21,7 +21,7 @@ const nextjsList = [
 		route: '/nextjs/typeof'
 	},
 	{
-		text: 'Promise - Callback',
+		text: 'Promise',
     route: '/nextjs/promise'
   },
 	{
@@ -37,6 +37,10 @@ const nextjsList = [
 		route: '/nextjs/usecontext'
 	},
 	{
+		text: 'useReducer',
+		route: '/nextjs/usereducer'
+	},
+	{
 		text: 'Headers - Cookies',
 		route: '/nextjs/headers'
 	},
@@ -49,7 +53,7 @@ const nextjsList = [
 		route: '/nextjs/children-pattern'
 	},
   {
-    text: 'Export Default vs. Named',
+    text: 'Named | Default ex-import',
     route: '/nextjs/export-default-vs-named'
   },
 	{
@@ -143,6 +147,10 @@ const nextjsList = [
   {
     text: 'map - find',
     route: '/nextjs/map-find'
+  },
+  {
+    text: 'Optional chaining ?.',
+    route: '/nextjs/optional-chaining'
   },
   {
     text: 'Metadata api',
@@ -331,6 +339,10 @@ const mainList = [
     text: 'Scss - Sass',
     route: '/sass'
   },
+  {
+    text: 'Page Template',
+    route: '/template'
+  },
 ];
 const ListButton = styled(ListItemButton)(({ theme }) => ({
   color: theme.palette.text.secondary,
@@ -347,6 +359,7 @@ const StyledList = styled(List)({
 })
 
 export default function Menu() {
+
   const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState('');
   const [laravelListOpen, setLaravelListOpen] = useState(false);
@@ -382,81 +395,6 @@ export default function Menu() {
 			</div>
       <nav className='overflow-y-auto overflow-x-hidden my-6'>
         <StyledList sx={{ width: 310, paddingLeft: 5 }}>
-          <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
-            <ListItemText primary={`${laravelListTitle.text}`} /> 
-						{laravelListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-          </ListItemButton>
-          <Collapse in={laravelListOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {laravelList.map((item) => (
-                <ListButton
-                  disableRipple
-                  component="div"
-                  key={item.text}
-                  dense
-                  selected={selectedIndex === item.route}
-                  onClick={() => {
-                    setSelectedIndex(item.route);
-                    router.push(item.route);
-										setSidebarState( false )
-                  }}
-                  sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
-                >
-                  <ListItemText primary={item.text} />
-                </ListButton>
-              ))}
-            </List>
-          </Collapse>
-
-          <ListItemButton component="a" onClick={() => { setSymfonyListOpen(!symfonyListOpen) }} disableRipple dense>
-            <ListItemText primary={`${symfonyListTitle.text}`} /> {symfonyListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-          </ListItemButton>
-          <Collapse in={symfonyListOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {symfonyList.map((item) => (
-                <ListButton
-                  disableRipple
-                  component="a"
-                  key={item.text}
-                  dense
-                  selected={selectedIndex === item.route}
-                  onClick={() => {
-                    setSelectedIndex(item.route);
-                    router.push(item.route)
-										setSidebarState( false )
-                  }}
-                  sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
-                >
-                  <ListItemText primary={item.text} />
-                </ListButton>
-              ))}
-            </List>
-          </Collapse>
-
-          <ListItemButton component="a" onClick={() => { setPhpListOpen(!phpListOpen) }} disableRipple dense>
-            <ListItemText primary={`${phpListTitle.text}`} /> {phpListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-          </ListItemButton>
-          <Collapse in={phpListOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              {phpList.map((item) => (
-                <ListButton
-                  disableRipple
-                  component="a"
-                  key={item.text}
-                  dense
-                  selected={selectedIndex === item.route}
-                  onClick={() => {
-                    setSelectedIndex(item.route);
-                    router.push(item.route)
-										setSidebarState( false )
-                  }}
-                  sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
-                >
-                  <ListItemText primary={item.text} />
-                </ListButton>
-              ))}
-            </List>
-          </Collapse>
 
           <ListItemButton onClick={() => { setNextjsListOpen(!nextjsListOpen) }} disableRipple dense>
             <ListItemText primary={`${nextjsListTitle.text}`} /> {nextjsListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
@@ -514,6 +452,82 @@ export default function Menu() {
           <Collapse in={tailwindListOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {tailwindList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+										setSidebarState( false )
+                  }}
+                  sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton component="a" onClick={() => { setLaravelListOpen(!laravelListOpen) }} disableRipple dense>
+            <ListItemText primary={`${laravelListTitle.text}`} /> 
+						{laravelListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+          </ListItemButton>
+          <Collapse in={laravelListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {laravelList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="div"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route);
+										setSidebarState( false )
+                  }}
+                  sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton component="a" onClick={() => { setSymfonyListOpen(!symfonyListOpen) }} disableRipple dense>
+            <ListItemText primary={`${symfonyListTitle.text}`} /> {symfonyListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+          </ListItemButton>
+          <Collapse in={symfonyListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {symfonyList.map((item) => (
+                <ListButton
+                  disableRipple
+                  component="a"
+                  key={item.text}
+                  dense
+                  selected={selectedIndex === item.route}
+                  onClick={() => {
+                    setSelectedIndex(item.route);
+                    router.push(item.route)
+										setSidebarState( false )
+                  }}
+                  sx={[{ pl: 4, }, { justifyContent: 'initial' }]}
+                >
+                  <ListItemText primary={item.text} />
+                </ListButton>
+              ))}
+            </List>
+          </Collapse>
+
+          <ListItemButton component="a" onClick={() => { setPhpListOpen(!phpListOpen) }} disableRipple dense>
+            <ListItemText primary={`${phpListTitle.text}`} /> {phpListOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+          </ListItemButton>
+          <Collapse in={phpListOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {phpList.map((item) => (
                 <ListButton
                   disableRipple
                   component="a"

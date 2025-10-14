@@ -9,8 +9,10 @@ const MyComponent = () => {
     const [title, setTitle] = useState("original title")
     const [firstName, setFirstName] = useState("")
 
+    console.log('the component is rendering...')
+
 		// Case : User can change the title of the current page 
-		// problem : document object is not available on server side first rendering
+		// problem : document object is not available on server side first rendering (SSR)
 		// it belongs to client side because
 		// it's a DOM APIs (window, document, document.getElementById,...)
 
@@ -21,12 +23,12 @@ const MyComponent = () => {
 			console.log('the code inside the useEffect is executing...')
 
 			// option 2 : typeof window
-			if (typeof window !== "undefined") {
+			//if (typeof window !== "undefined") {
 			document.title = title;
-			}
+			//}
 
 
-		}, [title, firstName]);
+		}, [title]);
 
     return (
       <main className="flex flex-col p-4 bg-gray-900">    
@@ -40,9 +42,9 @@ const MyComponent = () => {
           type="text" 
           onChange={e => setFirstName(e.target.value)} 
           className="m-4 bg-gray-800" 
-          placeholder="first name"
+          placeholder="firstname"
         />
-				<span className="">first name is : {firstName}</span>
+				<span className="">firstname is : {firstName}</span>
       </main>
     )
 }

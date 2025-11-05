@@ -41,6 +41,10 @@ const nextjsList = [
 		route: '/nextjs/usereducer'
 	},
 	{
+		text: 'Redux',
+		route: '/nextjs/redux'
+	},
+	{
 		text: 'Headers - Cookies',
 		route: '/nextjs/headers'
 	},

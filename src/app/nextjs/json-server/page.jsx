@@ -2,7 +2,6 @@
 import React from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
 import { Link, Typography } from '@mui/material';
-import ImageModal from '@/app/components/ImageModal';
 
 const page = () => {
 
@@ -15,9 +14,6 @@ Data is communicated in JSON (JavaScript Object Notation) format between client 
 
 Installation: Execute the below command in your project directory.`;
 
-  const text1 = `The code 'document.title' = title only needs to be executed if the user updates the title input value
-and consequently updating the title useState.
-Let's put this code in a useEffect :`;
   const text0 = `The db.json database file: The data is stored in JSON format`;
 
   const text2 = `// db.json (at the root of the project)
@@ -54,59 +50,6 @@ Let's put this code in a useEffect :`;
     }
   ]
 }`;
-
-  const text3 = `'use client'
-
-import { useEffect, useState } from "react"
-
-
-const MyComponent = () => {
-
-    const [title, setTitle] = useState("original title")
-    const [firstName, setFirstName] = useState("")
-
-    console.log('the component is rendering...')
-
-    // Use Case : change the title of the document (page) 
-    // But document is a client side DOM API 
-    // e.g. : document.getElementById, window, document, ...
-    // Thus not available on server side
-    // for first rendering (SSR)
-    
-
-    // option 1 : useEffect
-    useEffect(() => {
-      
-      // option 2 : typeof window
-      // if (typeof window !== "undefined") {
-      
-      document.title = title;
-      
-      //}
-
-    }, [title]);
-
-    return (
-      <main className="flex flex-col p-4 bg-gray-900">    
-        <input 
-          type="text" 
-          onChange={e => setTitle(e.target.value)} 
-          className="m-4 bg-gray-800" 
-          placeholder="title" 
-        />
-        <input 
-          type="text" 
-          onChange={e => setFirstName(e.target.value)} 
-          className="m-4 bg-gray-800" 
-          placeholder="first name"
-        />
-        <span className="">first name is : {firstName}</span>
-      </main>
-    )
-}
-
-export default MyComponent`;
-
 
   return (
     <main>

@@ -2,7 +2,6 @@
 import React from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
 import { Typography } from '@mui/material';
-import Image from 'next/image';
 import ImageModal from '@/app/components/ImageModal';
 
 const text = `composer install
@@ -45,7 +44,7 @@ const page = () => {
       </Typography>
       <CodeBlock text={text}/>
       <Typography variant='body1' component="div">
-      Use composer 'why' to check 2nd level dependencies
+      {`Use composer 'why' to check 2nd level dependencies`}
       </Typography>
 			<ImageModal img={"/composer-why.png"} />
 			<ImageModal img={"/composer.jpg"} />

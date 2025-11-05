@@ -68,6 +68,10 @@ const nextjsList = [
 		text: 'API',
     route: '/nextjs/getbyapi'
   },
+  {
+		text: 'json-server',
+    route: '/nextjs/json-server'
+  },
 	{
 		text: 'Server Actions',
 		route: '/nextjs/action'

@@ -3,6 +3,7 @@ import React from 'react'
 import CodeBlock from '@/app/components/CodeBlock'
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import ImageModal from '@/app/components/ImageModal';
 
 const text = `composer install
 
@@ -43,14 +44,11 @@ const page = () => {
       🚀  COMPOSER 
       </Typography>
       <CodeBlock text={text}/>
-      <Image 
-        className="rounded-lg" 
-        src="/composer.jpg" 
-        width={0}
-        height={0}
-        sizes="100vw"
-        style={{ width: '100%', height: 'auto' }} alt=""
-      />
+      <Typography variant='body1' component="div">
+      Use composer 'why' to check 2nd level dependencies
+      </Typography>
+			<ImageModal img={"/composer-why.png"} />
+			<ImageModal img={"/composer.jpg"} />
       
     </main>
   )

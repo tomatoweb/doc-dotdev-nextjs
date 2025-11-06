@@ -300,6 +300,10 @@ const muiList = [
 const tailwindListTitle = { text: "Tailwind css", route: '/tailwind' };
 const tailwindList = [
   {
+    text: 'Conditional className',
+    route: '/tailwind/conditional'
+  },
+  {
     text: 'Components',
     route: '/tailwind/components'
   },

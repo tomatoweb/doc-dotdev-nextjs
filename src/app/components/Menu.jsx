@@ -300,6 +300,10 @@ const muiList = [
 const tailwindListTitle = { text: "Tailwind css", route: '/tailwind' };
 const tailwindList = [
   {
+    text: 'Components',
+    route: '/tailwind/components'
+  },
+  {
     text: 'Custom colors',
     route: '/tailwind/color'
   },

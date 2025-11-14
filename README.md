@@ -1,10 +1,16 @@
 
 ## Tips
 
-Please run frequently ```npm oudated && npm update```
+* Please run frequently 
 
-for this project you need to generate the Prisma schema
-used by /api/posts
+```npm oudated && npm update```
+* for this project you need to generate the Prisma schema
+used by /api/posts 
+
+```npx prisma generate```
+
+
+
 
 ## Official Documentation
 

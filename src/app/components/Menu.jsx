@@ -13,6 +13,10 @@ import useSidebar from '@/app/hooks/useSidebar'
 const nextjsListTitle = { text: "React Next.js", route: '/nextjs' };
 const nextjsList = [
 	{
+		text: 'React router and navigation',
+		route: '/nextjs/reactrouter'
+	},
+	{
 		text: 'SSR',
 		route: '/nextjs/server-side'
 	},
@@ -297,7 +301,7 @@ const muiList = [
     route: '/mui/theme'
   },
 ];
-const tailwindListTitle = { text: "Tailwind css", route: '/tailwind' };
+const tailwindListTitle = { text: "Tailwind", route: '/tailwind' };
 const tailwindList = [
   {
     text: 'Conditional className',

@@ -3,6 +3,7 @@
 import CodeBlock from '@/app/components/CodeBlock';
 import { Link, Typography } from '@mui/material';
 import Image from 'next/image';
+import { RxRocket } from "react-icons/rx";
 
 const PostsWithPrisma = () => {
 
@@ -56,10 +57,27 @@ export default App;
 					React icons
 				</div>
 			</Typography>
+			<Typography>
+				First install React Icons
+			</Typography>
+			<CodeBlock text={`npm install react-icons --save`} />
+			<Typography>
+				Here is the full list
+			</Typography>
 			<Link href="https://react-icons.github.io/react-icons/" target="_blank">
 				https://react-icons.github.io/react-icons/
 			</Link>
-			<Typography variant="h6" component="div" sx={{ mb: 2, mt: 6 }}>
+			<Typography sx={{marginTop: 4, fontSize: 20}}>
+				Example
+			</Typography>
+			<RxRocket size={"4rem"} color={"#7367F2"} className='my-4'/>
+			<CodeBlock text={`import { RxRocket } from "react-icons/rx";
+				
+<RxRocket size={"4rem"} color={"#7367F2"} className='my-4' />`} />
+			<Typography sx={{marginTop: 8, fontSize: 20}}>
+				Other ways
+			</Typography>
+			<Typography variant="h6" component="div" sx={{ mb: 2, mt: 2 }}>
 				✨ Lucide React Icons
 			</Typography>
 			<Link href={"https://lucide.dev/icons/"} sx={{ color: 'link.main' }}>https://lucide.dev/icons/</Link>

@@ -29,6 +29,7 @@
     "react-collapsed": "^4.2.0",
     "react-dom": "^18",
     "react-hook-form": "^7.56.4",
+    "react-icons": "^5.5.0",
     "react-syntax-highlighter": "^15.6.1",
     "react-use": "^17.6.0",
     "react-use-draggable-scroll": "^0.4.7",

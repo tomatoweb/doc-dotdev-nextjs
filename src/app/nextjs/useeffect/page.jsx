@@ -6,9 +6,10 @@ import ImageModal from '@/app/components/ImageModal';
 
 const page = () => {
 
-  const text = `When one of the useState of a component changes, a new render is triggered.
-This means that the entire code of the component is re-executed.
-But some code may not need to be executed on each re-render, it would produce a Side Effect.
+  const text = `If the state of a component changes, a new render is triggered.
+This means that the entire javascript code of the component is re-executed.
+But some code may not need to be executed on each re-render, a Side Effect append when some part of 
+the javascript code of the component is executed, but doesn't change the view.
 Some examples of side effects are: 
 fetching data, directly updating the DOM, and timers.
 

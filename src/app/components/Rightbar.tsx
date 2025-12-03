@@ -23,6 +23,10 @@ const menuList = [
 		text: '/suspense',
 		route: '/suspense'
 	},
+	{
+		text: '/test',
+		route: '/test'
+	},
 ];
 
 export default function Menu() {

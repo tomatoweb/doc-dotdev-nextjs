@@ -1,17 +1,18 @@
+import { Container } from "@mui/material"
 import Image from "next/image"
 
 const page = () => {
   return (
-    <container className="flex flex-row items-center justify-center">
+    <Container maxWidth="xs">
       <Image 
         className="h-auto rounded-lg" 
         src="/server-side-rendering.png" 
-        width={0}
-        height={0}
+        width={500}
+        height={500}
         sizes="100vw"
-        style={{ width: '70%', height: 'auto' }} alt=""
+				alt=""
       />
-    </container>
+    </Container>
   )
 }
 
